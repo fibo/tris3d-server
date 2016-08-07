@@ -7,9 +7,13 @@ const pkg = require('./package.json')
 const debug = require('debug')(pkg.name)
 
 const app = express()
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
 
 // Keep in sync with server-files/etc/nginx/conf.d/tris3d.conf
 const port = 3000
+
+// Server routes.
 
 app.use(express.static('public'))
 
@@ -24,9 +28,19 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
+// Socket.io events.
+
+io.on('connection', (socket) => {
+  debug('a user connected')
+
+  socket.on('disconnect', () => {
+    debug('user disconnected')
+  })
+})
+
 // Start server if it is the main script.
 if (module === require.main) {
-  app.listen(port, () => {
+  http.listen(port, () => {
     debug('Listening on port %d', port)
   })
 }

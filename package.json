@@ -46,6 +46,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "socket.io": "^1.4.8",
     "tris3d-canvas": "^0.4.0"
   },
   "standard": {
