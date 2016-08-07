@@ -1,18 +1,16 @@
 <!DOCTYPE>
 <html>
 <head>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
   <h1>tris3d</h1>
 
   <div>
     <canvas id="playground" width="500" height="500"></canvas>
+    <div id="react-root"></div>
   </div>
 
   <script src="bundle.js"></script>
-
-  <script src="/socket.io/socket.io.js"></script>
-
-  <script>var socket = io()</script>
 </body>
 </html>

@@ -19,8 +19,7 @@
     "stop": "forever stop --uid ${npm_package_name} server.js",
     "test": "mocha",
     "update-deps": "npm update --save --dev",
-    "webpack": "webpack -p",
-    "webpack-dev-server": "webpack-dev-server --host 0.0.0.0"
+    "webpack": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -40,19 +39,25 @@
     "mocha": "^3.0.0",
     "standard": "^7.1.2",
     "supertest": "^2.0.0",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.13.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-react": "^6.11.1",
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "socket.io": "^1.4.8",
     "tris3d-canvas": "^0.4.0"
   },
   "standard": {
     "globals": [
       "describe",
-      "it"
+      "it",
+      "io"
     ]
   }
 }
