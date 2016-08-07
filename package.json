@@ -13,7 +13,6 @@
   "scripts": {
     "check-deps": "npm outdated",
     "lint": "standard",
-    "postinstall": "npm run webpack",
     "postupdate-deps": "npm test && git commit -am ':arrow_up: updated deps' || git checkout -- package.json",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "start": "DEBUG=${npm_package_name} forever start --uid ${npm_package_name} --append server.js",
