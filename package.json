@@ -9,7 +9,6 @@
     "url": "http://g14n.info"
   },
   "license": "MIT",
-  "main": "index.js",
   "scripts": {
     "check-deps": "npm outdated",
     "lint": "standard",
