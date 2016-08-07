@@ -40,8 +40,8 @@ sudo npm install npm -g
 Clone this repo and install deps
 
 ```bash
-git clone https://github.com/fibo/tris3d-fb-app.git
-cd tris3d-fb-app
+git clone https://github.com/fibo/tris3d-server.git
+cd tris3d-server
 npm install
 ```
 
@@ -57,10 +57,4 @@ Start the server
 ```bash
 npm start
 ```
-
-### Facebook app
-
-Go to the [Facebook app dashboard][fb-app-dashboard].
-
-[fb-app-dashboard]: https://developers.facebook.com/apps/178205352555681 "Facebook app dashboard"
 
