@@ -36,6 +36,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     debug('user disconnected')
   })
+
+  socket.on('setChoice', (action) => {
+    debug('setChoice', action)
+
+    socket.broadcast.emit('getChoice', action.cubeIndex)
+  })
 })
 
 // Start server if it is the main script.

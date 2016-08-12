@@ -1,10 +1,17 @@
 # tris3d-server
 
+> Play tic tac toe in 3d.
+
+[Setup](#setup) |
+[Development](#development) |
+[License](#license)
+
 ## Setup
 
 ### Server
 
-First of all create an Ubuntu server and configure its domain to play.tris3d.net on Cloudflare.
+First of all create an Ubuntu server and configure its domain to
+play.tris3d.net on Cloudflare.
 
 Commands are executed with a user, for instance *pippo*, in the sudo group.
 Login as *root*, create *pippo* user, then
@@ -22,7 +29,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 ```
 
-When grub prompt will appear, just hit <kbd>enter</kbd> and choose default **Keep the local version currently installed** option.
+When grub prompt will appear, just hit <kbd>enter</kbd> and choose default
+**Keep the local version currently installed** option.
 
 Following [Installation instructions from NodeSource](https://github.com/nodesource/distributions#debinstall), tell *apt-get* to point to **Node v4.x**
 
@@ -57,5 +65,28 @@ Start the server
 
 ```bash
 npm start
+```
+
+## Development
+
+Start the server in debug mode
+
+```bash
+export DEBUG=tris3d-server
+node server
+```
+
+Then point your browser to http://localhost:3000/
+
+You may also want to run webpack watching for file changes, then in another shell
+
+```bash
+npm run watch
+```
+
+Tests are run as usual
+
+```bash
+npm test
 ```
 

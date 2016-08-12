@@ -1,1 +1,4 @@
 bundle.js
+
+# webpack --hot stuff
+*hot-update*

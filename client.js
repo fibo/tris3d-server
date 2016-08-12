@@ -1,8 +1,14 @@
-import Tris3dCanvas from 'tris3d-canvas'
+import 'babel-polyfill'
+
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
+import App from './containers/App'
+
 const stupid = require('tris3d-ai').stupid
 
-const tris3dCanvas = new Tris3dCanvas('playground')
-
+/*
 tris3dCanvas.on('localPlayerTurnEnds', () => {
   console.log('wait for other players choices')
 })
@@ -52,28 +58,14 @@ tris3dCanvas.on('tris3d!', (winnerPlayerIndex, winningCombinations) => {
 })
 
 tris3dCanvas.render()
+*/
 
-/*
-import 'babel-polyfill'
-
-const socket = io()
-
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
-import Chat from './containers/Chat'
 
 const store = configureStore()
 
-import Tris3dCanvas from 'tris3d-canvas'
-const tris3dCanvas = new Tris3dCanvas('playground')
-tris3dCanvas.render()
-
 render(
   <Provider store={store}>
-    <Chat socket={socket} />
+    <App />
   </Provider>,
-  document.getElementById('react-root')
+  document.getElementById('root')
 )
-*/
