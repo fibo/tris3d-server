@@ -1,5 +1,6 @@
-import { getChoice } from '../actions/canvas'
-import { connection } from '../actions/socket'
+import {
+  getChoice
+} from '../actions/canvas'
 
 var socket = null
 
@@ -7,11 +8,11 @@ export function socketMiddleware (store) {
   return (next) => (action) => {
     const result = next(action)
 
-    // Map one to one (socket event) <--> (dispatched action) to
-    // forward them from redux to socket.io server.
-    // The key is to use action.type as the event name.
     if (socket) {
-      socket.emit(action.type, action)
+      switch (action.type) {
+        case 'SET_CHOICE':
+          socket.emit('setChoice', action.cubeIndex)
+      }
     }
 
     return result
@@ -21,9 +22,9 @@ export function socketMiddleware (store) {
 export function initSocket (store) {
   socket = io()
 
-  // TODO socket.on('coonection')
+  // TODO socket.on('connection')
 
-  socket.on('getChoice', (action) => {
-    store.dispatch(getChoice(action.cubeIndex))
+  socket.on('getChoice', (cubeIndex) => {
+    store.dispatch(getChoice(cubeIndex))
   })
 }

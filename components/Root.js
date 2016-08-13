@@ -1,11 +1,19 @@
 import React from 'react'
 import Canvas from './Canvas'
+import PlayersSelector from './PlayersSelector'
 
 const Root = ({
+  initCanvas,
   setChoice
 }) => (
   <div>
-    <Canvas setChoice={setChoice}/>
+    <PlayersSelector
+      disabled={true}
+    />
+    <Canvas
+      initCanvas={initCanvas}
+      setChoice={setChoice}
+    />
   </div>
 )
 

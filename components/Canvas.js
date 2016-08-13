@@ -1,18 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import Tris3dCanvas from 'tris3d-canvas'
 
 class Canvas extends Component {
   componentDidMount () {
     const {
-      id,
-      setChoice
+      initCanvas,
+      id
     } = this.props
 
-    const tris3dCanvas = new Tris3dCanvas(id)
-
-    tris3dCanvas.on('setChoice', setChoice)
-
-    tris3dCanvas.render()
+    initCanvas(id)
   }
 
   render () {

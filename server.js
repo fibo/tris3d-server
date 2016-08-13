@@ -37,10 +37,10 @@ io.on('connection', (socket) => {
     debug('user disconnected')
   })
 
-  socket.on('setChoice', (action) => {
-    debug('setChoice', action)
+  socket.on('setChoice', (cubeIndex) => {
+    debug('setChoice', cubeIndex)
 
-    socket.broadcast.emit('getChoice', action.cubeIndex)
+    socket.broadcast.emit('getChoice', cubeIndex)
   })
 })
 

@@ -67,6 +67,15 @@ Start the server
 npm start
 ```
 
+### Email
+
+This section describes setup done (only once) on Amazon SES. The email address
+choosen for transaction emails is *play@tris3d.net*.
+
+1. Add domain *tris3d.net* and verify it, add also MX record.
+2. Create a rule set to store emails into S3 bucket *s3://tris3d/emails/*.
+3. Add email address and verify it, getting the link from email stored in S3 bucket.
+
 ## Development
 
 Start the server in debug mode
