@@ -21,8 +21,13 @@ export default function canvasMiddleware (store) {
 
     if (tris3dCanvas) {
       switch (action.type) {
+        case 'ENABLE_MULTI_PLAYER':
+          tris3dCanvas.resetPlayground()
+          break
+
         case 'GET_CHOICE':
           tris3dCanvas.setChoice(action.cubeIndex)
+          break
       }
     }
 

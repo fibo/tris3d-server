@@ -1,5 +1,7 @@
 const initialState = {
-  choosen: []
+  nickname: null,
+  choosen: [],
+  isMultiPlayer: false
 }
 
 export default initialState

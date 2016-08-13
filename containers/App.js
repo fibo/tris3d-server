@@ -5,16 +5,28 @@ import {
   initCanvas,
   setChoice
 } from '../actions/canvas'
+import {
+  disableMultiPlayer,
+  enableMultiPlayer
+} from '../actions/socket'
+import {
+  setNickname
+} from '../actions/user'
 
 const mapStateToProps = (state) => {
   return {
+    isMultiPlayer: state.isMultiPlayer,
+    nickname: state.nickname
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    disableMultiPlayer,
+    enableMultiPlayer,
     initCanvas,
-    setChoice
+    setChoice,
+    setNickname
   }, dispatch)
 }
 

@@ -52,8 +52,8 @@
     "redux": "^3.5.2",
     "socket.io": "^1.4.8",
     "tris3d": "^0.3.0",
-    "tris3d-ai": "^0.2.0",
-    "tris3d-canvas": "^0.5.0"
+    "tris3d-ai": "^0.3.0",
+    "tris3d-canvas": "^0.6.0"
   },
   "standard": {
     "globals": [
