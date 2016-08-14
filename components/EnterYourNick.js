@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
+import localStorageIsAvailable from '../utils/localStorageIsAvailable'
 
 class EnterYourNick extends Component {
   constructor () {
     super()
 
-    this.state = {
-      nickname: null
+    var nickname = null
+
+    if (localStorageIsAvailable()) {
+      nickname = localStorage.getItem('tris3d.nickname')
     }
 
+    this.state = { nickname }
   }
+
   render () {
     const { setNickname } = this.props
 
     const setState = this.setState.bind(this)
+    const nickname = this.state.nickname
 
     return (
       <div>
@@ -20,17 +26,19 @@ class EnterYourNick extends Component {
           You nick:
         </label>
         <input
-        onChange={(e) => {
-          var nickname = e.target.value
+          onChange={(e) => {
+            var nickname = e.target.value
 
-          setState({
-            nickname: nickname.trim()
-          })
-        }}
+            setState({
+              nickname: nickname.trim()
+            })
+          }}
           name='nickname'
+          value={nickname}
         />
         <button
-          onClick={() => { setNickname(this.state.nickname) }}
+          disabled={(nickname.length < 3)}
+          onClick={() => { setNickname(nickname) }}
         >
           Play
         </button>
