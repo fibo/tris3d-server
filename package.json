@@ -58,8 +58,9 @@
   "standard": {
     "globals": [
       "describe",
+      "io",
       "it",
-      "io"
+      "localStorage"
     ]
   }
 }

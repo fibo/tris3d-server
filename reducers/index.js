@@ -1,6 +1,4 @@
-import initialState from '../store/initialState'
-
-export default function (state = initialState, action) {
+export default function (state, action) {
   switch (action.type) {
     case 'DISABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
@@ -18,6 +16,12 @@ export default function (state = initialState, action) {
     case 'INIT_CANVAS':
       return state
 
+    case 'LOCAL_PLAYER_WINS':
+      return Object.assign({}, state, {
+        score: state.score + action.winningCombinations.length,
+        victories: state.victories + 1
+      })
+
     case 'SET_CHOICE':
       var newChoosen = Object.assign([], state.choosen)
 
@@ -30,6 +34,16 @@ export default function (state = initialState, action) {
     case 'SET_NICKNAME':
       return Object.assign({}, state, {
         nickname: action.nickname
+      })
+
+    case 'SOCKET_CONNECTED':
+      return Object.assign({}, state, {
+        socketConnectionOn: true
+      })
+
+    case 'SOCKET_DISCONNECTED':
+      return Object.assign({}, state, {
+        socketConnectionOn: false
       })
 
     default:

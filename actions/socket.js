@@ -9,3 +9,15 @@ export function enableMultiPlayer () {
     type: 'ENABLE_MULTI_PLAYER'
   }
 }
+
+export function socketConnected () {
+  return {
+    type: 'SOCKET_CONNECTED'
+  }
+}
+
+export function socketDisconnected () {
+  return {
+    type: 'SOCKET_DISCONNECTED'
+  }
+}

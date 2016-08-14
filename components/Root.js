@@ -6,20 +6,24 @@ import EnterYourNick from './EnterYourNick'
 import UserStats from './UserStats'
 
 const Root = ({
+  disableMultiPlayer,
+  enableMultiPlayer,
   nickname,
   initCanvas,
   isMultiPlayer,
-  disableMultiPlayer,
-  enableMultiPlayer,
+  score,
   setChoice,
-  setNickname
+  setNickname,
+  socketConnectionOn,
+  victories
 }) => (
   <div>
   {
     (typeof nickname === 'string') ? (
       <div>
         <MultiPlayerToggle
-          checked={isMultiPlayer}
+          isMultiPlayer={isMultiPlayer}
+          socketConnectionOn={socketConnectionOn}
           toggleMultiPlayer={isMultiPlayer ? disableMultiPlayer : enableMultiPlayer}
         />
         <PlayersSelector
@@ -31,6 +35,8 @@ const Root = ({
         />
         <UserStats
           nickname={nickname}
+          score={score}
+          victories={victories}
         />
       </div>
     ) : (

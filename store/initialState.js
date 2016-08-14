@@ -1,7 +1,10 @@
 const initialState = {
-  nickname: null,
   choosen: [],
-  isMultiPlayer: false
+  isMultiPlayer: false,
+  nickname: null,
+  score: 0,
+  socketConnectionOn: false,
+  victories: 0
 }
 
 export default initialState

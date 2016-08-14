@@ -1,6 +1,10 @@
 import {
   getChoice
 } from '../actions/canvas'
+import {
+  socketConnected,
+  socketDisconnected
+} from '../actions/socket'
 
 var socket = null
 
@@ -38,7 +42,14 @@ function disposeSocket () {
 function initSocket (store) {
   socket = io()
 
-  // TODO socket.on('connection')
+  socket.on('connection', () => {
+    store.dispatch(socketConnected())
+  })
+
+  socket.on('disconnect', () => {
+    console.log('socket disconnect')
+    store.dispatch(socketDisconnected())
+  })
 
   socket.on('getChoice', (cubeIndex) => {
     store.dispatch(getChoice(cubeIndex))

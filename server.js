@@ -31,6 +31,8 @@ app.get('/', (req, res) => {
 // Socket.io events.
 
 io.on('connection', (socket) => {
+  socket.emit('connection')
+
   debug('a user connected')
 
   socket.on('disconnect', () => {

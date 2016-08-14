@@ -1,19 +1,13 @@
 import React from 'react'
 
 const UserStats = ({
-  nickname
+  nickname,
+  score,
+  victories
 }) => (
-  <ul>
-    <li>
-      nick: {nickname}
-    </li>
-    <li>
-      matches: 0
-    </li>
-    <li>
-      wins: 0
-    </li>
-  </ul>
+  <div>
+    nick: {nickname}, score: {score} victories: {victories}
+  </div>
 )
 
 export default UserStats

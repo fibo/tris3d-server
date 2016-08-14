@@ -4,3 +4,10 @@ export function setNickname (nickname) {
     nickname
   }
 }
+
+export function localPlayerWins (winningCombinations) {
+  return {
+    type: 'LOCAL_PLAYER_WINS',
+    winningCombinations
+  }
+}

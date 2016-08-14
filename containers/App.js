@@ -14,10 +14,7 @@ import {
 } from '../actions/user'
 
 const mapStateToProps = (state) => {
-  return {
-    isMultiPlayer: state.isMultiPlayer,
-    nickname: state.nickname
-  }
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {
