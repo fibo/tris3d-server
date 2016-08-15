@@ -32,11 +32,7 @@ const MultiPlayerToggle = ({
         <div>
           users online: {numUsersOnline}
         </div>
-      ) : (
-        <div>
-          not online
-        </div>
-      )
+      ) : undefined
     }
   </div>
 )

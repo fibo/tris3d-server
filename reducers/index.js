@@ -2,12 +2,14 @@ export default function (state, action) {
   switch (action.type) {
     case 'DISABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
-        isMultiPlayer: false
+        isMultiPlayer: false,
+        isMyTurn: true
       })
 
     case 'ENABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
-        isMultiPlayer: true
+        isMultiPlayer: true,
+        isMyTurn: false
       })
 
     case 'GET_CHOICE':
@@ -15,6 +17,16 @@ export default function (state, action) {
 
     case 'INIT_CANVAS':
       return state
+
+    case 'LOCAL_PLAYER_TURN_ENDS':
+      return Object.assign({}, state, {
+        isMyTurn: false
+      })
+
+    case 'LOCAL_PLAYER_TURN_STARTS':
+      return Object.assign({}, state, {
+        isMyTurn: true
+      })
 
     case 'LOCAL_PLAYER_WINS':
       return Object.assign({}, state, {

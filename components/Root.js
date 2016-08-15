@@ -12,6 +12,7 @@ const Root = ({
   numUsersOnline,
   initCanvas,
   isMultiPlayer,
+  isMyTurn,
   score,
   setChoice,
   setNickname,
@@ -33,17 +34,18 @@ const Root = ({
             isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
           }}
         />
-        <UserStats
-          nickname={nickname}
-          score={score}
-          victories={victories}
-        />
         <PlayersSelector
           disabled={isMultiPlayer}
         />
         <Canvas
           initCanvas={initCanvas}
           setChoice={setChoice}
+        />
+        <UserStats
+          isMyTurn={isMyTurn}
+          nickname={nickname}
+          score={score}
+          victories={victories}
         />
       </div>
     ) : (
