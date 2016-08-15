@@ -9,6 +9,7 @@ const Root = ({
   disableMultiPlayer,
   enableMultiPlayer,
   nickname,
+  numUsersOnline,
   initCanvas,
   isMultiPlayer,
   score,
@@ -23,8 +24,19 @@ const Root = ({
       <div>
         <MultiPlayerToggle
           isMultiPlayer={isMultiPlayer}
+          numUsersOnline={numUsersOnline}
           socketConnectionOn={socketConnectionOn}
-          toggleMultiPlayer={isMultiPlayer ? disableMultiPlayer : enableMultiPlayer}
+          toggleMultiPlayer={(event) => {
+            event.preventDefault()
+            event.stopPropagation()
+
+            isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
+          }}
+        />
+        <UserStats
+          nickname={nickname}
+          score={score}
+          victories={victories}
         />
         <PlayersSelector
           disabled={isMultiPlayer}
@@ -32,11 +44,6 @@ const Root = ({
         <Canvas
           initCanvas={initCanvas}
           setChoice={setChoice}
-        />
-        <UserStats
-          nickname={nickname}
-          score={score}
-          victories={victories}
         />
       </div>
     ) : (

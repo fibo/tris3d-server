@@ -10,6 +10,13 @@ export function enableMultiPlayer () {
   }
 }
 
+export function numUsersOnlineChanged (numUsersOnline) {
+  return {
+    type: 'NUM_USERS_ONLINE_CHANGED',
+    numUsersOnline
+  }
+}
+
 export function socketConnected () {
   return {
     type: 'SOCKET_CONNECTED'

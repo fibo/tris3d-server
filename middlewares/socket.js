@@ -2,6 +2,7 @@ import {
   getChoice
 } from '../actions/canvas'
 import {
+  numUsersOnlineChanged,
   socketConnected,
   socketDisconnected
 } from '../actions/socket'
@@ -11,6 +12,7 @@ var socket = null
 export default function socketMiddleware (store) {
   return (next) => (action) => {
     const result = next(action)
+    const state = store.getState()
 
     if (socket) {
       switch (action.type) {
@@ -18,6 +20,10 @@ export default function socketMiddleware (store) {
           disposeSocket()
           // Using `break` is required, since disposeSocket
           // will point socket to null and it is referenced below.
+          break
+
+        case 'SOCKET_CONNECTED':
+          socket.emit('addUser', state.nickname)
           break
 
         case 'SET_CHOICE':
@@ -35,7 +41,7 @@ export default function socketMiddleware (store) {
 }
 
 function disposeSocket () {
-  socket.emit('disconnect')
+  socket.close()
   socket = null
 }
 
@@ -47,11 +53,14 @@ function initSocket (store) {
   })
 
   socket.on('disconnect', () => {
-    console.log('socket disconnect')
     store.dispatch(socketDisconnected())
   })
 
   socket.on('getChoice', (cubeIndex) => {
     store.dispatch(getChoice(cubeIndex))
+  })
+
+  socket.on('numUsersOnlineChanged', (numUsersOnline) => {
+    store.dispatch(numUsersOnlineChanged(numUsersOnline))
   })
 }

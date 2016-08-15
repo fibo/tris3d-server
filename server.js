@@ -13,6 +13,8 @@ const io = require('socket.io')(http)
 // Keep in sync with server-files/etc/nginx/conf.d/tris3d.conf
 const port = 3000
 
+var numUsersOnline = 0
+
 // Server routes.
 
 app.use(express.static('public'))
@@ -35,8 +37,20 @@ io.on('connection', (socket) => {
 
   debug('a user connected')
 
+  socket.on('addUser', (nickname) => {
+    debug(`addUser ${nickname}`)
+
+    socket.nickname = nickname
+
+    numUsersOnline++
+    io.sockets.emit('numUsersOnlineChanged', numUsersOnline)
+  })
+
   socket.on('disconnect', () => {
-    debug('user disconnected')
+    debug(socket.nickname + ' disconnected')
+
+    numUsersOnline--
+    socket.broadcast.emit('numUsersOnlineChanged', numUsersOnline)
   })
 
   socket.on('setChoice', (cubeIndex) => {

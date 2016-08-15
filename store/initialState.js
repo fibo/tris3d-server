@@ -2,6 +2,7 @@ const initialState = {
   choosen: [],
   isMultiPlayer: false,
   nickname: null,
+  numUsersOnline: null,
   score: 0,
   socketConnectionOn: false,
   victories: 0

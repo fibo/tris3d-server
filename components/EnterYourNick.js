@@ -8,7 +8,7 @@ class EnterYourNick extends Component {
     var nickname = null
 
     if (localStorageIsAvailable()) {
-      nickname = localStorage.getItem('tris3d.nickname')
+      nickname = localStorage.getItem('tris3d.nickname') || ''
     }
 
     this.state = { nickname }

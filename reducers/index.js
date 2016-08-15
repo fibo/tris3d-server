@@ -22,6 +22,11 @@ export default function (state, action) {
         victories: state.victories + 1
       })
 
+    case 'NUM_USERS_ONLINE_CHANGED':
+      return Object.assign({}, state, {
+        numUsersOnline: action.numUsersOnline
+      })
+
     case 'SET_CHOICE':
       var newChoosen = Object.assign([], state.choosen)
 

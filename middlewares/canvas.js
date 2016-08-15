@@ -21,7 +21,6 @@ export default function canvasMiddleware (store) {
         store.dispatch(setChoice(cubeIndex))
       })
 
-/*
 tris3dCanvas.on('localPlayerTurnEnds', () => {
   console.log('wait for other players choices')
 })
@@ -30,6 +29,7 @@ tris3dCanvas.on('localPlayerTurnStarts', () => {
   console.log('is my turn')
 })
 
+/*
 tris3dCanvas.on('nextPlayer', (playerIndex) => {
   console.log('nextPlayer', playerIndex)
 
