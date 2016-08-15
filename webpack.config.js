@@ -1,3 +1,9 @@
+var webpack = require('webpack')
+
+var definePlugin = new webpack.DefinePlugin({
+  'process.env.NODE_ENV': '"production"'
+})
+
 module.exports = {
   entry: './client.js',
   module: {
@@ -12,5 +18,6 @@ module.exports = {
   output: {
     path: 'public',
     filename: 'bundle.js'
-  }
+  },
+  plugins: [definePlugin]
 }
