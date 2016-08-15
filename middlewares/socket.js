@@ -1,11 +1,9 @@
 import {
-  getChoice
-} from '../actions/canvas'
-import {
+  getChoice,
   numUsersOnlineChanged,
   socketConnected,
   socketDisconnected
-} from '../actions/socket'
+} from '../actions'
 
 var socket = null
 
@@ -41,7 +39,7 @@ export default function socketMiddleware (store) {
 }
 
 function disposeSocket () {
-  socket.close()
+  if (socket) socket.close()
   socket = null
 }
 

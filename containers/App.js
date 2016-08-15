@@ -2,16 +2,12 @@ import Root from '../components/Root'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {
-  initCanvas,
-  setChoice
-} from '../actions/canvas'
-import {
   disableMultiPlayer,
-  enableMultiPlayer
-} from '../actions/socket'
-import {
+  enableMultiPlayer,
+  initCanvas,
+  setChoice,
   setNickname
-} from '../actions/user'
+} from '../actions'
 
 const mapStateToProps = (state) => {
   return state
@@ -19,8 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    disableMultiPlayer,
     enableMultiPlayer,
+    disableMultiPlayer,
     initCanvas,
     setChoice,
     setNickname

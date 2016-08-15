@@ -1,13 +1,11 @@
 import { stupid } from 'tris3d-ai'
 import Tris3dCanvas from 'tris3d-canvas'
 import {
-  setChoice
-} from '../actions/canvas'
-import {
   localPlayerTurnEnds,
   localPlayerTurnStarts,
-  localPlayerWins
-} from '../actions/user'
+  localPlayerWins,
+  setChoice
+} from '../actions'
 
 var tris3dCanvas = null
 

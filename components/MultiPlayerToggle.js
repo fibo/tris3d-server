@@ -4,8 +4,6 @@ import React from 'react'
 
 const MultiPlayerToggle = ({
   isMultiPlayer,
-  numUsersOnline,
-  socketConnectionOn,
   toggleMultiPlayer
 }) => (
   <div>
@@ -19,21 +17,6 @@ const MultiPlayerToggle = ({
       onClick={toggleMultiPlayer}
       htmlFor='multiplayer'
     >Multi player</label>
-    <input
-      type='checkbox'
-      name='socket'
-      checked={socketConnectionOn}
-    />
-    <label
-      htmlFor='socket'
-    >Socket connection</label>
-    {
-      numUsersOnline ? (
-        <div>
-          users online: {numUsersOnline}
-        </div>
-      ) : undefined
-    }
   </div>
 )
 

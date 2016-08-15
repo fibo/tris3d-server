@@ -1,8 +1,9 @@
 import React from 'react'
 import Canvas from './Canvas'
-import PlayersSelector from './PlayersSelector'
+import EnterPlayground from './EnterPlayground'
 import MultiPlayerToggle from './MultiPlayerToggle'
-import EnterYourNick from './EnterYourNick'
+import PlayersSelector from './PlayersSelector'
+import ServerStats from './ServerStats'
 import UserStats from './UserStats'
 
 const Root = ({
@@ -18,43 +19,50 @@ const Root = ({
   setNickname,
   socketConnectionOn,
   victories
-}) => (
-  <div>
-  {
-    (typeof nickname === 'string') ? (
-      <div>
-        <MultiPlayerToggle
-          isMultiPlayer={isMultiPlayer}
-          numUsersOnline={numUsersOnline}
-          socketConnectionOn={socketConnectionOn}
-          toggleMultiPlayer={(event) => {
-            event.preventDefault()
-            event.stopPropagation()
-
-            isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
-          }}
-        />
-        <PlayersSelector
-          disabled={isMultiPlayer}
-        />
-        <Canvas
-          initCanvas={initCanvas}
-          setChoice={setChoice}
-        />
-        <UserStats
-          isMyTurn={isMyTurn}
-          nickname={nickname}
-          score={score}
-          victories={victories}
-        />
-      </div>
-    ) : (
-      <EnterYourNick
-        setNickname={setNickname}
-      />
-    )
+}) => {
+  const toggleMultiPlayer = () => {
+    isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
   }
-  </div>
-)
+
+  return (
+    <div>
+    {
+      (typeof nickname === 'string') ? (
+        <div>
+          <div>
+            <MultiPlayerToggle
+              isMultiPlayer={isMultiPlayer}
+              toggleMultiPlayer={toggleMultiPlayer}
+            />
+            <ServerStats
+              numUsersOnline={numUsersOnline}
+              socketConnectionOn={socketConnectionOn}
+            />
+          </div>
+          <PlayersSelector
+            disabled={isMultiPlayer}
+          />
+          <Canvas
+            initCanvas={initCanvas}
+            setChoice={setChoice}
+          />
+          <UserStats
+            isMyTurn={isMyTurn}
+            nickname={nickname}
+            score={score}
+            victories={victories}
+          />
+        </div>
+      ) : (
+        <EnterPlayground
+          disableMultiPlayer={disableMultiPlayer}
+          enableMultiPlayer={enableMultiPlayer}
+          setNickname={setNickname}
+        />
+      )
+    }
+    </div>
+  )
+}
 
 export default Root
