@@ -19,7 +19,7 @@
     "test": "mocha",
     "update-deps": "npm update --save --dev",
     "watch": "webpack -w",
-    "webpack": "webpack -p"
+    "webpack": "NODE_ENV=production webpack -p"
   },
   "repository": {
     "type": "git",
