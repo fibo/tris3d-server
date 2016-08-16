@@ -51,6 +51,7 @@ Clone this repo, install deps and build
 git clone https://github.com/fibo/tris3d-server.git
 cd tris3d-server
 npm install
+npm run postcss
 npm run webpack
 ```
 
@@ -87,10 +88,16 @@ node server
 
 Then point your browser to http://localhost:3000/
 
+To start postcss in watch mode, launch
+
+```bash
+npm run watch_postcss
+```
+
 You may also want to run webpack watching for file changes, then in another shell
 
 ```bash
-npm run watch
+npm run watch_webpack
 ```
 
 Tests are run as usual

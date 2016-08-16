@@ -1,4 +1,5 @@
 bundle.js
+style.css
 
 # webpack --hot stuff
 *hot-update*

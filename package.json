@@ -12,13 +12,15 @@
   "scripts": {
     "check-deps": "npm outdated",
     "lint": "standard",
+    "postcss": "postcss --config postcss.json",
     "postupdate-deps": "npm test && git commit -am ':arrow_up: updated deps' || git checkout -- package.json",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "start": "DEBUG=${npm_package_name} forever start --uid ${npm_package_name} --append server.js",
     "stop": "forever stop --uid ${npm_package_name} server.js",
     "test": "mocha",
     "update-deps": "npm update --save --dev",
-    "watch": "webpack -w",
+    "watch_postcss": "postcss --watch --config postcss.json",
+    "watch_webpack": "webpack -w",
     "webpack": "NODE_ENV=production webpack -p"
   },
   "repository": {
@@ -44,8 +46,10 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "autoprefixer": "^6.4.0",
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "postcss-cli": "^2.5.2",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
