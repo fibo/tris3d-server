@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
+$blue: #008CBA;
+
 body {
   color: #555;
   font-family: "Font", "Helvetica", "Arial", sans-serif;
@@ -26,7 +28,7 @@ a {
 }
 
 button {
-  background-color: #008CBA; /* Blue */
+  background-color: $blue;
   border: none;
   color: white;
   padding: 5px 8px;

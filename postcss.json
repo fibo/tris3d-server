@@ -1,6 +1,9 @@
 {
-  "use": ["autoprefixer"],
-  "input": "styles/main.css",
+  "use": [
+    "autoprefixer",
+    "precss"
+  ],
+  "input": "styles/main.scss",
   "output": "public/style.css",
   "local-plugins": true,
   "autoprefixer": {
