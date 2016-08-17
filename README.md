@@ -106,3 +106,9 @@ Tests are run as usual
 npm test
 ```
 
+Lint both JavaScript and CSS sources by launching
+
+```bash
+npm run lint
+```
+

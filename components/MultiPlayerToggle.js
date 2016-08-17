@@ -7,16 +7,20 @@ const MultiPlayerToggle = ({
   toggleMultiPlayer
 }) => (
   <div>
-    <input
-      type='checkbox'
-      name='multiplayer'
-      checked={isMultiPlayer}
-      onChange={toggleMultiPlayer}
-    />
+    <label className='switch'>
+      <input
+        type='checkbox'
+        name='multiplayer'
+        checked={isMultiPlayer}
+        onChange={toggleMultiPlayer}
+      />
+      <div className='slider round'></div>
     <label
+      className='switch-text'
       onClick={toggleMultiPlayer}
       htmlFor='multiplayer'
-    >Multi player</label>
+    >Multiplayer</label>
+    </label>
   </div>
 )
 

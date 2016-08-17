@@ -11,7 +11,9 @@
   "license": "MIT",
   "scripts": {
     "check-deps": "npm outdated",
-    "lint": "standard",
+    "lint": "npm run lint_css; npm run lint_js",
+    "lint_css": "stylelint styles/*css styles/*/*css",
+    "lint_js": "standard",
     "postcss": "postcss --config postcss.json",
     "postupdate-deps": "npm test && git commit -am ':arrow_up: updated deps' || git checkout -- package.json",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
@@ -51,6 +53,7 @@
     "autoprefixer": "^6.4.0",
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "normalize.css": "^4.2.0",
     "postcss-cli": "^2.5.2",
     "postcss-import": "^8.1.2",
     "precss": "^1.4.0",
@@ -60,9 +63,14 @@
     "redux": "^3.5.2",
     "rucksack-css": "^0.8.6",
     "socket.io": "^1.4.8",
+    "stylelint": "^7.1.0",
+    "stylelint-config-standard": "^12.0.0",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.4.1",
     "tris3d-canvas": "^0.7.0"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   },
   "standard": {
     "globals": [

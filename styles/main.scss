@@ -1,8 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+@import "normalize.css";
 
-@import "toggle.css";
-
-$blue: #008cba;
+/* Internal imports: load variables first. */
+@import "base/variables.scss";
+@import "base/button.css";
+@import "base/toggle.css";
 
 body {
   color: #555;
@@ -28,15 +30,5 @@ h2 {
 a {
   display: flex;
   color: #e81c4f;
-}
-
-button {
-  background-color: $blue;
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
 }
 

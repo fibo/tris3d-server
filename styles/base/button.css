@@ -1,0 +1,11 @@
+
+button {
+  background-color: $blue;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
