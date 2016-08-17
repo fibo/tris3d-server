@@ -2,5 +2,6 @@
 
 # Allow crawling of all content
 User-agent: *
-Disallow:
+Disallow: /bundle.js
+Disallow: /style.css
 Sitemap: https://play.tris3d.net/sitemap.xml

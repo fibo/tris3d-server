@@ -1,6 +1,7 @@
 {
   "use": [
     "autoprefixer",
+    "rucksack-css",
     "precss"
   ],
   "input": "styles/main.scss",

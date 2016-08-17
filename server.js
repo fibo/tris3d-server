@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
+app.all('/*', (req, res) => {
+  res.redirect('/')
+})
+
 // Socket.io events.
 
 io.on('connection', (socket) => {
