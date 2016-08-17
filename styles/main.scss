@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
+@import "toggle.css";
+
 $blue: #008cba;
 
 body {
@@ -37,3 +39,4 @@ button {
   text-decoration: none;
   display: inline-block;
 }
+
