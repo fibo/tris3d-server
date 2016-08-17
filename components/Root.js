@@ -42,15 +42,16 @@ const Root = ({
           <PlayersSelector
             disabled={isMultiPlayer}
           />
-          <Canvas
-            initCanvas={initCanvas}
-            setChoice={setChoice}
-          />
           <UserStats
             isMyTurn={isMyTurn}
             nickname={nickname}
             score={score}
             victories={victories}
+          />
+          <Canvas
+            initCanvas={initCanvas}
+            setChoice={setChoice}
+            size={Math.min(window.innerWidth, window.innerHeight)}
           />
         </div>
       ) : (

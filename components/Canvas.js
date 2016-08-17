@@ -13,15 +13,14 @@ class Canvas extends Component {
   render () {
     const {
       id,
-      height,
-      width
+      size
     } = this.props
 
     return (
       <canvas
         id={id}
-        width={width}
-        height={height}
+        width={size}
+        height={size}
       >
       </canvas>
     )
@@ -30,14 +29,11 @@ class Canvas extends Component {
 
 Canvas.propTypes = {
   id: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired
 }
 
 Canvas.defaultProps = {
-  id: 'playground',
-  height: 500,
-  width: 500
+  id: 'playground'
 }
 
 export default Canvas

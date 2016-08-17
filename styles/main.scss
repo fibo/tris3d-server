@@ -3,32 +3,7 @@
 
 /* Internal imports: load variables first. */
 @import "base/variables.scss";
+@import "base/body.css";
 @import "base/button.css";
 @import "base/toggle.css";
-
-body {
-  color: #555;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: responsive; /* rucksack plugin feature */
-  margin: 0 auto;
-  max-width: 50em;
-  line-height: 1.5;
-  padding: 4em 1em;
-}
-
-h1,
-h2,
-strong {
-  color: #333;
-}
-
-h2 {
-  margin-top: 1em;
-  padding-top: 1em;
-}
-
-a {
-  display: flex;
-  color: #e81c4f;
-}
 
