@@ -50,6 +50,13 @@ export function numUsersOnlineChanged (numUsersOnline) {
   }
 }
 
+export function saveLocalPlayers (localPlayers) {
+  return {
+    type: 'SAVE_LOCAL_PLAYERS',
+    localPlayers
+  }
+}
+
 export function setChoice (cubeIndex) {
   return {
     type: 'SET_CHOICE',

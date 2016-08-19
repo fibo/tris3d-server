@@ -4,6 +4,8 @@ export default function storageMiddleware (store) {
   return (next) => (action) => {
     const result = next(action)
 
+      // TODO put choices in local storage, when playing locally
+      // so if user refreshes page or connect later, the game is still on.
     if (localStorageIsAvailable()) {
       switch (action.type) {
         case 'DISABLE_MULTI_PLAYER':
@@ -16,6 +18,10 @@ export default function storageMiddleware (store) {
 
         case 'SET_NICKNAME':
           localStorage.setItem('tris3d.nickname', action.nickname)
+          break
+
+        case 'SAVE_LOCAL_PLAYERS':
+          localStorage.setItem('tris3d.localPlayers', action.localPlayers)
           break
       }
     }

@@ -2,6 +2,7 @@ const initialState = {
   choosen: [],
   isMultiPlayer: false,
   isMyTurn: false,
+  isPlaying: true,
   nickname: null,
   numUsersOnline: null,
   score: 0,

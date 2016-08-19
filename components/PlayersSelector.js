@@ -1,47 +1,53 @@
 import React, { Component, PropTypes } from 'react'
+import localStorageIsAvailable from '../utils/localStorageIsAvailable'
 
 class PlayersSelector extends Component {
   constructor () {
     super()
 
+    var localPlayers = [
+      'human',
+      'stupid',
+      'smart'
+    ].join(',')
+
+    if (localStorageIsAvailable()) {
+      localPlayers = localStorage.getItem('tris3d.localPlayers') || localPlayers
+    }
+
     this.state = {
-      player: [
-        'human',
-        'stupid',
-        'smart'
-      ]
+      players: localPlayers.split(',')
     }
   }
 
   render () {
     const {
-      disabled
+      saveLocalPlayers
     } = this.props
 
     let {
-      player
+      players
     } = this.state
 
     const setState = this.setState.bind(this)
 
-    const humanPlayerIndex = player.indexOf('human')
+    const humanPlayerIndex = players.indexOf('human')
 
     const SelectPlayer = ({ index }) => (
       <select
         name='player0'
-        value={player[index]}
-        disabled={disabled}
+        value={players[index]}
         onChange={(e) => {
           const choice = e.target.value
 
           // There can be only one human.
           if ((choice === 'human') && (humanPlayerIndex !== index)) {
-            player[humanPlayerIndex] = player[index]
+            players[humanPlayerIndex] = players[index]
           }
 
-          player[index] = choice
+          players[index] = choice
 
-          setState({ player })
+          setState({ players })
         }}
       >
         <option value='human'>Human</option>
@@ -51,11 +57,18 @@ class PlayersSelector extends Component {
       </select>
     )
 
+    // TODO THe Ok button turns to Quit one local match is ongoing
+    // clicking on Ok, the match starts and so the select is disabled.
     return (
       <div>
         <SelectPlayer index={0} />
         <SelectPlayer index={1} />
         <SelectPlayer index={2} />
+        <button
+          onClick={() => { saveLocalPlayers(players) }}
+        >
+          Ok
+        </button>
       </div>
     )
   }

@@ -6,18 +6,18 @@ import {
   enableMultiPlayer,
   initCanvas,
   setChoice,
-  setNickname
+  setNickname,
+  saveLocalPlayers
 } from '../actions'
 
-const mapStateToProps = (state) => {
-  return state
-}
+const mapStateToProps = (state) => (state)
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     enableMultiPlayer,
     disableMultiPlayer,
     initCanvas,
+    saveLocalPlayers,
     setChoice,
     setNickname
   }, dispatch)

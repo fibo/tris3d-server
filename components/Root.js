@@ -17,6 +17,7 @@ const Root = ({
   score,
   setChoice,
   setNickname,
+  saveLocalPlayers,
   socketConnectionOn,
   victories
 }) => {
@@ -29,25 +30,28 @@ const Root = ({
     {
       (typeof nickname === 'string') ? (
         <div>
-          <div>
-            <MultiPlayerToggle
-              isMultiPlayer={isMultiPlayer}
-              toggleMultiPlayer={toggleMultiPlayer}
-            />
-            <ServerStats
-              numUsersOnline={numUsersOnline}
-              socketConnectionOn={socketConnectionOn}
-            />
-          </div>
-          <PlayersSelector
-            disabled={isMultiPlayer}
+          <MultiPlayerToggle
+            isMultiPlayer={isMultiPlayer}
+            toggleMultiPlayer={toggleMultiPlayer}
           />
-          <UserStats
-            isMyTurn={isMyTurn}
-            nickname={nickname}
-            score={score}
-            victories={victories}
-          />
+          {isMultiPlayer ? (
+            <div>
+              <ServerStats
+                numUsersOnline={numUsersOnline}
+                socketConnectionOn={socketConnectionOn}
+              />
+              <UserStats
+                isMyTurn={isMyTurn}
+                nickname={nickname}
+                score={score}
+                victories={victories}
+              />
+            </div>
+          ) : (
+            <PlayersSelector
+              saveLocalPlayers={saveLocalPlayers}
+            />
+          )}
           <Canvas
             initCanvas={initCanvas}
             setChoice={setChoice}
