@@ -25,6 +25,11 @@
     "watch_webpack": "webpack -w",
     "webpack": "NODE_ENV=production webpack -p"
   },
+  "pre-commit": [
+    "check-deps",
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/fibo/tris3d-canvas.git"
@@ -43,6 +48,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "mocha": "^3.0.0",
+    "pre-commit": "^1.1.3",
     "read-file-utf8": "^1.1.1",
     "should": "^11.1.0",
     "standard": "^7.1.2",

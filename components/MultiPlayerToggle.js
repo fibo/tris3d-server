@@ -15,11 +15,13 @@ const MultiPlayerToggle = ({
         onChange={toggleMultiPlayer}
       />
       <div className='slider round'></div>
-    <label
-      className='switch-text'
-      onClick={toggleMultiPlayer}
-      htmlFor='multiplayer'
-    >Multiplayer</label>
+      <label
+        className='switch-text'
+        onClick={toggleMultiPlayer}
+        htmlFor='multiplayer'
+      >
+        Multiplayer
+      </label>
     </label>
   </div>
 )
