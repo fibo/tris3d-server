@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import localStorageIsAvailable from '../utils/localStorageIsAvailable'
+import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
 import MultiPlayerToggle from './MultiPlayerToggle'
 
 class EnterPlayground extends Component {

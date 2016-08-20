@@ -24,6 +24,18 @@ export function initCanvas (canvasId) {
   }
 }
 
+export function localMatchEnds () {
+  return {
+    type: 'LOCAL_MATCH_ENDS'
+  }
+}
+
+export function localMatchStarts () {
+  return {
+    type: 'LOCAL_MATCH_STARTS'
+  }
+}
+
 export function localPlayerTurnEnds () {
   return {
     type: 'LOCAL_PLAYER_TURN_ENDS'

@@ -14,6 +14,9 @@ const Root = ({
   initCanvas,
   isMultiPlayer,
   isMyTurn,
+  isPlaying,
+  isPlayingLocally,
+  localMatchStarts,
   score,
   setChoice,
   setNickname,
@@ -49,6 +52,8 @@ const Root = ({
             </div>
           ) : (
             <PlayersSelector
+              isPlaying={isPlaying}
+              localMatchStarts={localMatchStarts}
               saveLocalPlayers={saveLocalPlayers}
             />
           )}

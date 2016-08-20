@@ -3,6 +3,7 @@ const initialState = {
   isMultiPlayer: false,
   isMyTurn: false,
   isPlaying: true,
+  localPlayers: ['human', 'stupid', 'stupid'],
   nickname: null,
   numUsersOnline: null,
   score: 0,

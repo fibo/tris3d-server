@@ -1,4 +1,4 @@
-import localStorageIsAvailable from '../utils/localStorageIsAvailable'
+import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
 
 export default function storageMiddleware (store) {
   return (next) => (action) => {

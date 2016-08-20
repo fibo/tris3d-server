@@ -1,15 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import localStorageIsAvailable from '../utils/localStorageIsAvailable'
+import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
+import initialState from '../store/initialState'
 
 class PlayersSelector extends Component {
   constructor () {
     super()
 
-    var localPlayers = [
-      'human',
-      'stupid',
-      'smart'
-    ].join(',')
+    var localPlayers = initialState.localPlayers.join(',')
 
     if (localStorageIsAvailable()) {
       localPlayers = localStorage.getItem('tris3d.localPlayers') || localPlayers
@@ -20,8 +17,22 @@ class PlayersSelector extends Component {
     }
   }
 
+  componentDidMount () {
+    const {
+      saveLocalPlayers
+    } = this.props
+
+    let {
+      players
+    } = this.state
+
+    saveLocalPlayers(players)
+  }
+
   render () {
     const {
+      isPlaying,
+      localMatchStarts,
       saveLocalPlayers
     } = this.props
 
@@ -35,6 +46,7 @@ class PlayersSelector extends Component {
 
     const SelectPlayer = ({ index }) => (
       <select
+        disabled={isPlaying}
         name='player0'
         value={players[index]}
         onChange={(e) => {
@@ -64,11 +76,17 @@ class PlayersSelector extends Component {
         <SelectPlayer index={0} />
         <SelectPlayer index={1} />
         <SelectPlayer index={2} />
-        <button
-          onClick={() => { saveLocalPlayers(players) }}
-        >
-          Ok
-        </button>
+        {isPlaying ? undefined : (
+          <button
+            disabled={isPlaying}
+            onClick={() => {
+              saveLocalPlayers(players)
+              localMatchStarts()
+            }}
+          >
+            Play
+          </button>
+        )}
       </div>
     )
   }

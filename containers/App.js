@@ -5,18 +5,29 @@ import {
   disableMultiPlayer,
   enableMultiPlayer,
   initCanvas,
+  localMatchEnds,
+  localMatchStarts,
   setChoice,
   setNickname,
   saveLocalPlayers
 } from '../actions'
+import isPlayingLocally from '../store/utils/isPlayingLocally'
+import localPlayerIndex from '../store/utils/localPlayerIndex'
 
-const mapStateToProps = (state) => (state)
+const mapStateToProps = (state) => {
+  return Object.assign({}, state, {
+    isPlayingLocally: isPlayingLocally(state),
+    localPlayerIndex: localPlayerIndex(state)
+  })
+}
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     enableMultiPlayer,
     disableMultiPlayer,
     initCanvas,
+    localMatchEnds,
+    localMatchStarts,
     saveLocalPlayers,
     setChoice,
     setNickname

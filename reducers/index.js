@@ -18,6 +18,16 @@ export default function (state, action) {
     case 'INIT_CANVAS':
       return state
 
+    case 'LOCAL_MATCH_ENDS':
+      return Object.assign({}, state, {
+        isPlaying: false
+      })
+
+    case 'LOCAL_MATCH_STARTS':
+      return Object.assign({}, state, {
+        isPlaying: true
+      })
+
     case 'LOCAL_PLAYER_TURN_ENDS':
       return Object.assign({}, state, {
         isMyTurn: false
@@ -37,6 +47,11 @@ export default function (state, action) {
     case 'NUM_USERS_ONLINE_CHANGED':
       return Object.assign({}, state, {
         numUsersOnline: action.numUsersOnline
+      })
+
+    case 'SAVE_LOCAL_PLAYERS':
+      return Object.assign({}, state, {
+        localPlayers: action.localPlayers
       })
 
     case 'SET_CHOICE':

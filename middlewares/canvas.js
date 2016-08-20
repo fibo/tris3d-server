@@ -1,11 +1,14 @@
-import { stupid } from 'tris3d-ai'
+import { stupid, smart, bastard } from 'tris3d-ai'
 import Tris3dCanvas from 'tris3d-canvas'
 import {
+  localMatchEnds,
   localPlayerTurnEnds,
   localPlayerTurnStarts,
   localPlayerWins,
   setChoice
 } from '../actions'
+import isPlayingLocally from '../store/utils/isPlayingLocally'
+import localPlayerIndex from '../store/utils/localPlayerIndex'
 
 var tris3dCanvas = null
 
@@ -14,7 +17,8 @@ export default function canvasMiddleware (store) {
     const result = next(action)
     const state = store.getState()
 
-    const isPlayingLocally = !state.isMultiPlayer
+    const localPlayers = state.localPlayers
+    const playingLocally = isPlayingLocally(state)
 
     if (action.type === 'INIT_CANVAS') {
       tris3dCanvas = new Tris3dCanvas(action.canvasId)
@@ -36,12 +40,17 @@ export default function canvasMiddleware (store) {
       tris3dCanvas.on('nextPlayer', (playerIndex) => {
         const isOtherPlayerTurn = (tris3dCanvas.localPlayerIndex !== playerIndex)
 
-        if (isPlayingLocally && isOtherPlayerTurn) {
+        if (playingLocally && isOtherPlayerTurn) {
           // Just a little bit of random delay.
           const delay = 710 + Math.random() * 1700
 
           setTimeout(() => {
-            const bot = stupid
+            var bot = null
+
+            if (localPlayers[playerIndex] === 'stupid') bot = stupid
+            if (localPlayers[playerIndex] === 'smart') bot = smart
+            if (localPlayers[playerIndex] === 'bastard') bot = bastard
+
             const choice = bot(tris3dCanvas.choosen)
 
             store.dispatch(setChoice(choice))
@@ -50,16 +59,21 @@ export default function canvasMiddleware (store) {
       })
 
       tris3dCanvas.on('nobodyWins', () => {
-        console.log('Nobody wins :(')
+        tris3dCanvas.resetPlayground()
+        store.dispatch(localMatchEnds())
       })
 
       tris3dCanvas.on('tris3d!', (winnerPlayerIndex, winningCombinations) => {
         if (winnerPlayerIndex === tris3dCanvas.localPlayerIndex) {
           store.dispatch(localPlayerWins(winningCombinations))
         }
+
+        store.dispatch(localMatchEnds())
       })
 
-      tris3dCanvas.startNewMatch()
+      if (playingLocally) {
+        tris3dCanvas.startNewMatch()
+      }
     }
 
     if (tris3dCanvas) {
@@ -70,6 +84,15 @@ export default function canvasMiddleware (store) {
 
         case 'GET_CHOICE':
           tris3dCanvas.setChoice(action.cubeIndex)
+          break
+
+        case 'LOCAL_MATCH_STARTS':
+          tris3dCanvas.startNewMatch()
+          break
+
+        case 'SAVE_LOCAL_PLAYERS':
+          const localPlayers = action.localPlayers
+          tris3dCanvas.localPlayerIndex = localPlayerIndex({ localPlayers })
           break
 
         case 'SET_CHOICE':
