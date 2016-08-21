@@ -74,7 +74,7 @@
     "stylelint": "^7.1.0",
     "stylelint-config-standard": "^12.0.0",
     "tris3d": "^0.3.0",
-    "tris3d-ai": "^0.4.1",
+    "tris3d-ai": "^0.5.0",
     "tris3d-canvas": "^0.7.1",
     "webpack": "^1.13.2"
   },
