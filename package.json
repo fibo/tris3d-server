@@ -57,14 +57,16 @@
   },
   "dependencies": {
     "autoprefixer": "^6.4.0",
+    "babel-loader": "^6.2.5",
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "mocha": "^3.0.2",
     "normalize.css": "^4.2.0",
     "postcss-cli": "^2.5.2",
     "postcss-import": "^8.1.2",
     "precss": "^1.4.0",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "rucksack-css": "^0.8.6",
@@ -73,7 +75,8 @@
     "stylelint-config-standard": "^12.0.0",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.4.1",
-    "tris3d-canvas": "^0.7.0"
+    "tris3d-canvas": "^0.7.1",
+    "webpack": "^1.13.2"
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
