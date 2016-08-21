@@ -2,6 +2,7 @@ import { stupid, smart, bastard } from 'tris3d-ai'
 import Tris3dCanvas from 'tris3d-canvas'
 import {
   localMatchEnds,
+  localMatchStarts,
   localPlayerTurnEnds,
   localPlayerTurnStarts,
   localPlayerWins,
@@ -11,6 +12,10 @@ import isPlayingLocally from '../store/utils/isPlayingLocally'
 import localPlayerIndex from '../store/utils/localPlayerIndex'
 
 var tris3dCanvas = null
+
+const updateLocalPlayerIndex = (tris3dCanvas, localPlayers) => {
+  tris3dCanvas.localPlayerIndex = localPlayerIndex({ localPlayers })
+}
 
 export default function canvasMiddleware (store) {
   return (next) => (action) => {
@@ -71,8 +76,10 @@ export default function canvasMiddleware (store) {
         store.dispatch(localMatchEnds())
       })
 
-      if (playingLocally) {
-        tris3dCanvas.startNewMatch()
+      // If user wants, start playing on init.
+      if (isPlayingLocally) {
+        updateLocalPlayerIndex(tris3dCanvas, localPlayers)
+        store.dispatch(localMatchStarts())
       }
     }
 
@@ -91,8 +98,7 @@ export default function canvasMiddleware (store) {
           break
 
         case 'SAVE_LOCAL_PLAYERS':
-          const localPlayers = action.localPlayers
-          tris3dCanvas.localPlayerIndex = localPlayerIndex({ localPlayers })
+          updateLocalPlayerIndex(tris3dCanvas, action.localPlayers)
           break
 
         case 'SET_CHOICE':
