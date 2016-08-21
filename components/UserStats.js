@@ -14,7 +14,7 @@ const UserStats = ({
     {
       isMyTurn ? (
         <div>
-          is your turn
+          your turn
         </div>
       ) : undefined
     }
