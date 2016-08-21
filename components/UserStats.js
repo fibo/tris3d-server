@@ -7,6 +7,9 @@ const UserStats = ({
   victories
 }) => (
   <div>
+    <div>
+      nick: {nickname}, score: {score} victories: {victories}
+    </div>
     {
       isMyTurn ? (
         <div>
@@ -14,9 +17,6 @@ const UserStats = ({
         </div>
       ) : undefined
     }
-    <div>
-      nick: {nickname}, score: {score} victories: {victories}
-    </div>
   </div>
 )
 
