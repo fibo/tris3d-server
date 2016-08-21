@@ -97,6 +97,10 @@ export default function canvasMiddleware (store) {
           tris3dCanvas.startNewMatch()
           break
 
+        case 'RESET_LOCAL_MATCH':
+          tris3dCanvas.resetPlayground()
+          break
+
         case 'SAVE_LOCAL_PLAYERS':
           updateLocalPlayerIndex(tris3dCanvas, action.localPlayers)
           break

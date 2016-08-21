@@ -33,6 +33,7 @@ class PlayersSelector extends Component {
     const {
       isPlaying,
       localMatchStarts,
+      resetLocalMatch,
       saveLocalPlayers
     } = this.props
 
@@ -69,24 +70,23 @@ class PlayersSelector extends Component {
       </select>
     )
 
-    // TODO THe Ok button turns to Quit one local match is ongoing
-    // clicking on Ok, the match starts and so the select is disabled.
     return (
       <div>
         <SelectPlayer index={0} />
         <SelectPlayer index={1} />
         <SelectPlayer index={2} />
-        {isPlaying ? undefined : (
-          <button
-            disabled={isPlaying}
-            onClick={() => {
+        <button
+          onClick={() => {
+            if (isPlaying) {
+              resetLocalMatch()
+            } else {
               saveLocalPlayers(players)
               localMatchStarts()
-            }}
-          >
-            Play
-          </button>
-        )}
+            }
+          }}
+        >
+          {isPlaying ? 'Reset' : 'Play'}
+        </button>
       </div>
     )
   }

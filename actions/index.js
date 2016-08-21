@@ -62,6 +62,12 @@ export function numUsersOnlineChanged (numUsersOnline) {
   }
 }
 
+export function resetLocalMatch () {
+  return {
+    type: 'RESET_LOCAL_MATCH'
+  }
+}
+
 export function saveLocalPlayers (localPlayers) {
   return {
     type: 'SAVE_LOCAL_PLAYERS',

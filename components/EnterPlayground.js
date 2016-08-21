@@ -51,7 +51,7 @@ class EnterPlayground extends Component {
           value={nickname}
         />
         <button
-          disabled={(nickname.length < 3)}
+          disabled={(nickname.length < 2)}
           onClick={() => {
             if (isMultiPlayer) enableMultiPlayer()
             else disableMultiPlayer()

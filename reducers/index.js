@@ -25,6 +25,7 @@ export default function (state, action) {
 
     case 'LOCAL_MATCH_STARTS':
       return Object.assign({}, state, {
+        choosen: [],
         isPlaying: true
       })
 
@@ -49,6 +50,11 @@ export default function (state, action) {
         numUsersOnline: action.numUsersOnline
       })
 
+    case 'RESET_LOCAL_MATCH':
+      return Object.assign({}, state, {
+        isPlaying: false
+      })
+
     case 'SAVE_LOCAL_PLAYERS':
       return Object.assign({}, state, {
         localPlayers: action.localPlayers
@@ -60,7 +66,7 @@ export default function (state, action) {
       newChoosen.push(action.cubeIndex)
 
       return Object.assign({}, state, {
-        choosen: newChoosen
+        choosen: state.choosen.concat(action.cubeIndex)
       })
 
     case 'SET_NICKNAME':

@@ -5,8 +5,8 @@ import {
   disableMultiPlayer,
   enableMultiPlayer,
   initCanvas,
-  localMatchEnds,
   localMatchStarts,
+  resetLocalMatch,
   setChoice,
   setNickname,
   saveLocalPlayers
@@ -26,8 +26,8 @@ const mapDispatchToProps = (dispatch) => {
     enableMultiPlayer,
     disableMultiPlayer,
     initCanvas,
-    localMatchEnds,
     localMatchStarts,
+    resetLocalMatch,
     saveLocalPlayers,
     setChoice,
     setNickname
