@@ -16,6 +16,7 @@ const Root = ({
   isMyTurn,
   isPlaying,
   isPlayingLocally,
+  localPlayerWins,
   localMatchStarts,
   resetLocalMatch,
   score,
@@ -60,6 +61,7 @@ const Root = ({
           />
           <UserStats
             isMyTurn={isMyTurn}
+            localPlayerWins={localPlayerWins}
             nickname={nickname}
             score={score}
             victories={victories}

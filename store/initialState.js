@@ -4,6 +4,7 @@ const initialState = {
   isMyTurn: false,
   isPlaying: true,
   localPlayers: ['human', 'stupid', 'stupid'],
+  localPlayerWins: false,
   nickname: null,
   numUsersOnline: null,
   score: 0,

@@ -2,14 +2,12 @@ export default function (state, action) {
   switch (action.type) {
     case 'DISABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
-        isMultiPlayer: false,
-        isMyTurn: true
+        isMultiPlayer: false
       })
 
     case 'ENABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
-        isMultiPlayer: true,
-        isMyTurn: false
+        isMultiPlayer: true
       })
 
     case 'GET_CHOICE':
@@ -20,13 +18,15 @@ export default function (state, action) {
 
     case 'LOCAL_MATCH_ENDS':
       return Object.assign({}, state, {
+        isMyTurn: false,
         isPlaying: false
       })
 
     case 'LOCAL_MATCH_STARTS':
       return Object.assign({}, state, {
         choosen: [],
-        isPlaying: true
+        isPlaying: true,
+        localPlayerWins: false
       })
 
     case 'LOCAL_PLAYER_TURN_ENDS':
@@ -41,6 +41,7 @@ export default function (state, action) {
 
     case 'LOCAL_PLAYER_WINS':
       return Object.assign({}, state, {
+        localPlayerWins: true,
         score: state.score + action.winningCombinations.length,
         victories: state.victories + 1
       })
@@ -52,6 +53,7 @@ export default function (state, action) {
 
     case 'RESET_LOCAL_MATCH':
       return Object.assign({}, state, {
+        isMyTurn: false,
         isPlaying: false
       })
 

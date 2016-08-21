@@ -50,15 +50,20 @@ export default function canvasMiddleware (store) {
           const delay = 710 + Math.random() * 1700
 
           setTimeout(() => {
-            var bot = null
+            const currentState = store.getState()
 
-            if (localPlayers[playerIndex] === 'stupid') bot = stupid
-            if (localPlayers[playerIndex] === 'smart') bot = smart
-            if (localPlayers[playerIndex] === 'bastard') bot = bastard
+            // Check if is playing locally when the callback is invoked.
+            if (isPlayingLocally(currentState)) {
+              var bot = null
 
-            const choice = bot(tris3dCanvas.choosen)
+              if (localPlayers[playerIndex] === 'stupid') bot = stupid
+              if (localPlayers[playerIndex] === 'smart') bot = smart
+              if (localPlayers[playerIndex] === 'bastard') bot = bastard
 
-            store.dispatch(setChoice(choice))
+              const choice = bot(tris3dCanvas.choosen)
+
+              store.dispatch(setChoice(choice))
+            }
           }, delay)
         }
       })

@@ -2,6 +2,7 @@ import React from 'react'
 
 const UserStats = ({
   isMyTurn,
+  localPlayerWins,
   nickname,
   score,
   victories
@@ -13,7 +14,14 @@ const UserStats = ({
     {
       isMyTurn ? (
         <div>
-          is my turn
+          is your turn
+        </div>
+      ) : undefined
+    }
+    {
+      localPlayerWins ? (
+        <div>
+          you win!
         </div>
       ) : undefined
     }
