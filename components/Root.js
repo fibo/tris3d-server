@@ -43,12 +43,6 @@ const Root = ({
                 numUsersOnline={numUsersOnline}
                 socketConnectionOn={socketConnectionOn}
               />
-              <UserStats
-                isMyTurn={isMyTurn}
-                nickname={nickname}
-                score={score}
-                victories={victories}
-              />
             </div>
           ) : (
             <PlayersSelector
@@ -61,6 +55,12 @@ const Root = ({
             initCanvas={initCanvas}
             setChoice={setChoice}
             size={Math.min(window.innerWidth, window.innerHeight)}
+          />
+          <UserStats
+            isMyTurn={isMyTurn}
+            nickname={nickname}
+            score={score}
+            victories={victories}
           />
         </div>
       ) : (
