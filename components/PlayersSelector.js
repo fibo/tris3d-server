@@ -33,6 +33,7 @@ class PlayersSelector extends Component {
     const {
       isPlaying,
       localMatchStarts,
+      nickname,
       resetLocalMatch,
       saveLocalPlayers
     } = this.props
@@ -63,7 +64,7 @@ class PlayersSelector extends Component {
           setState({ players })
         }}
       >
-        <option value='human'>Human</option>
+        <option value='human'>{nickname}</option>
         <option value='stupid'>Stupid bot</option>
         <option value='smart'>Smart bot</option>
         <option value='bastard'>Bastard bot</option>

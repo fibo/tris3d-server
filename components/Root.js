@@ -49,6 +49,7 @@ const Root = ({
           ) : (
             <PlayersSelector
               isPlaying={isPlaying}
+              nickname={nickname}
               resetLocalMatch={resetLocalMatch}
               localMatchStarts={localMatchStarts}
               saveLocalPlayers={saveLocalPlayers}
