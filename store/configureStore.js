@@ -19,7 +19,7 @@ export default function configureStore () {
         socketMiddleware,
         storageMiddleware
       ),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
+      window.devToolsExtension ? window.devToolsExtension() : (f) => f
     )
   )
 
