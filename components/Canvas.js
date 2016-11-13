@@ -21,8 +21,7 @@ class Canvas extends Component {
         id={id}
         width={size}
         height={size}
-      >
-      </canvas>
+      />
     )
   }
 }

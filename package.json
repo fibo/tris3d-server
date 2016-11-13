@@ -12,7 +12,7 @@
   "scripts": {
     "check-deps": "npm outdated",
     "lint": "npm run lint_css; npm run lint_js",
-    "lint_css": "echo TODO sass-lint",
+    "lint_css": "sass-lint -v sass/*",
     "lint_js": "standard",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "sass": "node-sass sass/style.scss --output public",
@@ -53,7 +53,9 @@
     "react-redux": "^4.4.5",
     "read-file-utf8": "^1.1.1",
     "redux": "^3.5.2",
+    "sass-lint": "^1.10.2",
     "should": "^11.1.0",
+    "standard": "^8.5.0",
     "supertest": "^2.0.0",
     "tris3d-canvas": "^0.7.1",
     "webpack": "^1.13.1"

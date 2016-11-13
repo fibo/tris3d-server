@@ -1,9 +1,9 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
-/* Internal imports: load variables first. */
-@import "variables";
+// Internal imports: load variables first.
+@import 'variables'
 
-@import "body";
-@import "toggle";
-@import "button";
+@import 'body';
+@import 'toggle';
+@import 'button';
 
