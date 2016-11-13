@@ -47,14 +47,12 @@ sudo apt-get install -y git nginx nodejs
 sudo npm install npm -g
 ```
 
-Clone this repo, install deps and build
+Clone this repo, install deps
 
 ```bash
 git clone https://github.com/fibo/tris3d-server.git
 cd tris3d-server
 npm install --production
-npm run postcss
-npm run webpack
 ```
 
 Copy nginx conf and reload it

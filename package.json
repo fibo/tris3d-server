@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "npm run lint && npm run test && npm run sass && npm run webpack",
     "check-deps": "npm outdated",
     "lint": "npm run lint_css; npm run lint_js",
     "lint_css": "sass-lint -v sass/*",
@@ -41,24 +42,25 @@
     "url": "https://github.com/fibo/tris3d-server/issues"
   },
   "devDependencies": {
-    "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.13.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "mocha": "3.x",
-    "node-sass": "^3.11.3",
-    "pre-commit": "^1.1.3",
+    "node-sass": "3.x",
+    "pre-commit": "1.x",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "read-file-utf8": "^1.1.1",
-    "redux": "^3.5.2",
+    "redux": "^3.6.0",
     "sass-lint": "^1.10.2",
     "should": "^11.1.0",
     "standard": "^8.5.0",
     "supertest": "^2.0.0",
-    "tris3d-canvas": "^0.7.1",
-    "webpack": "^1.13.1"
+    "tris3d-canvas": "^0.8.0",
+    "webpack": "^1.13.3"
   },
   "dependencies": {
     "express": "^4.14.0",
