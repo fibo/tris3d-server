@@ -1,7 +1,7 @@
 {
   "name": "tris3d-server",
   "description": "Play tic tac toe in 3d",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "homepage": "http://play.tris3d.net",
   "author": {
