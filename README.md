@@ -37,14 +37,13 @@ When grub prompt will appear, just hit <kbd>enter</kbd> and choose default
 Following [Installation instructions from NodeSource](https://github.com/nodesource/distributions#debinstall), tell *apt-get* to point to **Node v4.x**
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
 
 Install requirements
 
 ```bash
 sudo apt-get install -y git nginx nodejs
-sudo npm install npm -g
 ```
 
 Clone this repo, install deps and build
@@ -53,7 +52,6 @@ Clone this repo, install deps and build
 git clone https://github.com/fibo/tris3d-server.git
 cd tris3d-server
 npm install --production
-npm run postcss
 npm run webpack
 ```
 
@@ -70,15 +68,6 @@ Start the server
 npm start
 ```
 
-### Email
-
-This section describes setup done (only once) on Amazon SES. The email address
-choosen for transaction emails is *play@tris3d.net*.
-
-1. Add domain *tris3d.net* and verify it, add also MX record.
-2. Create a rule set to store emails into S3 bucket *s3://tris3d/emails/*.
-3. Add email address and verify it, getting the link from email stored in S3 bucket.
-
 ## Development
 
 Start the server in debug mode
@@ -89,12 +78,6 @@ node server
 ```
 
 Then point your browser to http://localhost:3000/
-
-To start postcss in watch mode, launch
-
-```bash
-npm run watch_postcss
-```
 
 You may also want to run webpack watching for file changes, then in another shell
 
@@ -113,4 +96,8 @@ Lint both JavaScript and CSS sources by launching
 ```bash
 npm run lint
 ```
+
+## License
+
+[MIT](http://g14n.info/mit-license)
 
