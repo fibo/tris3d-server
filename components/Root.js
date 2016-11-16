@@ -32,8 +32,7 @@ const Root = ({
 
   return (
     <div>
-    {
-      (typeof nickname === 'string') ? (
+      {(typeof nickname === 'string') ? (
         <div>
           <MultiPlayerToggle
             isMultiPlayer={isMultiPlayer}
@@ -74,8 +73,7 @@ const Root = ({
           enableMultiPlayer={enableMultiPlayer}
           setNickname={setNickname}
         />
-      )
-    }
+      )}
     </div>
   )
 }

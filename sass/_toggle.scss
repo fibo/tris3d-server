@@ -1,0 +1,74 @@
+
+$switch-width: 60px;
+$switch-height: 34px;
+$slider-transition: .4s;
+
+// The switch - the box around the slider
+.switch {
+  display: inline-block;
+  height: $switch-height;
+  position: relative;
+  width: $switch-width;
+
+  // Hide default HTML checkbox
+  input {
+    display: none;
+  }
+}
+
+.switch-text {
+  display: inline-block;
+  height: $switch-height;
+  margin-left: 5px;
+  padding-left: $switch-width;
+  position: relative;
+}
+
+// The slider
+.slider {
+  background-color: $gray;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: $slider-transition;
+
+  input {
+    :checked {
+      background-color: $blue;
+    }
+
+    :focus {
+      box-shadow: 0 0 1px $blue;
+    }
+  }
+
+  ::before {
+    background-color: $white;
+    bottom: 4px;
+    content: '';
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: $slider-transition;
+    width: 26px;
+
+    input {
+      :checked {
+        transform: translateX(26px);
+      }
+    }
+  }
+
+  // Rounded sliders
+  .round {
+    border-radius: 34px;
+
+    ::before {
+      border-radius: 50%;
+    }
+  }
+}
+

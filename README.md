@@ -46,7 +46,7 @@ Install requirements
 sudo apt-get install -y git nginx nodejs
 ```
 
-Clone this repo, install deps and build
+Clone this repo, install deps
 
 ```bash
 git clone https://github.com/fibo/tris3d-server.git

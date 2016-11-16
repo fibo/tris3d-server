@@ -1,6 +1,6 @@
-var webpack = require('webpack')
+const webpack = require('webpack')
 
-var definePlugin = new webpack.DefinePlugin({
+const definePlugin = new webpack.DefinePlugin({
   'process.env.NODE_ENV': '"production"'
 })
 
