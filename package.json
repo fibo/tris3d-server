@@ -11,10 +11,12 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run lint && npm run test && npm run sass && npm run webpack",
+    "postbuild": "git add -f public; git commit -m 'build'; git push origin master'",
     "check-deps": "npm outdated",
     "lint": "npm run lint_css; npm run lint_js",
     "lint_css": "sass-lint -v sass/*",
     "lint_js": "standard",
+    "preversion": "npm run build",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "sass": "node-sass sass/style.scss --output public",
     "start": "DEBUG=${npm_package_name} forever start --uid ${npm_package_name} --append server.js",

@@ -52,7 +52,6 @@ Clone this repo, install deps
 git clone https://github.com/fibo/tris3d-server.git
 cd tris3d-server
 npm install --production
-npm run webpack
 ```
 
 Copy nginx conf and reload it
@@ -95,6 +94,12 @@ Lint both JavaScript and CSS sources by launching
 
 ```bash
 npm run lint
+```
+
+Publish a new version, it will build *bundle.js* and *style.css*
+
+```bash
+npm version minor
 ```
 
 ## License
