@@ -2,8 +2,13 @@ node_modules/
 npm-debug.log
 *.swp
 
+# Only keep tris3d theme assets and minified version
+public/semantic.css
+public/basic
+public/default
+public/github
+public/material
+
 # Semantic custom files and dist.
 !semantic/src/theme.config
 !semantic/src/themes/tris3d/
-!semantic/dist/semantic.min.css
-!semantic/dist/themes/tris3d/
