@@ -1,3 +1,9 @@
 node_modules/
 npm-debug.log
 *.swp
+
+# Semantic custom files and dist.
+!semantic/src/theme.config
+!semantic/src/themes/tris3d/
+!semantic/dist/semantic.min.css
+!semantic/dist/themes/tris3d/
