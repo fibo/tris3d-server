@@ -4,10 +4,10 @@ npm-debug.log
 
 # Only keep tris3d theme assets and minified version
 public/semantic.css
-public/basic
-public/default
-public/github
-public/material
+public/themes/basic
+public/themes/default
+public/themes/github
+public/themes/material
 
 # Semantic custom files and dist.
 !semantic/src/theme.config
