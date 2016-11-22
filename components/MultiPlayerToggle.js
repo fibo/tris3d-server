@@ -7,7 +7,7 @@ const MultiPlayerToggle = ({
   toggleMultiPlayer
 }) => (
   <div>
-    {notImplemented ? 'Multiplayer coming soon' : (
+    {notImplemented ? null : (
       <label className='switch'>
         <input
           type='checkbox'
