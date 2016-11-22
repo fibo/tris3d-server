@@ -1,4 +1,5 @@
 import React from 'react'
+import { Label } from 'semantic-ui-react'
 
 const UserStats = ({
   isMyTurn,
@@ -13,16 +14,12 @@ const UserStats = ({
     </div>
     {
       isMyTurn ? (
-        <div>
-          your turn
-        </div>
+        <Label basic content='your turn' />
       ) : undefined
     }
     {
       localPlayerWins ? (
-        <div>
-          you win!
-        </div>
+        <Label basic icon='trophy' content='you win!' />
       ) : undefined
     }
   </div>

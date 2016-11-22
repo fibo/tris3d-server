@@ -52,7 +52,7 @@
     "react-redux": "^4.4.5",
     "read-file-utf8": "^1.1.1",
     "redux": "^3.6.0",
-    "semantic-ui": "^2.2.6",
+    "semantic-ui-react": "^0.61.2",
     "should": "^11.1.0",
     "standard": "^8.5.0",
     "supertest": "^2.0.0",
@@ -62,7 +62,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
-    "socket.io": "^1.4.8",
+    "socket.io": "^1.6.0",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.5.0"
   },
