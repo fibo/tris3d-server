@@ -18,7 +18,11 @@ describe('GET /info', () => {
         const name = pkg.name
         const version = pkg.version
 
-        should.deepEqual(res.body, { name, version })
+        should.deepEqual(res.body, {
+          name,
+          numUsersOnline: 0,
+          version
+        })
 
         done(err)
       })

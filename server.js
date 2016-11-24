@@ -22,7 +22,8 @@ app.use(express.static('public'))
 app.get('/info', (req, res) => {
   res.json({
     name: pkg.name,
-    version: pkg.version
+    version: pkg.version,
+    numUsersOnline
   })
 })
 
