@@ -11,8 +11,9 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run lint && npm run test && npm run webpack",
-    "postbuild": "git add -f public; git commit -m 'build'; git push origin master",
+    "postbuild": "npm run git_add-f; git commit -m 'build'; git push origin master",
     "check-deps": "npm outdated",
+    "git_add-f": "git add -f public/bundle.js",
     "lint": "standard",
     "preversion": "npm run build",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
