@@ -52,7 +52,7 @@ class EnterPlayground extends Component {
                 <Header
                   as='h1'
                   content='Tris 3d'
-                  image={<Image shape='circular' src='/tris3d.jpg' />}
+                  image={<Image shape='circular' src='/tris3d.png' />}
                   subheader='Play tic tac toe in 3d'
                   textAlign='center'
                 />
