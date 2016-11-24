@@ -65,7 +65,7 @@
     "forever": "^0.15.2",
     "socket.io": "^1.6.0",
     "tris3d": "^0.3.0",
-    "tris3d-ai": "^0.5.0"
+    "tris3d-ai": "^0.6.0"
   },
   "standard": {
     "globals": [
