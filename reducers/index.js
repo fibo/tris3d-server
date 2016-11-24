@@ -2,7 +2,8 @@ export default function (state, action) {
   switch (action.type) {
     case 'DISABLE_MULTI_PLAYER':
       return Object.assign({}, state, {
-        isMultiPlayer: false
+        isMultiPlayer: false,
+        isPlaying: false
       })
 
     case 'ENABLE_MULTI_PLAYER':

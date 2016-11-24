@@ -8,6 +8,7 @@ import {
   Input,
   Segment
 } from 'semantic-ui-react'
+
 import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
 import MultiPlayerToggle from './MultiPlayerToggle'
 
@@ -60,6 +61,14 @@ class EnterPlayground extends Component {
             </Grid.Column>
             <Grid.Column>
               <Segment>
+                <MultiPlayerToggle
+                  isMultiPlayer={isMultiPlayer}
+                  toggleMultiPlayer={() => {
+                    setState({
+                      isMultiPlayer: !isMultiPlayer
+                    })
+                  }}
+                />
                 <Input fluid
                   label='Your nick'
                   onChange={(e, { value }) => {
@@ -81,16 +90,6 @@ class EnterPlayground extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <div>
-          <MultiPlayerToggle
-            isMultiPlayer={isMultiPlayer}
-            toggleMultiPlayer={() => {
-              setState({
-                isMultiPlayer: !isMultiPlayer
-              })
-            }}
-          />
-        </div>
       </Container>
     )
   }

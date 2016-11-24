@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  Container
+} from 'semantic-ui-react'
+
 import Canvas from './Canvas'
 import EnterPlayground from './EnterPlayground'
 import MultiPlayerToggle from './MultiPlayerToggle'
@@ -31,20 +35,19 @@ const Root = ({
   }
 
   return (
-    <div>
+    <Container>
       {(typeof nickname === 'string') ? (
         <div>
           <MultiPlayerToggle
+            askConfirmation
             isMultiPlayer={isMultiPlayer}
             toggleMultiPlayer={toggleMultiPlayer}
           />
           {isMultiPlayer ? (
-            <div>
-              <ServerStats
-                numUsersOnline={numUsersOnline}
-                socketConnectionOn={socketConnectionOn}
-              />
-            </div>
+            <ServerStats
+              numUsersOnline={numUsersOnline}
+              socketConnectionOn={socketConnectionOn}
+            />
           ) : (
             <PlayersSelector
               isPlaying={isPlaying}
@@ -74,7 +77,7 @@ const Root = ({
           setNickname={setNickname}
         />
       )}
-    </div>
+    </Container>
   )
 }
 

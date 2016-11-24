@@ -2,7 +2,6 @@ import { stupid, smart, bastard } from 'tris3d-ai'
 import Tris3dCanvas from 'tris3d-canvas'
 import {
   localMatchEnds,
-  localMatchStarts,
   localPlayerTurnEnds,
   localPlayerTurnStarts,
   localPlayerWins,
@@ -23,7 +22,6 @@ export default function canvasMiddleware (store) {
     const state = store.getState()
 
     const localPlayers = state.localPlayers
-    const playingLocally = isPlayingLocally(state)
 
     if (action.type === 'INIT_CANVAS') {
       tris3dCanvas = new Tris3dCanvas(action.canvasId)
@@ -43,7 +41,11 @@ export default function canvasMiddleware (store) {
       })
 
       tris3dCanvas.on('nextPlayer', (playerIndex) => {
-        const isOtherPlayerTurn = (tris3dCanvas.localPlayerIndex !== playerIndex)
+        const currentState = store.getState()
+        const localPlayerIndex = tris3dCanvas.localPlayerIndex
+
+        const isOtherPlayerTurn = (localPlayerIndex !== playerIndex)
+        const playingLocally = isPlayingLocally(currentState)
 
         if (playingLocally && isOtherPlayerTurn) {
           // Just a little bit of random delay.
@@ -52,15 +54,22 @@ export default function canvasMiddleware (store) {
           setTimeout(() => {
             const currentState = store.getState()
 
-            // Check if is playing locally when the callback is invoked.
-            if (isPlayingLocally(currentState)) {
-              var bot = null
+            const playingLocally = isPlayingLocally(currentState)
 
-              if (localPlayers[playerIndex] === 'stupid') bot = stupid
-              if (localPlayers[playerIndex] === 'smart') bot = smart
-              if (localPlayers[playerIndex] === 'bastard') bot = bastard
+            if (playingLocally) {
+              var choice = null
 
-              const choice = bot(tris3dCanvas.choosen)
+              if (localPlayers[playerIndex] === 'stupid') {
+                choice = stupid(tris3dCanvas.choosen)
+              }
+
+              if (localPlayers[playerIndex] === 'smart') {
+                choice = smart(tris3dCanvas.choosen)
+              }
+
+              if (localPlayers[playerIndex] === 'bastard') {
+                choice = bastard(localPlayerIndex)(tris3dCanvas.choosen)
+              }
 
               store.dispatch(setChoice(choice))
             }
@@ -80,16 +89,14 @@ export default function canvasMiddleware (store) {
 
         store.dispatch(localMatchEnds())
       })
-
-      // If user wants, start playing on init.
-      if (isPlayingLocally) {
-        updateLocalPlayerIndex(tris3dCanvas, localPlayers)
-        store.dispatch(localMatchStarts())
-      }
     }
 
     if (tris3dCanvas) {
       switch (action.type) {
+        case 'DISABLE_MULTI_PLAYER':
+          tris3dCanvas.resetPlayground()
+          break
+
         case 'ENABLE_MULTI_PLAYER':
           tris3dCanvas.resetPlayground()
           break

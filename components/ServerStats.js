@@ -1,24 +1,26 @@
 import React from 'react'
+import {
+  Input,
+  Label
+} from 'semantic-ui-react'
 
 const ServerStats = ({
   numUsersOnline,
   socketConnectionOn
 }) => (
   <div>
-    <input
+    <Input
       type='checkbox'
-      name='socket'
+      label='connected'
       checked={socketConnectionOn}
       readOnly
     />
-    <label
-      htmlFor='socket'
-    >Socket connection</label>
     {
       numUsersOnline ? (
-        <div>
-          users online: {numUsersOnline}
-        </div>
+        <Label
+          content='users online'
+          detail={numUsersOnline}
+        />
       ) : undefined
     }
   </div>

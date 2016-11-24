@@ -13,6 +13,9 @@ const io = require('socket.io')(http)
 // Keep in sync with server-files/etc/nginx/conf.d/tris3d.conf
 const port = 3000
 
+// Room of user.
+const roomOf = {}
+
 var numUsersOnline = 0
 
 // Server routes.
@@ -38,30 +41,42 @@ app.all('/*', (req, res) => {
 // Socket.io events.
 
 io.on('connection', (socket) => {
+  const id = socket.id
+
   socket.emit('connection')
 
-  debug('a user connected')
+  debug(`${id} a user connected`)
 
   socket.on('addUser', (nickname) => {
-    debug(`addUser ${nickname}`)
+    const room = 'first room'
+
+    debug(`${id} addUser ${nickname}`)
 
     socket.nickname = nickname
 
     numUsersOnline++
+
+    socket.join(room)
+    roomOf[id] = room
+
     io.sockets.emit('numUsersOnlineChanged', numUsersOnline)
   })
 
   socket.on('disconnect', () => {
-    debug(socket.nickname + ' disconnected')
+    debug(`${id} ${socket.nickname} disconnected`)
+
+    delete roomOf[id]
 
     numUsersOnline--
     socket.broadcast.emit('numUsersOnlineChanged', numUsersOnline)
   })
 
   socket.on('setChoice', (cubeIndex) => {
-    debug('setChoice', cubeIndex)
+    debug(`${id} setChoice ${cubeIndex}`)
 
-    socket.broadcast.emit('getChoice', cubeIndex)
+    io.to(roomOf[id]).emit('getChoice', cubeIndex)
+
+    // socket.broadcast.emit('getChoice', cubeIndex)
   })
 })
 
