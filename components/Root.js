@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Container
 } from 'semantic-ui-react'
+
+import BeforeUnload from 'before-unload'
 
 import Canvas from './Canvas'
 import EnterPlayground from './EnterPlayground'
@@ -10,75 +12,86 @@ import PlayersSelector from './PlayersSelector'
 import ServerStats from './ServerStats'
 import UserStats from './UserStats'
 
-const Root = ({
-  disableMultiPlayer,
-  enableMultiPlayer,
-  nickname,
-  numUsersOnline,
-  initCanvas,
-  isMultiPlayer,
-  isMyTurn,
-  isPlaying,
-  isPlayingLocally,
-  localPlayerWins,
-  localMatchStarts,
-  resetLocalMatch,
-  score,
-  setChoice,
-  setNickname,
-  saveLocalPlayers,
-  socketConnectionOn,
-  victories
-}) => {
-  const toggleMultiPlayer = () => {
-    isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
+class Root extends Component {
+  componentDidMount () {
+    const doNotLeaveMessage = 'You are playing a match'
+
+    this.beforeUnload = new BeforeUnload(doNotLeaveMessage, () => {
+      return this.props.isPlaying
+    })
   }
 
-  return (
-    <Container>
-      {(typeof nickname === 'string') ? (
-        <div>
-          <MultiPlayerToggle
-            askConfirmation
-            isMultiPlayer={isMultiPlayer}
-            toggleMultiPlayer={toggleMultiPlayer}
-          />
-          {isMultiPlayer ? (
-            <ServerStats
-              numUsersOnline={numUsersOnline}
-              socketConnectionOn={socketConnectionOn}
+  render () {
+    const {
+      disableMultiPlayer,
+      enableMultiPlayer,
+      nickname,
+      numUsersOnline,
+      initCanvas,
+      isMultiPlayer,
+      isMyTurn,
+      isPlaying,
+      localPlayerWins,
+      localMatchStarts,
+      resetLocalMatch,
+      score,
+      setChoice,
+      setNickname,
+      saveLocalPlayers,
+      socketConnectionOn,
+      victories
+    } = this.props
+
+    const toggleMultiPlayer = () => {
+      isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
+    }
+
+    return (
+      <Container>
+        {(typeof nickname === 'string') ? (
+          <div>
+            <MultiPlayerToggle
+              askConfirmation
+              isMultiPlayer={isMultiPlayer}
+              toggleMultiPlayer={toggleMultiPlayer}
             />
-          ) : (
-            <PlayersSelector
-              isPlaying={isPlaying}
+            {isMultiPlayer ? (
+              <ServerStats
+                numUsersOnline={numUsersOnline}
+                socketConnectionOn={socketConnectionOn}
+              />
+            ) : (
+              <PlayersSelector
+                isPlaying={isPlaying}
+                nickname={nickname}
+                resetLocalMatch={resetLocalMatch}
+                localMatchStarts={localMatchStarts}
+                saveLocalPlayers={saveLocalPlayers}
+              />
+            )}
+            <Canvas
+              initCanvas={initCanvas}
+              setChoice={setChoice}
+              size={Math.min(window.innerWidth, window.innerHeight)}
+            />
+            <UserStats
+              isMyTurn={isMyTurn}
+              localPlayerWins={localPlayerWins}
               nickname={nickname}
-              resetLocalMatch={resetLocalMatch}
-              localMatchStarts={localMatchStarts}
-              saveLocalPlayers={saveLocalPlayers}
+              score={score}
+              victories={victories}
             />
-          )}
-          <Canvas
-            initCanvas={initCanvas}
-            setChoice={setChoice}
-            size={Math.min(window.innerWidth, window.innerHeight)}
+          </div>
+        ) : (
+          <EnterPlayground
+            disableMultiPlayer={disableMultiPlayer}
+            enableMultiPlayer={enableMultiPlayer}
+            setNickname={setNickname}
           />
-          <UserStats
-            isMyTurn={isMyTurn}
-            localPlayerWins={localPlayerWins}
-            nickname={nickname}
-            score={score}
-            victories={victories}
-          />
-        </div>
-      ) : (
-        <EnterPlayground
-          disableMultiPlayer={disableMultiPlayer}
-          enableMultiPlayer={enableMultiPlayer}
-          setNickname={setNickname}
-        />
-      )}
-    </Container>
-  )
+        )}
+      </Container>
+    )
+  }
 }
 
 export default Root
