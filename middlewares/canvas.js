@@ -9,11 +9,16 @@ import {
 } from '../actions'
 import isPlayingLocally from '../store/utils/isPlayingLocally'
 import localPlayerIndex from '../store/utils/localPlayerIndex'
+import multiPlayerIndex from '../store/utils/multiPlayerIndex'
 
 var tris3dCanvas = null
 
+const updateMultiPlayerIndex = (tris3dCanvas, nickname, remotePlayers) => {
+  tris3dCanvas.localPlayerIndex = multiPlayerIndex(nickname, remotePlayers)
+}
+
 const updateLocalPlayerIndex = (tris3dCanvas, localPlayers) => {
-  tris3dCanvas.localPlayerIndex = localPlayerIndex({ localPlayers })
+  tris3dCanvas.localPlayerIndex = localPlayerIndex(localPlayers)
 }
 
 export default function canvasMiddleware (store) {
@@ -22,6 +27,7 @@ export default function canvasMiddleware (store) {
     const state = store.getState()
 
     const localPlayers = state.localPlayers
+    const nickname = state.nickname
 
     if (action.type === 'INIT_CANVAS') {
       tris3dCanvas = new Tris3dCanvas(action.canvasId)
@@ -109,6 +115,10 @@ export default function canvasMiddleware (store) {
           tris3dCanvas.startNewMatch()
           break
 
+        case 'MULTI_PLAYER_MATCH_STARTS':
+          tris3dCanvas.startNewMatch()
+          break
+
         case 'RESET_LOCAL_MATCH':
           tris3dCanvas.resetPlayground()
           break
@@ -119,6 +129,10 @@ export default function canvasMiddleware (store) {
 
         case 'SET_CHOICE':
           tris3dCanvas.setChoice(action.cubeIndex)
+          break
+
+        case 'UPDATE_REMOTE_PLAYERS':
+          updateMultiPlayerIndex(tris3dCanvas, nickname, action.remotePlayers)
           break
       }
     }

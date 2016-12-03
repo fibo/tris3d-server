@@ -47,6 +47,19 @@ export default function (state, action) {
         victories: state.victories + 1
       })
 
+    case 'MULTI_PLAYER_MATCH_ENDS':
+      return Object.assign({}, state, {
+        isMyTurn: false,
+        isPlaying: false
+      })
+
+    case 'MULTI_PLAYER_MATCH_STARTS':
+      return Object.assign({}, state, {
+        choosen: [],
+        isPlaying: true,
+        localPlayerWins: false
+      })
+
     case 'NUM_USERS_ONLINE_CHANGED':
       return Object.assign({}, state, {
         numUsersOnline: action.numUsersOnline
@@ -85,6 +98,11 @@ export default function (state, action) {
     case 'SOCKET_DISCONNECTED':
       return Object.assign({}, state, {
         socketConnectionOn: false
+      })
+
+    case 'UPDATE_REMOTE_PLAYERS':
+      return Object.assign({}, state, {
+        remotePlayers: action.players
       })
 
     default:

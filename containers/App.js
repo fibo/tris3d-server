@@ -17,7 +17,7 @@ import localPlayerIndex from '../store/utils/localPlayerIndex'
 const mapStateToProps = (state) => {
   return Object.assign({}, state, {
     isPlayingLocally: isPlayingLocally(state),
-    localPlayerIndex: localPlayerIndex(state)
+    localPlayerIndex: localPlayerIndex(state.localPlayers)
   })
 }
 

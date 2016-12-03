@@ -14,6 +14,7 @@ import UserStats from './UserStats'
 
 class Root extends Component {
   componentDidMount () {
+    // FIXME the default message is displyed, not this one
     const doNotLeaveMessage = 'You are playing a match'
 
     this.beforeUnload = new BeforeUnload(doNotLeaveMessage, () => {

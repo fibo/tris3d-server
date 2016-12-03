@@ -3,7 +3,8 @@ import {
   multiPlayerMatchStarts,
   numUsersOnlineChanged,
   socketConnected,
-  socketDisconnected
+  socketDisconnected,
+  updateRemotePlayers
 } from '../actions'
 
 var socket = null
@@ -65,5 +66,9 @@ function initSocket (store) {
 
   socket.on('numUsersOnlineChanged', (numUsersOnline) => {
     store.dispatch(numUsersOnlineChanged(numUsersOnline))
+  })
+
+  socket.on('updateRemotePlayers', (players) => {
+    store.dispatch(updateRemotePlayers(players))
   })
 }

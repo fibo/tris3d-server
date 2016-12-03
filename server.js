@@ -73,20 +73,18 @@ io.on('connection', (socket) => {
   debug(`socket=${socketId} a user connected`)
 
   socket.on('addUser', (nickname) => {
-    io.sockets.emit('numUsersOnlineChanged', numUsersOnline)
+    io.sockets.emit('numUsersOnlineChanged', ++numUsersOnline)
 
     const availableRoom = getAvailableRoom()
     const roomId = availableRoom.id
 
+    socket.nickname = nickname
+    roomOf[socketId] = roomId
+    socket.join(roomId)
     debug(`socket=${socketId} addUser ${nickname}`)
 
-    socket.nickname = nickname
-
-    numUsersOnline++
-
-    socket.join(roomId)
-    roomOf[socketId] = roomId
-    room[roomId].players.push(socketId)
+    room[roomId].players.push({ nickname, socketId })
+    io.to(roomId).emit('updateRemotePlayers', room[roomId].players)
 
     const canStartMatch = room[roomId].players.length === 3
 

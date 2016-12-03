@@ -1,3 +1,3 @@
-export default function localPlayerIndex ({ localPlayers }) {
+export default function localPlayerIndex (localPlayers) {
   return localPlayers.indexOf('human')
 }

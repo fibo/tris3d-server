@@ -112,3 +112,10 @@ export function socketDisconnected () {
     type: 'SOCKET_DISCONNECTED'
   }
 }
+
+export function updateRemotePlayers (remotePlayers) {
+  return {
+    type: 'UPDATE_REMOTE_PLAYERS',
+    remotePlayers
+  }
+}
