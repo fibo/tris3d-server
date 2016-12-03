@@ -1,5 +1,6 @@
 import {
   getChoice,
+  multiPlayerMatchStarts,
   numUsersOnlineChanged,
   socketConnected,
   socketDisconnected
@@ -56,6 +57,10 @@ function initSocket (store) {
 
   socket.on('getChoice', (cubeIndex) => {
     store.dispatch(getChoice(cubeIndex))
+  })
+
+  socket.on('multiPlayerMatchStarts', () => {
+    store.dispatch(multiPlayerMatchStarts())
   })
 
   socket.on('numUsersOnlineChanged', (numUsersOnline) => {

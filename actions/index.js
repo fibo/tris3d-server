@@ -36,6 +36,18 @@ export function localMatchStarts () {
   }
 }
 
+export function multiPlayerMatchEnds () {
+  return {
+    type: 'MULTI_PLAYER_MATCH_ENDS'
+  }
+}
+
+export function multiPlayerMatchStarts () {
+  return {
+    type: 'MULTI_PLAYER_MATCH_STARTS'
+  }
+}
+
 export function localPlayerTurnEnds () {
   return {
     type: 'LOCAL_PLAYER_TURN_ENDS'

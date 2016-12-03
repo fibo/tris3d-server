@@ -8,6 +8,8 @@
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/fibo/tris3d)
 
+See [presentation slides on gdocs][tris3d-gdocs].
+
 ## Setup
 
 ### Server
@@ -106,3 +108,4 @@ npm version minor
 
 [MIT](http://g14n.info/mit-license)
 
+[tris3d-gdocs] https://docs.google.com/presentation/d/1QeQhXwDpN4OgD7OyFOIklYKP2bFXbtDnuKotg0VJBfY/edit?usp=sharing "Tris3d presentation slides"

@@ -16,6 +16,31 @@ const port = 3000
 // Room of user.
 const roomOf = {}
 
+const room = {}
+
+const createEmptyRoom = () => {
+  const id = Math.random().toString(36).replace(/[^a-z]+/g, '')
+
+  const emptyRoom = { id, players: [] }
+  room[id] = emptyRoom
+
+  debug(`room=${id} created room`)
+  return emptyRoom
+}
+
+var currentRoom = createEmptyRoom()
+
+const getAvailableRoom = () => {
+  const currentRoomIsAvailable = currentRoom.players.length < 3
+
+  if (currentRoomIsAvailable) {
+    return currentRoom
+  } else {
+    const newRoom = createEmptyRoom()
+    return newRoom
+  }
+}
+
 var numUsersOnline = 0
 
 // Server routes.
@@ -41,42 +66,51 @@ app.all('/*', (req, res) => {
 // Socket.io events.
 
 io.on('connection', (socket) => {
-  const id = socket.id
+  const socketId = socket.id
 
   socket.emit('connection')
 
-  debug(`${id} a user connected`)
+  debug(`socket=${socketId} a user connected`)
 
   socket.on('addUser', (nickname) => {
-    const room = 'first room'
+    io.sockets.emit('numUsersOnlineChanged', numUsersOnline)
 
-    debug(`${id} addUser ${nickname}`)
+    const availableRoom = getAvailableRoom()
+    const roomId = availableRoom.id
+
+    debug(`socket=${socketId} addUser ${nickname}`)
 
     socket.nickname = nickname
 
     numUsersOnline++
 
-    socket.join(room)
-    roomOf[id] = room
+    socket.join(roomId)
+    roomOf[socketId] = roomId
+    room[roomId].players.push(socketId)
 
-    io.sockets.emit('numUsersOnlineChanged', numUsersOnline)
+    const canStartMatch = room[roomId].players.length === 3
+
+    if (canStartMatch) {
+      debug(`room=${roomId} multiPlayerMatchStarts`)
+      io.to(roomId).emit('multiPlayerMatchStarts')
+    }
   })
 
   socket.on('disconnect', () => {
-    debug(`${id} ${socket.nickname} disconnected`)
+    debug(`socket=${socketId} ${socket.nickname} disconnected`)
 
-    delete roomOf[id]
+    // const roomId = roomOf[socketId]
+    // TODO replace user with a bot room[roomId].players
+    delete roomOf[socketId]
 
     numUsersOnline--
     socket.broadcast.emit('numUsersOnlineChanged', numUsersOnline)
   })
 
   socket.on('setChoice', (cubeIndex) => {
-    debug(`${id} setChoice ${cubeIndex}`)
+    debug(`socket=${socketId} setChoice ${cubeIndex}`)
 
-    io.to(roomOf[id]).emit('getChoice', cubeIndex)
-
-    // socket.broadcast.emit('getChoice', cubeIndex)
+    io.to(roomOf[socketId]).emit('getChoice', cubeIndex)
   })
 })
 
