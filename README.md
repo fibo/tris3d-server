@@ -108,4 +108,4 @@ npm version minor
 
 [MIT](http://g14n.info/mit-license)
 
-[tris3d-gdocs] https://docs.google.com/presentation/d/1QeQhXwDpN4OgD7OyFOIklYKP2bFXbtDnuKotg0VJBfY/edit?usp=sharing "Tris3d presentation slides"
+[tris3d-gdocs]: https://docs.google.com/presentation/d/1QeQhXwDpN4OgD7OyFOIklYKP2bFXbtDnuKotg0VJBfY/edit?usp=sharing "Tris3d presentation slides"
