@@ -41,9 +41,9 @@
     "url": "https://github.com/fibo/tris3d-server/issues"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
-    "babel-polyfill": "^6.16.0",
+    "babel-core": "^6.20.0",
+    "babel-loader": "6.x",
+    "babel-polyfill": "^6.20.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "before-unload": "^2.0.0",
@@ -54,17 +54,17 @@
     "react-redux": "^4.4.5",
     "read-file-utf8": "^1.1.1",
     "redux": "^3.6.0",
-    "semantic-ui-react": "^0.61.10",
-    "should": "^11.1.0",
+    "semantic-ui-react": "^0.62.1",
+    "should": "^11.1.2",
     "standard": "8.x",
     "supertest": "2.x",
     "tris3d-canvas": "^0.8.0",
-    "webpack": "^1.13.3"
+    "webpack": "^1.14.0"
   },
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
-    "socket.io": "^1.7.1",
+    "socket.io": "^1.7.2",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.6.0"
   },

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import {
   Button,
-  Input,
+  Checkbox,
   Modal
 } from 'semantic-ui-react'
 
@@ -16,7 +16,7 @@ class MultiPlayerToggle extends Component {
 
   render () {
     const {
-      askConfirmation,
+      askConfirmationBeforeDisconnect,
       isMultiPlayer,
       toggleMultiPlayer
     } = this.props
@@ -32,11 +32,10 @@ class MultiPlayerToggle extends Component {
 
     return (
       <div>
-        <Input
-          type='checkbox'
+        <Checkbox toggle
           checked={isMultiPlayer}
           label='Multiplayer'
-          onChange={isMultiPlayer && askConfirmation ? openModal : toggleMultiPlayer}
+          onChange={isMultiPlayer && askConfirmationBeforeDisconnect ? openModal : toggleMultiPlayer}
         />
         <Modal
           basic
@@ -75,13 +74,13 @@ class MultiPlayerToggle extends Component {
 }
 
 MultiPlayerToggle.propTypes = {
-  askConfirmation: PropTypes.bool.isRequired,
+  askConfirmationBeforeDisconnect: PropTypes.bool.isRequired,
   isMultiPlayer: PropTypes.bool.isRequired,
   toggleMultiPlayer: PropTypes.func.isRequired
 }
 
 MultiPlayerToggle.defaultPros = {
-  askConfirmation: false
+  askConfirmationBeforeDisconnect: false
 }
 
 export default MultiPlayerToggle

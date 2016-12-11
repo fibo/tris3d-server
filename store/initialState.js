@@ -1,3 +1,7 @@
+import getUserId from './utils/getUserId'
+
+const userId = getUserId()
+
 const initialState = {
   choosen: [],
   isMultiPlayer: false,
@@ -10,6 +14,7 @@ const initialState = {
   remotePlayers: [],
   score: 0,
   socketConnectionOn: false,
+  userId,
   victories: 0
 }
 

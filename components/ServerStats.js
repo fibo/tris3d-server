@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Input,
+  Checkbox,
   Label
 } from 'semantic-ui-react'
 
@@ -9,8 +9,7 @@ const ServerStats = ({
   socketConnectionOn
 }) => (
   <div>
-    <Input
-      type='checkbox'
+    <Checkbox toggle
       label='connected'
       checked={socketConnectionOn}
       readOnly

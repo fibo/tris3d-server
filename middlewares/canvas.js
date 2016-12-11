@@ -1,3 +1,16 @@
+import {
+  DISABLE_MULTI_PLAYER,
+  ENABLE_MULTI_PLAYER,
+  GET_CHOICE,
+  INIT_CANVAS,
+  LOCAL_MATCH_STARTS,
+  MULTI_PLAYER_MATCH_STARTS,
+  RESET_LOCAL_MATCH,
+  SAVE_LOCAL_PLAYERS,
+  SET_CHOICE,
+  UPDATE_REMOTE_PLAYERS
+} from '../actions/constants'
+
 import { stupid, smart, bastard } from 'tris3d-ai'
 import Tris3dCanvas from 'tris3d-canvas'
 import {
@@ -29,7 +42,7 @@ export default function canvasMiddleware (store) {
     const localPlayers = state.localPlayers
     const nickname = state.nickname
 
-    if (action.type === 'INIT_CANVAS') {
+    if (action.type === INIT_CANVAS) {
       tris3dCanvas = new Tris3dCanvas(action.canvasId)
 
       tris3dCanvas.render()
@@ -99,39 +112,39 @@ export default function canvasMiddleware (store) {
 
     if (tris3dCanvas) {
       switch (action.type) {
-        case 'DISABLE_MULTI_PLAYER':
+        case DISABLE_MULTI_PLAYER:
           tris3dCanvas.resetPlayground()
           break
 
-        case 'ENABLE_MULTI_PLAYER':
+        case ENABLE_MULTI_PLAYER:
           tris3dCanvas.resetPlayground()
           break
 
-        case 'GET_CHOICE':
+        case GET_CHOICE:
           tris3dCanvas.setChoice(action.cubeIndex)
           break
 
-        case 'LOCAL_MATCH_STARTS':
+        case LOCAL_MATCH_STARTS:
           tris3dCanvas.startNewMatch()
           break
 
-        case 'MULTI_PLAYER_MATCH_STARTS':
+        case MULTI_PLAYER_MATCH_STARTS:
           tris3dCanvas.startNewMatch()
           break
 
-        case 'RESET_LOCAL_MATCH':
+        case RESET_LOCAL_MATCH:
           tris3dCanvas.resetPlayground()
           break
 
-        case 'SAVE_LOCAL_PLAYERS':
+        case SAVE_LOCAL_PLAYERS:
           updateLocalPlayerIndex(tris3dCanvas, action.localPlayers)
           break
 
-        case 'SET_CHOICE':
+        case SET_CHOICE:
           tris3dCanvas.setChoice(action.cubeIndex)
           break
 
-        case 'UPDATE_REMOTE_PLAYERS':
+        case UPDATE_REMOTE_PLAYERS:
           updateMultiPlayerIndex(tris3dCanvas, nickname, action.remotePlayers)
           break
       }

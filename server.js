@@ -72,7 +72,7 @@ io.on('connection', (socket) => {
 
   debug(`socket=${socketId} a user connected`)
 
-  socket.on('addUser', (nickname) => {
+  socket.on('addUser', (nickname, userId) => {
     io.sockets.emit('numUsersOnlineChanged', ++numUsersOnline)
 
     const availableRoom = getAvailableRoom()
@@ -81,7 +81,7 @@ io.on('connection', (socket) => {
     socket.nickname = nickname
     roomOf[socketId] = roomId
     socket.join(roomId)
-    debug(`socket=${socketId} addUser ${nickname}`)
+    debug(`socket=${socketId} addUser ${nickname} ${userId}`)
 
     room[roomId].players.push({ nickname, socketId })
     io.to(roomId).emit('updateRemotePlayers', room[roomId].players)
