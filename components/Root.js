@@ -7,6 +7,7 @@ import BeforeUnload from 'before-unload'
 
 import Canvas from './Canvas'
 import EnterPlayground from './EnterPlayground'
+import localPlayerIndex from '../store/utils/localPlayerIndex'
 import MultiPlayerToggle from './MultiPlayerToggle'
 import PlayersSelector from './PlayersSelector'
 import ServerStats from './ServerStats'
@@ -32,6 +33,7 @@ class Root extends Component {
       isMultiPlayer,
       isMyTurn,
       isPlaying,
+      localPlayers,
       localPlayerWins,
       localMatchStarts,
       resetLocalMatch,
@@ -45,6 +47,13 @@ class Root extends Component {
 
     const toggleMultiPlayer = () => {
       isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
+    }
+
+    var playerIndex = 0 // isMultiPlayer ? multiPlayerIndex(nickname, remotePlayers) : localPlayerIndex(localPlayers)
+    if (isMultiPlayer) {
+      playerIndex = 1
+    } else {
+      playerIndex = localPlayerIndex(localPlayers)
     }
 
     return (
@@ -79,6 +88,7 @@ class Root extends Component {
               isMyTurn={isMyTurn}
               localPlayerWins={localPlayerWins}
               nickname={nickname}
+              playerIndex={playerIndex}
               score={score}
               victories={victories}
             />

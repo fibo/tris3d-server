@@ -89,6 +89,7 @@ export default function (state, action) {
 
     case RESET_LOCAL_MATCH:
       return Object.assign({}, state, {
+        choosen: [],
         isMyTurn: false,
         isPlaying: false
       })

@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Checkbox,
   Label
 } from 'semantic-ui-react'
 
@@ -9,13 +8,12 @@ const ServerStats = ({
   socketConnectionOn
 }) => (
   <div>
-    <Checkbox toggle
-      label='connected'
-      checked={socketConnectionOn}
-      readOnly
+    <Label
+      content={socketConnectionOn ? 'connected' : 'not connected'}
+      icon={socketConnectionOn ? 'checkmark' : null}
     />
     {
-      numUsersOnline ? (
+      (socketConnectionOn && numUsersOnline) ? (
         <Label
           content='users online'
           detail={numUsersOnline}

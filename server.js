@@ -1,7 +1,10 @@
 'use strict'
 
 const express = require('express')
+const no = require('not-defined')
 const path = require('path')
+
+const generateId = require('./store/utils/generateId')
 
 const pkg = require('./package.json')
 const debug = require('debug')(pkg.name)
@@ -19,7 +22,7 @@ const roomOf = {}
 const room = {}
 
 const createEmptyRoom = () => {
-  const id = Math.random().toString(36).replace(/[^a-z]+/g, '')
+  const id = generateId()
 
   const emptyRoom = { id, players: [] }
   room[id] = emptyRoom
@@ -75,15 +78,36 @@ io.on('connection', (socket) => {
   socket.on('addUser', (nickname, userId) => {
     io.sockets.emit('numUsersOnlineChanged', ++numUsersOnline)
 
-    const availableRoom = getAvailableRoom()
-    const roomId = availableRoom.id
-
     socket.nickname = nickname
-    roomOf[socketId] = roomId
+    socket.userId = userId
+
+    // Look for user among the one that lost connection.
+    Object.keys(room).forEach((roomId) => {
+      room[roomId].players.forEach((player) => {
+        const foundUser = player.userId === userId
+
+        if (foundUser && player.disconnected) {
+          roomOf[userId] = roomId
+        }
+      })
+    })
+
+    var roomId = roomOf[userId]
+
+    // If no previous room was found create a new one...
+    if (no(roomId)) {
+      const availableRoom = getAvailableRoom()
+      roomId = availableRoom.id
+    } else {
+      // otherwise, update user status: it is not disconnected anymore.
+      room[roomId].players
+    }
+
+    roomOf[userId] = roomId
     socket.join(roomId)
     debug(`socket=${socketId} addUser ${nickname} ${userId}`)
 
-    room[roomId].players.push({ nickname, socketId })
+    room[roomId].players.push({ nickname, userId })
     io.to(roomId).emit('updateRemotePlayers', room[roomId].players)
 
     const canStartMatch = room[roomId].players.length === 3
@@ -95,20 +119,33 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    debug(`socket=${socketId} ${socket.nickname} disconnected`)
+    const nickname = socket.nickname
+    const userId = socket.userId
 
-    // const roomId = roomOf[socketId]
-    // TODO replace user with a bot room[roomId].players
-    delete roomOf[socketId]
+    debug(`socket=${socketId} ${nickname} disconnected`)
+
+    const roomId = roomOf[userId]
+
+    // Set player as disconnected, so it can be replaced by a bot
+    // but if it reconnects it can play in the same room.
+    room[roomId].players.forEach((player, i) => {
+      if (player.userId === userId) {
+        room[roomId].players[i].disconnected = true
+      }
+    })
+
+    delete roomOf[userId]
 
     numUsersOnline--
     socket.broadcast.emit('numUsersOnlineChanged', numUsersOnline)
   })
 
   socket.on('setChoice', (cubeIndex) => {
+    const userId = socket.userId
+
     debug(`socket=${socketId} setChoice ${cubeIndex}`)
 
-    io.to(roomOf[socketId]).emit('getChoice', cubeIndex)
+    io.to(roomOf[userId]).emit('getChoice', cubeIndex)
   })
 })
 

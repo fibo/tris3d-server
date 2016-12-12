@@ -64,6 +64,7 @@
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
+    "not-defined": "^1.1.0",
     "socket.io": "^1.7.2",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.6.0"

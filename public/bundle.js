@@ -30035,15 +30035,15 @@
 	});
 	exports.default = canvasMiddleware;
 
-	var _constants = __webpack_require__(508);
+	var _constants = __webpack_require__(495);
 
-	var _tris3dAi = __webpack_require__(495);
+	var _tris3dAi = __webpack_require__(496);
 
-	var _tris3dCanvas = __webpack_require__(502);
+	var _tris3dCanvas = __webpack_require__(503);
 
 	var _tris3dCanvas2 = _interopRequireDefault(_tris3dCanvas);
 
-	var _actions = __webpack_require__(507);
+	var _actions = __webpack_require__(508);
 
 	var _isPlayingLocally = __webpack_require__(509);
 
@@ -30193,22 +30193,51 @@
 
 /***/ },
 /* 495 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	exports.bastard = __webpack_require__(496)
-	exports.smart = __webpack_require__(501)
-	exports.stupid = __webpack_require__(499)
+	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ENABLE_MULTI_PLAYER = exports.ENABLE_MULTI_PLAYER = 'ENABLE_MULTI_PLAYER';
+	var DISABLE_MULTI_PLAYER = exports.DISABLE_MULTI_PLAYER = 'DISABLE_MULTI_PLAYER';
+	var GET_CHOICE = exports.GET_CHOICE = 'GET_CHOICE';
+	var INIT_CANVAS = exports.INIT_CANVAS = 'INIT_CANVAS';
+	var LOCAL_MATCH_ENDS = exports.LOCAL_MATCH_ENDS = 'LOCAL_MATCH_ENDS';
+	var LOCAL_MATCH_STARTS = exports.LOCAL_MATCH_STARTS = 'LOCAL_MATCH_STARTS';
+	var LOCAL_PLAYER_TURN_ENDS = exports.LOCAL_PLAYER_TURN_ENDS = 'LOCAL_PLAYER_TURN_ENDS';
+	var LOCAL_PLAYER_TURN_STARTS = exports.LOCAL_PLAYER_TURN_STARTS = 'LOCAL_PLAYER_TURN_STARTS';
+	var LOCAL_PLAYER_WINS = exports.LOCAL_PLAYER_WINS = 'LOCAL_PLAYER_WINS';
+	var MULTI_PLAYER_MATCH_ENDS = exports.MULTI_PLAYER_MATCH_ENDS = 'MULTI_PLAYER_MATCH_ENDS';
+	var MULTI_PLAYER_MATCH_STARTS = exports.MULTI_PLAYER_MATCH_STARTS = 'MULTI_PLAYER_MATCH_STARTS';
+	var NUM_USERS_ONLINE_CHANGED = exports.NUM_USERS_ONLINE_CHANGED = 'NUM_USERS_ONLINE_CHANGED';
+	var RESET_LOCAL_MATCH = exports.RESET_LOCAL_MATCH = 'RESET_LOCAL_MATCH';
+	var SAVE_LOCAL_PLAYERS = exports.SAVE_LOCAL_PLAYERS = 'SAVE_LOCAL_PLAYERS';
+	var SET_CHOICE = exports.SET_CHOICE = 'SET_CHOICE';
+	var SET_NICKNAME = exports.SET_NICKNAME = 'SET_NICKNAME';
+	var SOCKET_CONNECTED = exports.SOCKET_CONNECTED = 'SOCKET_CONNECTED';
+	var SOCKET_DISCONNECTED = exports.SOCKET_DISCONNECTED = 'SOCKET_DISCONNECTED';
+	var UPDATE_REMOTE_PLAYERS = exports.UPDATE_REMOTE_PLAYERS = 'UPDATE_REMOTE_PLAYERS';
 
 /***/ },
 /* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const tris3d = __webpack_require__(497)
+	exports.bastard = __webpack_require__(497)
+	exports.smart = __webpack_require__(502)
+	exports.stupid = __webpack_require__(500)
 
-	const tryToBlock = __webpack_require__(498)
-	const stupid = __webpack_require__(499)
-	const victoryIsMine = __webpack_require__(500)
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const tris3d = __webpack_require__(498)
+
+	const tryToBlock = __webpack_require__(499)
+	const stupid = __webpack_require__(500)
+	const victoryIsMine = __webpack_require__(501)
 
 	function bastard (targetPlayer) {
 	  return function (choosen) {
@@ -30246,7 +30275,7 @@
 
 
 /***/ },
-/* 497 */
+/* 498 */
 /***/ function(module, exports) {
 
 	/**
@@ -30403,10 +30432,10 @@
 
 
 /***/ },
-/* 498 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const tris3d = __webpack_require__(497)
+	const tris3d = __webpack_require__(498)
 
 	/**
 	 * Compute a choice to block a given player.
@@ -30447,7 +30476,7 @@
 
 
 /***/ },
-/* 499 */
+/* 500 */
 /***/ function(module, exports) {
 
 	function stupid (choosen) {
@@ -30488,10 +30517,10 @@
 
 
 /***/ },
-/* 500 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const tris3d = __webpack_require__(497)
+	const tris3d = __webpack_require__(498)
 
 	/**
 	 * Check if there is some winning choice available.
@@ -30534,11 +30563,11 @@
 
 
 /***/ },
-/* 501 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const victoryIsMine = __webpack_require__(500)
-	const stupid = __webpack_require__(499)
+	const victoryIsMine = __webpack_require__(501)
+	const stupid = __webpack_require__(500)
 
 	function smart (choosen) {
 	  if (choosen.length === 27) {
@@ -30556,7 +30585,7 @@
 
 
 /***/ },
-/* 502 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30573,11 +30602,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var EventEmitter = __webpack_require__(503);
-	var OrbitControls = __webpack_require__(504);
-	var staticProps = __webpack_require__(506);
-	var THREE = __webpack_require__(505);
-	var tris3d = __webpack_require__(497);
+	var EventEmitter = __webpack_require__(504);
+	var OrbitControls = __webpack_require__(505);
+	var staticProps = __webpack_require__(507);
+	var THREE = __webpack_require__(506);
+	var tris3d = __webpack_require__(498);
 
 	var Tris3dCanvas = function (_EventEmitter) {
 	  _inherits(Tris3dCanvas, _EventEmitter);
@@ -30996,7 +31025,7 @@
 
 
 /***/ },
-/* 503 */
+/* 504 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -31304,10 +31333,10 @@
 
 
 /***/ },
-/* 504 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var THREE = __webpack_require__(505)
+	var THREE = __webpack_require__(506)
 
 	/**
 	 * @author qiao / https://github.com/qiao
@@ -32330,7 +32359,7 @@
 
 
 /***/ },
-/* 505 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (global, factory) {
@@ -74633,7 +74662,7 @@
 
 
 /***/ },
-/* 506 */
+/* 507 */
 /***/ function(module, exports) {
 
 	/**
@@ -74672,7 +74701,7 @@
 
 
 /***/ },
-/* 507 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74700,7 +74729,7 @@
 	exports.socketDisconnected = socketDisconnected;
 	exports.updateRemotePlayers = updateRemotePlayers;
 
-	var _constants = __webpack_require__(508);
+	var _constants = __webpack_require__(495);
 
 	function disableMultiPlayer() {
 	  return {
@@ -74823,35 +74852,6 @@
 	    remotePlayers: remotePlayers
 	  };
 	}
-
-/***/ },
-/* 508 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var ENABLE_MULTI_PLAYER = exports.ENABLE_MULTI_PLAYER = 'ENABLE_MULTI_PLAYER';
-	var DISABLE_MULTI_PLAYER = exports.DISABLE_MULTI_PLAYER = 'DISABLE_MULTI_PLAYER';
-	var GET_CHOICE = exports.GET_CHOICE = 'GET_CHOICE';
-	var INIT_CANVAS = exports.INIT_CANVAS = 'INIT_CANVAS';
-	var LOCAL_MATCH_ENDS = exports.LOCAL_MATCH_ENDS = 'LOCAL_MATCH_ENDS';
-	var LOCAL_MATCH_STARTS = exports.LOCAL_MATCH_STARTS = 'LOCAL_MATCH_STARTS';
-	var LOCAL_PLAYER_TURN_ENDS = exports.LOCAL_PLAYER_TURN_ENDS = 'LOCAL_PLAYER_TURN_ENDS';
-	var LOCAL_PLAYER_TURN_STARTS = exports.LOCAL_PLAYER_TURN_STARTS = 'LOCAL_PLAYER_TURN_STARTS';
-	var LOCAL_PLAYER_WINS = exports.LOCAL_PLAYER_WINS = 'LOCAL_PLAYER_WINS';
-	var MULTI_PLAYER_MATCH_ENDS = exports.MULTI_PLAYER_MATCH_ENDS = 'MULTI_PLAYER_MATCH_ENDS';
-	var MULTI_PLAYER_MATCH_STARTS = exports.MULTI_PLAYER_MATCH_STARTS = 'MULTI_PLAYER_MATCH_STARTS';
-	var NUM_USERS_ONLINE_CHANGED = exports.NUM_USERS_ONLINE_CHANGED = 'NUM_USERS_ONLINE_CHANGED';
-	var RESET_LOCAL_MATCH = exports.RESET_LOCAL_MATCH = 'RESET_LOCAL_MATCH';
-	var SAVE_LOCAL_PLAYERS = exports.SAVE_LOCAL_PLAYERS = 'SAVE_LOCAL_PLAYERS';
-	var SET_CHOICE = exports.SET_CHOICE = 'SET_CHOICE';
-	var SET_NICKNAME = exports.SET_NICKNAME = 'SET_NICKNAME';
-	var SOCKET_CONNECTED = exports.SOCKET_CONNECTED = 'SOCKET_CONNECTED';
-	var SOCKET_DISCONNECTED = exports.SOCKET_DISCONNECTED = 'SOCKET_DISCONNECTED';
-	var UPDATE_REMOTE_PLAYERS = exports.UPDATE_REMOTE_PLAYERS = 'UPDATE_REMOTE_PLAYERS';
 
 /***/ },
 /* 509 */
@@ -74978,13 +74978,11 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = generateId;
 	function generateId() {
 	  return Math.random().toString(36).replace(/[^a-z]+/g, '');
 	}
+
+	module.exports = exports.default = generateId;
 
 /***/ },
 /* 515 */
@@ -75021,9 +75019,9 @@
 	});
 	exports.default = socketMiddleware;
 
-	var _constants = __webpack_require__(508);
+	var _constants = __webpack_require__(495);
 
-	var _actions = __webpack_require__(507);
+	var _actions = __webpack_require__(508);
 
 	var socket = null;
 
@@ -75104,7 +75102,7 @@
 	});
 	exports.default = storageMiddleware;
 
-	var _constants = __webpack_require__(508);
+	var _constants = __webpack_require__(495);
 
 	var _localStorageIsAvailable = __webpack_require__(515);
 
@@ -75221,6 +75219,7 @@
 
 	    case _constants.RESET_LOCAL_MATCH:
 	      return Object.assign({}, state, {
+	        choosen: [],
 	        isMyTurn: false,
 	        isPlaying: false
 	      });
@@ -75264,7 +75263,7 @@
 	  }
 	};
 
-	var _constants = __webpack_require__(508);
+	var _constants = __webpack_require__(495);
 
 /***/ },
 /* 519 */
@@ -75284,7 +75283,7 @@
 
 	var _redux = __webpack_require__(470);
 
-	var _actions = __webpack_require__(507);
+	var _actions = __webpack_require__(508);
 
 	var _isPlayingLocally = __webpack_require__(509);
 
@@ -75348,6 +75347,10 @@
 
 	var _EnterPlayground2 = _interopRequireDefault(_EnterPlayground);
 
+	var _localPlayerIndex = __webpack_require__(510);
+
+	var _localPlayerIndex2 = _interopRequireDefault(_localPlayerIndex);
+
 	var _MultiPlayerToggle = __webpack_require__(1046);
 
 	var _MultiPlayerToggle2 = _interopRequireDefault(_MultiPlayerToggle);
@@ -75405,6 +75408,7 @@
 	          isMultiPlayer = _props.isMultiPlayer,
 	          isMyTurn = _props.isMyTurn,
 	          isPlaying = _props.isPlaying,
+	          localPlayers = _props.localPlayers,
 	          localPlayerWins = _props.localPlayerWins,
 	          localMatchStarts = _props.localMatchStarts,
 	          resetLocalMatch = _props.resetLocalMatch,
@@ -75419,6 +75423,13 @@
 	      var toggleMultiPlayer = function toggleMultiPlayer() {
 	        isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer();
 	      };
+
+	      var playerIndex = 0; // isMultiPlayer ? multiPlayerIndex(nickname, remotePlayers) : localPlayerIndex(localPlayers)
+	      if (isMultiPlayer) {
+	        playerIndex = 1;
+	      } else {
+	        playerIndex = (0, _localPlayerIndex2.default)(localPlayers);
+	      }
 
 	      return _react2.default.createElement(
 	        _semanticUiReact.Container,
@@ -75450,6 +75461,7 @@
 	            isMyTurn: isMyTurn,
 	            localPlayerWins: localPlayerWins,
 	            nickname: nickname,
+	            playerIndex: playerIndex,
 	            score: score,
 	            victories: victories
 	          })
@@ -75747,34 +75759,7 @@
 	  }
 	});
 
-	var _Sidebar = __webpack_require__(930);
-
-	Object.defineProperty(exports, 'Sidebar', {
-	  enumerable: true,
-	  get: function get() {
-	    return _interopRequireDefault(_Sidebar).default;
-	  }
-	});
-
-	var _SidebarPushable = __webpack_require__(932);
-
-	Object.defineProperty(exports, 'SidebarPushable', {
-	  enumerable: true,
-	  get: function get() {
-	    return _interopRequireDefault(_SidebarPushable).default;
-	  }
-	});
-
-	var _SidebarPusher = __webpack_require__(933);
-
-	Object.defineProperty(exports, 'SidebarPusher', {
-	  enumerable: true,
-	  get: function get() {
-	    return _interopRequireDefault(_SidebarPusher).default;
-	  }
-	});
-
-	var _Table = __webpack_require__(934);
+	var _Table = __webpack_require__(930);
 
 	Object.defineProperty(exports, 'Table', {
 	  enumerable: true,
@@ -75783,7 +75768,7 @@
 	  }
 	});
 
-	var _TableBody = __webpack_require__(936);
+	var _TableBody = __webpack_require__(932);
 
 	Object.defineProperty(exports, 'TableBody', {
 	  enumerable: true,
@@ -75792,7 +75777,7 @@
 	  }
 	});
 
-	var _TableCell = __webpack_require__(937);
+	var _TableCell = __webpack_require__(933);
 
 	Object.defineProperty(exports, 'TableCell', {
 	  enumerable: true,
@@ -75801,7 +75786,7 @@
 	  }
 	});
 
-	var _TableFooter = __webpack_require__(938);
+	var _TableFooter = __webpack_require__(934);
 
 	Object.defineProperty(exports, 'TableFooter', {
 	  enumerable: true,
@@ -75810,7 +75795,7 @@
 	  }
 	});
 
-	var _TableHeader = __webpack_require__(939);
+	var _TableHeader = __webpack_require__(935);
 
 	Object.defineProperty(exports, 'TableHeader', {
 	  enumerable: true,
@@ -75819,7 +75804,7 @@
 	  }
 	});
 
-	var _TableHeaderCell = __webpack_require__(940);
+	var _TableHeaderCell = __webpack_require__(936);
 
 	Object.defineProperty(exports, 'TableHeaderCell', {
 	  enumerable: true,
@@ -75828,7 +75813,7 @@
 	  }
 	});
 
-	var _TableRow = __webpack_require__(941);
+	var _TableRow = __webpack_require__(937);
 
 	Object.defineProperty(exports, 'TableRow', {
 	  enumerable: true,
@@ -75873,7 +75858,7 @@
 	  }
 	});
 
-	var _Container = __webpack_require__(942);
+	var _Container = __webpack_require__(938);
 
 	Object.defineProperty(exports, 'Container', {
 	  enumerable: true,
@@ -75882,7 +75867,7 @@
 	  }
 	});
 
-	var _Divider = __webpack_require__(944);
+	var _Divider = __webpack_require__(940);
 
 	Object.defineProperty(exports, 'Divider', {
 	  enumerable: true,
@@ -75900,7 +75885,7 @@
 	  }
 	});
 
-	var _Header = __webpack_require__(946);
+	var _Header = __webpack_require__(942);
 
 	Object.defineProperty(exports, 'Header', {
 	  enumerable: true,
@@ -75909,7 +75894,7 @@
 	  }
 	});
 
-	var _HeaderContent = __webpack_require__(949);
+	var _HeaderContent = __webpack_require__(945);
 
 	Object.defineProperty(exports, 'HeaderContent', {
 	  enumerable: true,
@@ -75918,7 +75903,7 @@
 	  }
 	});
 
-	var _HeaderSubheader = __webpack_require__(948);
+	var _HeaderSubheader = __webpack_require__(944);
 
 	Object.defineProperty(exports, 'HeaderSubheader', {
 	  enumerable: true,
@@ -75999,7 +75984,7 @@
 	  }
 	});
 
-	var _List = __webpack_require__(950);
+	var _List = __webpack_require__(946);
 
 	Object.defineProperty(exports, 'List', {
 	  enumerable: true,
@@ -76008,7 +75993,7 @@
 	  }
 	});
 
-	var _ListContent = __webpack_require__(952);
+	var _ListContent = __webpack_require__(948);
 
 	Object.defineProperty(exports, 'ListContent', {
 	  enumerable: true,
@@ -76017,7 +76002,7 @@
 	  }
 	});
 
-	var _ListDescription = __webpack_require__(953);
+	var _ListDescription = __webpack_require__(949);
 
 	Object.defineProperty(exports, 'ListDescription', {
 	  enumerable: true,
@@ -76026,7 +76011,7 @@
 	  }
 	});
 
-	var _ListHeader = __webpack_require__(954);
+	var _ListHeader = __webpack_require__(950);
 
 	Object.defineProperty(exports, 'ListHeader', {
 	  enumerable: true,
@@ -76035,7 +76020,7 @@
 	  }
 	});
 
-	var _ListIcon = __webpack_require__(955);
+	var _ListIcon = __webpack_require__(951);
 
 	Object.defineProperty(exports, 'ListIcon', {
 	  enumerable: true,
@@ -76044,7 +76029,7 @@
 	  }
 	});
 
-	var _ListItem = __webpack_require__(956);
+	var _ListItem = __webpack_require__(952);
 
 	Object.defineProperty(exports, 'ListItem', {
 	  enumerable: true,
@@ -76053,7 +76038,7 @@
 	  }
 	});
 
-	var _ListList = __webpack_require__(957);
+	var _ListList = __webpack_require__(953);
 
 	Object.defineProperty(exports, 'ListList', {
 	  enumerable: true,
@@ -76062,7 +76047,7 @@
 	  }
 	});
 
-	var _Loader = __webpack_require__(958);
+	var _Loader = __webpack_require__(954);
 
 	Object.defineProperty(exports, 'Loader', {
 	  enumerable: true,
@@ -76071,7 +76056,7 @@
 	  }
 	});
 
-	var _Rail = __webpack_require__(960);
+	var _Rail = __webpack_require__(956);
 
 	Object.defineProperty(exports, 'Rail', {
 	  enumerable: true,
@@ -76080,7 +76065,7 @@
 	  }
 	});
 
-	var _Reveal = __webpack_require__(962);
+	var _Reveal = __webpack_require__(958);
 
 	Object.defineProperty(exports, 'Reveal', {
 	  enumerable: true,
@@ -76089,7 +76074,7 @@
 	  }
 	});
 
-	var _RevealContent = __webpack_require__(964);
+	var _RevealContent = __webpack_require__(960);
 
 	Object.defineProperty(exports, 'RevealContent', {
 	  enumerable: true,
@@ -76098,7 +76083,7 @@
 	  }
 	});
 
-	var _Segment = __webpack_require__(965);
+	var _Segment = __webpack_require__(961);
 
 	Object.defineProperty(exports, 'Segment', {
 	  enumerable: true,
@@ -76107,7 +76092,7 @@
 	  }
 	});
 
-	var _SegmentGroup = __webpack_require__(967);
+	var _SegmentGroup = __webpack_require__(963);
 
 	Object.defineProperty(exports, 'SegmentGroup', {
 	  enumerable: true,
@@ -76116,7 +76101,7 @@
 	  }
 	});
 
-	var _Step = __webpack_require__(968);
+	var _Step = __webpack_require__(964);
 
 	Object.defineProperty(exports, 'Step', {
 	  enumerable: true,
@@ -76125,7 +76110,7 @@
 	  }
 	});
 
-	var _StepContent = __webpack_require__(970);
+	var _StepContent = __webpack_require__(966);
 
 	Object.defineProperty(exports, 'StepContent', {
 	  enumerable: true,
@@ -76134,7 +76119,7 @@
 	  }
 	});
 
-	var _StepDescription = __webpack_require__(971);
+	var _StepDescription = __webpack_require__(967);
 
 	Object.defineProperty(exports, 'StepDescription', {
 	  enumerable: true,
@@ -76143,7 +76128,7 @@
 	  }
 	});
 
-	var _StepGroup = __webpack_require__(973);
+	var _StepGroup = __webpack_require__(969);
 
 	Object.defineProperty(exports, 'StepGroup', {
 	  enumerable: true,
@@ -76152,7 +76137,7 @@
 	  }
 	});
 
-	var _StepTitle = __webpack_require__(972);
+	var _StepTitle = __webpack_require__(968);
 
 	Object.defineProperty(exports, 'StepTitle', {
 	  enumerable: true,
@@ -76161,7 +76146,7 @@
 	  }
 	});
 
-	var _Accordion = __webpack_require__(974);
+	var _Accordion = __webpack_require__(970);
 
 	Object.defineProperty(exports, 'Accordion', {
 	  enumerable: true,
@@ -76170,7 +76155,7 @@
 	  }
 	});
 
-	var _AccordionContent = __webpack_require__(975);
+	var _AccordionContent = __webpack_require__(971);
 
 	Object.defineProperty(exports, 'AccordionContent', {
 	  enumerable: true,
@@ -76179,7 +76164,7 @@
 	  }
 	});
 
-	var _AccordionTitle = __webpack_require__(976);
+	var _AccordionTitle = __webpack_require__(972);
 
 	Object.defineProperty(exports, 'AccordionTitle', {
 	  enumerable: true,
@@ -76260,7 +76245,7 @@
 	  }
 	});
 
-	var _Embed = __webpack_require__(977);
+	var _Embed = __webpack_require__(973);
 
 	Object.defineProperty(exports, 'Embed', {
 	  enumerable: true,
@@ -76314,7 +76299,7 @@
 	  }
 	});
 
-	var _Popup = __webpack_require__(979);
+	var _Popup = __webpack_require__(975);
 
 	Object.defineProperty(exports, 'Popup', {
 	  enumerable: true,
@@ -76323,7 +76308,7 @@
 	  }
 	});
 
-	var _PopupContent = __webpack_require__(984);
+	var _PopupContent = __webpack_require__(980);
 
 	Object.defineProperty(exports, 'PopupContent', {
 	  enumerable: true,
@@ -76332,7 +76317,7 @@
 	  }
 	});
 
-	var _PopupHeader = __webpack_require__(985);
+	var _PopupHeader = __webpack_require__(981);
 
 	Object.defineProperty(exports, 'PopupHeader', {
 	  enumerable: true,
@@ -76341,7 +76326,7 @@
 	  }
 	});
 
-	var _Progress = __webpack_require__(986);
+	var _Progress = __webpack_require__(982);
 
 	Object.defineProperty(exports, 'Progress', {
 	  enumerable: true,
@@ -76350,7 +76335,7 @@
 	  }
 	});
 
-	var _Rating = __webpack_require__(991);
+	var _Rating = __webpack_require__(987);
 
 	Object.defineProperty(exports, 'Rating', {
 	  enumerable: true,
@@ -76359,7 +76344,16 @@
 	  }
 	});
 
-	var _Search = __webpack_require__(994);
+	var _RatingIcon = __webpack_require__(989);
+
+	Object.defineProperty(exports, 'RatingIcon', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_RatingIcon).default;
+	  }
+	});
+
+	var _Search = __webpack_require__(990);
 
 	Object.defineProperty(exports, 'Search', {
 	  enumerable: true,
@@ -76368,7 +76362,7 @@
 	  }
 	});
 
-	var _SearchCategory = __webpack_require__(999);
+	var _SearchCategory = __webpack_require__(995);
 
 	Object.defineProperty(exports, 'SearchCategory', {
 	  enumerable: true,
@@ -76377,7 +76371,7 @@
 	  }
 	});
 
-	var _SearchResult = __webpack_require__(1000);
+	var _SearchResult = __webpack_require__(996);
 
 	Object.defineProperty(exports, 'SearchResult', {
 	  enumerable: true,
@@ -76386,12 +76380,39 @@
 	  }
 	});
 
-	var _SearchResults = __webpack_require__(1001);
+	var _SearchResults = __webpack_require__(997);
 
 	Object.defineProperty(exports, 'SearchResults', {
 	  enumerable: true,
 	  get: function get() {
 	    return _interopRequireDefault(_SearchResults).default;
+	  }
+	});
+
+	var _Sidebar = __webpack_require__(998);
+
+	Object.defineProperty(exports, 'Sidebar', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_Sidebar).default;
+	  }
+	});
+
+	var _SidebarPushable = __webpack_require__(1000);
+
+	Object.defineProperty(exports, 'SidebarPushable', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_SidebarPushable).default;
+	  }
+	});
+
+	var _SidebarPusher = __webpack_require__(1001);
+
+	Object.defineProperty(exports, 'SidebarPusher', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_SidebarPusher).default;
 	  }
 	});
 
@@ -90149,7 +90170,7 @@
 	  /**
 	   * Called after user's click.
 	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
-	   * @param {object} data - Button props.
+	   * @param {object} data - All props.
 	   */
 	  onClick: _react.PropTypes.func,
 
@@ -90240,7 +90261,7 @@
 	  var rest = (0, _lib.getUnhandledProps)(Icon, props);
 	  var ElementType = (0, _lib.getElementType)(Icon, props);
 
-	  return _react2.default.createElement(ElementType, _extends({}, rest, { className: classes }));
+	  return _react2.default.createElement(ElementType, _extends({}, rest, { 'aria-hidden': 'true', className: classes }));
 	}
 
 	Icon.Group = _IconGroup2.default;
@@ -90636,10 +90657,20 @@
 	  /** A label can point to content next to it. */
 	  pointing: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.oneOf(_meta.props.pointing)]),
 
-	  /** Adds the link style when present, called with (event, props). */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
-	  /** Adds an "x" icon, called with (event, props) when "x" is clicked. */
+	  /**
+	   * Adds an "x" icon, called when "x" is clicked.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onRemove: _react.PropTypes.func,
 
 	  /** Shorthand for Icon to appear as the last child and trigger onRemove. */
@@ -91040,10 +91071,20 @@
 	  /** A disabled dimmer cannot be activated */
 	  disabled: _react.PropTypes.bool,
 
-	  /** Called with (event, props) after user's click. */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
-	  /** Handles click outside Dimmer's content, but inside Dimmer area. */
+	  /**
+	   * Handles click outside Dimmer's content, but inside Dimmer area.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClickOutside: _react.PropTypes.func,
 
 	  /** A dimmer can be formatted to have its colors inverted. */
@@ -91493,16 +91534,36 @@
 	  /** Milliseconds to wait before opening on mouse over */
 	  mouseOverDelay: _react.PropTypes.number,
 
-	  /** Called when a close event happens */
+	  /**
+	   * Called when a close event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClose: _react.PropTypes.func,
 
-	  /** Called when the portal is mounted on the DOM */
+	  /**
+	   * Called when the portal is mounted on the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onMount: _react.PropTypes.func,
 
-	  /** Called when an open event happens */
+	  /**
+	   * Called when an open event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onOpen: _react.PropTypes.func,
 
-	  /** Called when the portal is unmounted from the DOM */
+	  /**
+	   * Called when the portal is unmounted from the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onUnmount: _react.PropTypes.func,
 
 	  /** Controls whether or not the portal is displayed. */
@@ -92488,16 +92549,36 @@
 	  /** The node where the modal should mount.. */
 	  mountNode: _react.PropTypes.any,
 
-	  /** Called when a close event happens */
+	  /**
+	   * Called when a close event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClose: _react.PropTypes.func,
 
-	  /** Called when the portal is mounted on the DOM */
+	  /**
+	   * Called when the portal is mounted on the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onMount: _react.PropTypes.func,
 
-	  /** Called when an open event happens */
+	  /**
+	   * Called when an open event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onOpen: _react.PropTypes.func,
 
-	  /** Called when the portal is unmounted from the DOM */
+	  /**
+	   * Called when the portal is unmounted from the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onUnmount: _react.PropTypes.func,
 
 	  /** Controls whether or not the Modal is displayed. */
@@ -93044,19 +93125,14 @@
 	    }, _this.handleClick = function (e) {
 	      debug('handleClick()');
 	      var _this$props2 = _this.props,
-	          name = _this$props2.name,
 	          onChange = _this$props2.onChange,
-	          onClick = _this$props2.onClick,
-	          value = _this$props2.value;
+	          onClick = _this$props2.onClick;
 	      var checked = _this.state.checked;
 
-	      debug('  name:       ' + name);
-	      debug('  value:      ' + value);
-	      debug('  checked:    ' + checked);
 
 	      if (_this.canToggle()) {
-	        if (onClick) onClick(e, { name: name, value: value, checked: !!checked });
-	        if (onChange) onChange(e, { name: name, value: value, checked: !checked });
+	        if (onClick) onClick(e, _extends({}, _this.props, { checked: !!checked }));
+	        if (onChange) onChange(e, _extends({}, _this.props, { checked: !checked }));
 
 	        _this.trySetState({ checked: !checked });
 	      }
@@ -93132,10 +93208,20 @@
 	  /** The HTML input name. */
 	  name: _react.PropTypes.string,
 
-	  /** Called with (event, { name, value, checked }) when the user attempts to change the value. */
+	  /**
+	   * Called when the user attempts to change the checked state.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and proposed checked state.
+	   */
 	  onChange: _react.PropTypes.func,
 
-	  /** Called with (event, { name, value, checked }) when the checkbox or label is clicked. */
+	  /**
+	   * Called when the checkbox or label is clicked.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and current checked state.
+	   */
 	  onClick: _react.PropTypes.func,
 
 	  /** Format as a radio element. This means it is an exclusive option.*/
@@ -93414,11 +93500,9 @@
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call.apply(_ref, [this].concat(args))), _this), _this.handleChange = function (e, value) {
 	      debug('handleChange()');
 	      debug(value);
-	      var _this$props = _this.props,
-	          name = _this$props.name,
-	          onChange = _this$props.onChange;
+	      var onChange = _this.props.onChange;
 
-	      if (onChange) onChange(e, { name: name, value: value });
+	      if (onChange) onChange(e, _extends({}, _this.props, { value: value }));
 	    }, _this.closeOnEscape = function (e) {
 	      if (_lib.keyboardKey.getCode(e) !== _lib.keyboardKey.Escape) return;
 	      e.preventDefault();
@@ -93459,11 +93543,10 @@
 	      _this.open(e);
 	    }, _this.selectHighlightedItem = function (e) {
 	      var open = _this.state.open;
-	      var _this$props2 = _this.props,
-	          multiple = _this$props2.multiple,
-	          name = _this$props2.name,
-	          onAddItem = _this$props2.onAddItem,
-	          options = _this$props2.options;
+	      var _this$props = _this.props,
+	          multiple = _this$props.multiple,
+	          onAddItem = _this$props.onAddItem,
+	          options = _this$props.options;
 
 	      var value = (0, _get4.default)(_this.getSelectedItem(), 'value');
 
@@ -93473,7 +93556,7 @@
 
 	      // notify the onAddItem prop if this is a new value
 	      if (onAddItem && !(0, _some3.default)(options, { text: value })) {
-	        onAddItem(e, { name: name, value: value });
+	        onAddItem(e, _extends({}, _this.props, { value: value }));
 	      }
 
 	      // notify the onChange prop that the user is trying to change value
@@ -93499,9 +93582,9 @@
 	      debug(_lib.keyboardKey.getName(e));
 	      if (_lib.keyboardKey.getCode(e) !== _lib.keyboardKey.Backspace) return;
 
-	      var _this$props3 = _this.props,
-	          multiple = _this$props3.multiple,
-	          search = _this$props3.search;
+	      var _this$props2 = _this.props,
+	          multiple = _this$props2.multiple,
+	          search = _this$props2.search;
 	      var _this$state = _this.state,
 	          searchQuery = _this$state.searchQuery,
 	          value = _this$state.value;
@@ -93528,7 +93611,7 @@
 	      debug('handleMouseDown()');
 	      var onMouseDown = _this.props.onMouseDown;
 
-	      if (onMouseDown) onMouseDown(e);
+	      if (onMouseDown) onMouseDown(e, _this.props);
 	      _this.isMouseDown = true;
 	      // Do not access document when server side rendering
 	      if (!_lib.isBrowser) return;
@@ -93543,24 +93626,21 @@
 	      debug('handleClick()', e);
 	      var onClick = _this.props.onClick;
 
-	      if (onClick) onClick(e);
+	      if (onClick) onClick(e, _this.props);
 	      // prevent closeOnDocumentClick()
 	      e.stopPropagation();
 	      _this.toggle(e);
-	    }, _this.handleItemClick = function (e, _ref2) {
-	      var value = _ref2.value;
-
+	    }, _this.handleItemClick = function (e, item) {
 	      debug('handleItemClick()');
-	      debug(value);
-	      var _this$props4 = _this.props,
-	          multiple = _this$props4.multiple,
-	          name = _this$props4.name,
-	          onAddItem = _this$props4.onAddItem,
-	          options = _this$props4.options;
-
-	      var item = _this.getItemByValue(value) || {};
+	      debug(item);
+	      var _this$props3 = _this.props,
+	          multiple = _this$props3.multiple,
+	          onAddItem = _this$props3.onAddItem,
+	          options = _this$props3.options;
+	      var value = item.value;
 
 	      // prevent toggle() in handleClick()
+
 	      e.stopPropagation();
 	      // prevent closeOnDocumentClick() if multiple or item is disabled
 	      if (multiple || item.disabled) {
@@ -93571,7 +93651,7 @@
 
 	      // notify the onAddItem prop if this is a new value
 	      if (onAddItem && !(0, _some3.default)(options, { text: value })) {
-	        onAddItem(e, { name: name, value: value });
+	        onAddItem(e, _extends({}, _this.props, { value: value }));
 	      }
 
 	      // notify the onChange prop that the user is trying to change value
@@ -93588,18 +93668,18 @@
 	      debug('handleFocus()');
 	      var onFocus = _this.props.onFocus;
 
-	      if (onFocus) onFocus(e);
+	      if (onFocus) onFocus(e, _this.props);
 	      _this.setState({ focus: true });
 	    }, _this.handleBlur = function (e) {
 	      debug('handleBlur()');
-	      var _this$props5 = _this.props,
-	          multiple = _this$props5.multiple,
-	          onBlur = _this$props5.onBlur,
-	          selectOnBlur = _this$props5.selectOnBlur;
+	      var _this$props4 = _this.props,
+	          multiple = _this$props4.multiple,
+	          onBlur = _this$props4.onBlur,
+	          selectOnBlur = _this$props4.selectOnBlur;
 	      // do not "blur" when the mouse is down inside of the Dropdown
 
 	      if (_this.isMouseDown) return;
-	      if (onBlur) onBlur(e);
+	      if (onBlur) onBlur(e, _this.props);
 	      if (selectOnBlur && !multiple) _this.selectHighlightedItem(e);
 	      _this.setState({ focus: false });
 	    }, _this.handleSearchChange = function (e) {
@@ -93607,9 +93687,9 @@
 	      debug(e.target.value);
 	      // prevent propagating to this.props.onChange()
 	      e.stopPropagation();
-	      var _this$props6 = _this.props,
-	          search = _this$props6.search,
-	          onSearchChange = _this$props6.onSearchChange;
+	      var _this$props5 = _this.props,
+	          search = _this$props5.search,
+	          onSearchChange = _this$props5.onSearchChange;
 	      var open = _this.state.open;
 
 	      var newQuery = e.target.value;
@@ -93626,12 +93706,12 @@
 	    }, _this.getMenuOptions = function () {
 	      var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this.state.value;
 	      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _this.props.options;
-	      var _this$props7 = _this.props,
-	          multiple = _this$props7.multiple,
-	          search = _this$props7.search,
-	          allowAdditions = _this$props7.allowAdditions,
-	          additionPosition = _this$props7.additionPosition,
-	          additionLabel = _this$props7.additionLabel;
+	      var _this$props6 = _this.props,
+	          multiple = _this$props6.multiple,
+	          search = _this$props6.search,
+	          allowAdditions = _this$props6.allowAdditions,
+	          additionPosition = _this$props6.additionPosition,
+	          additionLabel = _this$props6.additionLabel;
 	      var searchQuery = _this.state.searchQuery;
 
 
@@ -93810,13 +93890,13 @@
 	    }, _this.open = function (e) {
 	      debug('open()');
 
-	      var _this$props8 = _this.props,
-	          disabled = _this$props8.disabled,
-	          onOpen = _this$props8.onOpen,
-	          search = _this$props8.search;
+	      var _this$props7 = _this.props,
+	          disabled = _this$props7.disabled,
+	          onOpen = _this$props7.onOpen,
+	          search = _this$props7.search;
 
 	      if (disabled) return;
-	      if (search) _this._search.focus();
+	      if (search && _this._search) _this._search.focus();
 	      if (onOpen) onOpen(e, _this.props);
 
 	      _this.trySetState({ open: true });
@@ -93841,11 +93921,11 @@
 	    }, _this.toggle = function (e) {
 	      return _this.state.open ? _this.close(e) : _this.open(e);
 	    }, _this.renderText = function () {
-	      var _this$props9 = _this.props,
-	          multiple = _this$props9.multiple,
-	          placeholder = _this$props9.placeholder,
-	          search = _this$props9.search,
-	          text = _this$props9.text;
+	      var _this$props8 = _this.props,
+	          multiple = _this$props8.multiple,
+	          placeholder = _this$props8.placeholder,
+	          search = _this$props8.search,
+	          text = _this$props8.text;
 	      var _this$state2 = _this.state,
 	          searchQuery = _this$state2.searchQuery,
 	          value = _this$state2.value,
@@ -93873,11 +93953,11 @@
 	    }, _this.renderHiddenInput = function () {
 	      debug('renderHiddenInput()');
 	      var value = _this.state.value;
-	      var _this$props10 = _this.props,
-	          multiple = _this$props10.multiple,
-	          name = _this$props10.name,
-	          options = _this$props10.options,
-	          selection = _this$props10.selection;
+	      var _this$props9 = _this.props,
+	          multiple = _this$props9.multiple,
+	          name = _this$props9.name,
+	          options = _this$props9.options,
+	          selection = _this$props9.selection;
 
 	      debug('name:      ' + name);
 	      debug('selection: ' + selection);
@@ -93898,10 +93978,10 @@
 	        })
 	      );
 	    }, _this.renderSearchInput = function () {
-	      var _this$props11 = _this.props,
-	          search = _this$props11.search,
-	          name = _this$props11.name,
-	          tabIndex = _this$props11.tabIndex;
+	      var _this$props10 = _this.props,
+	          search = _this$props10.search,
+	          name = _this$props10.name,
+	          tabIndex = _this$props10.tabIndex;
 	      var searchQuery = _this.state.searchQuery;
 
 
@@ -93929,9 +94009,9 @@
 	        }
 	      });
 	    }, _this.renderSearchSizer = function () {
-	      var _this$props12 = _this.props,
-	          search = _this$props12.search,
-	          multiple = _this$props12.multiple;
+	      var _this$props11 = _this.props,
+	          search = _this$props11.search,
+	          multiple = _this$props11.multiple;
 
 
 	      if (!(search && multiple)) return null;
@@ -93941,9 +94021,9 @@
 	        } });
 	    }, _this.renderLabels = function () {
 	      debug('renderLabels()');
-	      var _this$props13 = _this.props,
-	          multiple = _this$props13.multiple,
-	          renderLabel = _this$props13.renderLabel;
+	      var _this$props12 = _this.props,
+	          multiple = _this$props12.multiple,
+	          renderLabel = _this$props12.renderLabel;
 	      var _this$state3 = _this.state,
 	          selectedLabel = _this$state3.selectedLabel,
 	          value = _this$state3.value;
@@ -93969,10 +94049,10 @@
 	        return _Label2.default.create(renderLabel(item, index, defaultLabelProps), defaultLabelProps);
 	      });
 	    }, _this.renderOptions = function () {
-	      var _this$props14 = _this.props,
-	          multiple = _this$props14.multiple,
-	          search = _this$props14.search,
-	          noResultsMessage = _this$props14.noResultsMessage;
+	      var _this$props13 = _this.props,
+	          multiple = _this$props13.multiple,
+	          search = _this$props13.search,
+	          noResultsMessage = _this$props13.noResultsMessage;
 	      var _this$state4 = _this.state,
 	          selectedIndex = _this$state4.selectedIndex,
 	          value = _this$state4.value;
@@ -94005,9 +94085,9 @@
 	        }));
 	      });
 	    }, _this.renderMenu = function () {
-	      var _this$props15 = _this.props,
-	          children = _this$props15.children,
-	          header = _this$props15.header;
+	      var _this$props14 = _this.props,
+	          children = _this$props14.children,
+	          header = _this$props14.header;
 	      var open = _this.state.open;
 
 	      var menuClasses = open ? 'visible' : '';
@@ -94339,34 +94419,84 @@
 	  /** Message to display when there are no results. */
 	  noResultsMessage: _react.PropTypes.string,
 
-	  /** Called with the name and new value added by the user. Use this to update the options list. */
+	  /**
+	   * Called when a user adds a new item. Use this to update the options list.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and the new item's value.
+	   */
 	  onAddItem: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Dropdown blur. */
+	  /**
+	   * Called on blur.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onBlur: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event and { name, value } on change. */
+	  /**
+	   * Called when the user attempts to change the value.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and proposed value.
+	   */
 	  onChange: _react.PropTypes.func,
 
-	  /** Called when a close event happens. */
+	  /**
+	   * Called when a close event happens.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClose: _react.PropTypes.func,
 
-	  /** Called when a multi-select label is clicked. */
+	  /**
+	   * Called when a multi-select label is clicked.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All label props.
+	   */
 	  onLabelClick: _react.PropTypes.func,
 
-	  /** Called when an open event happens. */
+	  /**
+	   * Called when an open event happens.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onOpen: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event and current value on search input change. */
+	  /**
+	   * Called on search input change.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {string} value - Current value of search input.
+	   */
 	  onSearchChange: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Dropdown click. */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Dropdown focus. */
+	  /**
+	   * Called on focus.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onFocus: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Dropdown mouse down. */
+	  /**
+	   * Called on mousedown.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onMouseDown: _react.PropTypes.func,
 
 	  /** Controls whether or not the dropdown menu is displayed. */
@@ -94427,8 +94557,8 @@
 	  additionPosition: 'top',
 	  icon: 'dropdown',
 	  noResultsMessage: 'No results found.',
-	  renderLabel: function renderLabel(_ref3) {
-	    var text = _ref3.text;
+	  renderLabel: function renderLabel(_ref2) {
+	    var text = _ref2.text;
 	    return text;
 	  },
 	  selectOnBlur: true,
@@ -95122,7 +95252,12 @@
 	  /** Stored value */
 	  value: _react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.string]),
 
-	  /** Called on click with (event, props). */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func
 	};
 	DropdownItem._meta = {
@@ -95775,7 +95910,7 @@
 	      var onClick = _this.props.onClick;
 
 
-	      if (onClick) onClick(e);
+	      if (onClick) onClick(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -95831,7 +95966,13 @@
 	  /** Render as an `a` tag instead of a `div` and adds the href attribute. */
 	  href: _lib.customPropTypes.every([_lib.customPropTypes.disallow(['link']), _react.PropTypes.string]),
 
-	  /** Render as an `a` tag instead of a `div` and called with event on Section click. */
+	  /**
+	   * Called on click. When passed, the component will render as an `a`
+	   * tag by default instead of a `div`.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func
 	};
 	BreadcrumbSection._meta = {
@@ -96125,7 +96266,7 @@
 	          serializer = _this$props.serializer;
 
 
-	      if (onSubmit) onSubmit(e, serializer(_this._form));
+	      if (onSubmit) onSubmit(e, _extends({}, _this.props, { formData: serializer(_this._form) }));
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -96179,7 +96320,12 @@
 	  /** Automatically show a loading indicator */
 	  loading: _react.PropTypes.bool,
 
-	  /** Called with (event, jsonSerializedForm) on submit */
+	  /**
+	   * Called on submit
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and the form's serialized values.
+	   */
 	  onSubmit: _react.PropTypes.func,
 
 	  /** A comment can contain a form to reply to a comment. This may have arbitrary content. */
@@ -96865,13 +97011,11 @@
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Input.__proto__ || Object.getPrototypeOf(Input)).call.apply(_ref, [this].concat(args))), _this), _this.handleChange = function (e) {
+	      var value = (0, _get3.default)(e, 'target.value');
+
 	      var onChange = _this.props.onChange;
 
-	      if (onChange) {
-	        onChange(e, _extends({}, _this.props, {
-	          value: (0, _get3.default)(e, 'target.value')
-	        }));
-	      }
+	      if (onChange) onChange(e, _extends({}, _this.props, { value: value }));
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -97009,7 +97153,12 @@
 	  /** An Icon Input field can show that it is currently loading data */
 	  loading: _react.PropTypes.bool,
 
-	  /** Called with (e, data) on change. */
+	  /**
+	   * Called on change.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and proposed value.
+	   */
 	  onChange: _react.PropTypes.func,
 
 	  /** An Input can vary in size */
@@ -97706,9 +97855,9 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Menu.__proto__ || Object.getPrototypeOf(Menu)).call.apply(_ref, [this].concat(args))), _this), _this.handleItemClick = function (e, _ref2) {
-	      var name = _ref2.name,
-	          index = _ref2.index;
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Menu.__proto__ || Object.getPrototypeOf(Menu)).call.apply(_ref, [this].concat(args))), _this), _this.handleItemClick = function (e, itemProps) {
+	      var index = itemProps.index;
+
 
 	      _this.trySetState({ activeIndex: index });
 	      var _this$props = _this.props,
@@ -97716,8 +97865,8 @@
 	          onItemClick = _this$props.onItemClick;
 
 
-	      if ((0, _get3.default)(items[index], 'onClick')) items[index].onClick(e, { name: name, index: index });
-	      if (onItemClick) onItemClick(e, { name: name, index: index });
+	      if ((0, _get3.default)(items[index], 'onClick')) items[index].onClick(e, itemProps);
+	      if (onItemClick) onItemClick(e, itemProps);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -97735,9 +97884,9 @@
 	          return { content: val, name: val };
 	        }, item, {
 	          active: activeIndex === index,
-	          childKey: function childKey(_ref3) {
-	            var content = _ref3.content,
-	                name = _ref3.name;
+	          childKey: function childKey(_ref2) {
+	            var content = _ref2.content,
+	                name = _ref2.name;
 	            return [content, name].join('-');
 	          },
 	          index: index,
@@ -97831,7 +97980,12 @@
 	  /** Shorthand array of props for Menu. */
 	  items: _lib.customPropTypes.collectionShorthand,
 
-	  /** onClick handler for MenuItem. Mutually exclusive with children. */
+	  /**
+	   * onClick handler for MenuItem. Mutually exclusive with children.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All item props.
+	   */
 	  onItemClick: _lib.customPropTypes.every([_lib.customPropTypes.disallow(['children']), _react.PropTypes.func]),
 
 	  /** A pagination menu is specially formatted to present links to pages of content. */
@@ -97996,13 +98150,10 @@
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (e) {
-	      var _this$props = _this.props,
-	          index = _this$props.index,
-	          name = _this$props.name,
-	          onClick = _this$props.onClick;
+	      var onClick = _this.props.onClick;
 
 
-	      if (onClick) onClick(e, { name: name, index: index });
+	      if (onClick) onClick(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -98087,7 +98238,13 @@
 	  /** Internal name of the MenuItem. */
 	  name: _react.PropTypes.string,
 
-	  /** Render as an `a` tag instead of a `div` and called with event on MenuItem click. */
+	  /**
+	   * Called on click. When passed, the component will render as an `a`
+	   * tag by default instead of a `div`.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
 	  /** A menu item can take right position. */
@@ -99237,305 +99394,7 @@
 	});
 	exports.default = undefined;
 
-	var _Sidebar = __webpack_require__(931);
-
-	var _Sidebar2 = _interopRequireDefault(_Sidebar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _Sidebar2.default;
-
-/***/ },
-/* 931 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _classnames = __webpack_require__(714);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _lib = __webpack_require__(574);
-
-	var _SidebarPushable = __webpack_require__(932);
-
-	var _SidebarPushable2 = _interopRequireDefault(_SidebarPushable);
-
-	var _SidebarPusher = __webpack_require__(933);
-
-	var _SidebarPusher2 = _interopRequireDefault(_SidebarPusher);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _meta = {
-	  name: 'Sidebar',
-	  type: _lib.META.TYPES.MODULE,
-	  props: {
-	    animation: ['overlay', 'push', 'scale down', 'uncover', 'slide out', 'slide along'],
-	    direction: ['top', 'right', 'bottom', 'left'],
-	    width: ['very thin', 'thin', 'wide', 'very wide']
-	  }
-	};
-
-	/**
-	 * A sidebar hides additional content beside a page.
-	 */
-
-	var Sidebar = function (_Component) {
-	  _inherits(Sidebar, _Component);
-
-	  function Sidebar() {
-	    var _ref;
-
-	    var _temp, _this, _ret;
-
-	    _classCallCheck(this, Sidebar);
-
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.startAnimating = function () {
-	      var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 500;
-
-	      clearTimeout(_this.stopAnimatingTimer);
-
-	      _this.setState({ animating: true });
-
-	      _this.stopAnimatingTimer = setTimeout(function () {
-	        return _this.setState({ animating: false });
-	      }, duration);
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-
-	  _createClass(Sidebar, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.visible !== this.props.visible) {
-	        this.startAnimating();
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var animating = this.state.animating;
-	      var _props = this.props,
-	          animation = _props.animation,
-	          className = _props.className,
-	          children = _props.children,
-	          direction = _props.direction,
-	          visible = _props.visible,
-	          width = _props.width;
-
-
-	      var classes = (0, _classnames2.default)('ui', 'sidebar', (0, _lib.useKeyOnly)(animating, 'animating'), direction, width, animation, (0, _lib.useKeyOnly)(visible, 'visible'), className);
-
-	      var rest = (0, _lib.getUnhandledProps)(Sidebar, this.props);
-	      var ElementType = (0, _lib.getElementType)(Sidebar, this.props);
-
-	      return _react2.default.createElement(
-	        ElementType,
-	        _extends({}, rest, { className: classes }),
-	        children
-	      );
-	    }
-	  }]);
-
-	  return Sidebar;
-	}(_lib.AutoControlledComponent);
-
-	Sidebar._meta = _meta;
-	Sidebar.propTypes = {
-	  /** An element type to render as (string or function). */
-	  as: _lib.customPropTypes.as,
-
-	  /** Animation style. */
-	  animation: _react.PropTypes.oneOf(Sidebar._meta.props.animation),
-
-	  /** Primary content. */
-	  children: _react.PropTypes.node,
-
-	  /** Additional classes. */
-	  className: _react.PropTypes.string,
-
-	  /** Initial value of visible. */
-	  defaultVisible: _react.PropTypes.bool,
-
-	  /** Direction the sidebar should appear on */
-	  direction: _react.PropTypes.oneOf(Sidebar._meta.props.direction),
-
-	  /** Controls whether or not the sidebar is visible on the page. */
-	  visible: _react.PropTypes.bool,
-
-	  /** Sidebar width */
-	  width: _react.PropTypes.oneOf(Sidebar._meta.props.width)
-	};
-	Sidebar.Pushable = _SidebarPushable2.default;
-	Sidebar.Pusher = _SidebarPusher2.default;
-	Sidebar.defaultProps = {
-	  direction: 'left'
-	};
-	Sidebar.autoControlledProps = ['visible'];
-	exports.default = Sidebar;
-
-/***/ },
-/* 932 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _classnames = __webpack_require__(714);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _lib = __webpack_require__(574);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * A pushable sub-component for Sidebar.
-	 */
-	function SidebarPushable(props) {
-	  var className = props.className,
-	      children = props.children;
-
-
-	  var classes = (0, _classnames2.default)('pushable', className);
-	  var rest = (0, _lib.getUnhandledProps)(SidebarPushable, props);
-	  var ElementType = (0, _lib.getElementType)(SidebarPushable, props);
-
-	  return _react2.default.createElement(
-	    ElementType,
-	    _extends({}, rest, { className: classes }),
-	    children
-	  );
-	}
-
-	SidebarPushable._meta = {
-	  name: 'SidebarPushable',
-	  type: _lib.META.TYPES.MODULE,
-	  parent: 'Sidebar'
-	};
-
-	SidebarPushable.propTypes = {
-	  /** An element type to render as (string or function). */
-	  as: _lib.customPropTypes.as,
-
-	  /** Primary content. */
-	  children: _react.PropTypes.node,
-
-	  /** Additional classes. */
-	  className: _react.PropTypes.string
-	};
-
-	exports.default = SidebarPushable;
-
-/***/ },
-/* 933 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _classnames = __webpack_require__(714);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _lib = __webpack_require__(574);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * A pushable sub-component for Sidebar.
-	 */
-	function SidebarPusher(props) {
-	  var className = props.className,
-	      dimmed = props.dimmed,
-	      children = props.children;
-
-
-	  var classes = (0, _classnames2.default)('pusher', (0, _lib.useKeyOnly)(dimmed, 'dimmed'), className);
-	  var rest = (0, _lib.getUnhandledProps)(SidebarPusher, props);
-	  var ElementType = (0, _lib.getElementType)(SidebarPusher, props);
-
-	  return _react2.default.createElement(
-	    ElementType,
-	    _extends({}, rest, { className: classes }),
-	    children
-	  );
-	}
-
-	SidebarPusher._meta = {
-	  name: 'SidebarPusher',
-	  type: _lib.META.TYPES.MODULE,
-	  parent: 'Sidebar'
-	};
-
-	SidebarPusher.propTypes = {
-	  /** An element type to render as (string or function). */
-	  as: _lib.customPropTypes.as,
-
-	  /** Primary content. */
-	  children: _react.PropTypes.node,
-
-	  /** Additional classes. */
-	  className: _react.PropTypes.string,
-
-	  /** Controls whether or not the dim is displayed. */
-	  dimmed: _react.PropTypes.bool
-	};
-
-	exports.default = SidebarPusher;
-
-/***/ },
-/* 934 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _Table = __webpack_require__(935);
+	var _Table = __webpack_require__(931);
 
 	var _Table2 = _interopRequireDefault(_Table);
 
@@ -99544,7 +99403,7 @@
 	exports.default = _Table2.default;
 
 /***/ },
-/* 935 */
+/* 931 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -99573,27 +99432,27 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _TableBody = __webpack_require__(936);
+	var _TableBody = __webpack_require__(932);
 
 	var _TableBody2 = _interopRequireDefault(_TableBody);
 
-	var _TableCell = __webpack_require__(937);
+	var _TableCell = __webpack_require__(933);
 
 	var _TableCell2 = _interopRequireDefault(_TableCell);
 
-	var _TableFooter = __webpack_require__(938);
+	var _TableFooter = __webpack_require__(934);
 
 	var _TableFooter2 = _interopRequireDefault(_TableFooter);
 
-	var _TableHeader = __webpack_require__(939);
+	var _TableHeader = __webpack_require__(935);
 
 	var _TableHeader2 = _interopRequireDefault(_TableHeader);
 
-	var _TableHeaderCell = __webpack_require__(940);
+	var _TableHeaderCell = __webpack_require__(936);
 
 	var _TableHeaderCell2 = _interopRequireDefault(_TableHeaderCell);
 
-	var _TableRow = __webpack_require__(941);
+	var _TableRow = __webpack_require__(937);
 
 	var _TableRow2 = _interopRequireDefault(_TableRow);
 
@@ -99774,7 +99633,7 @@
 	exports.default = Table;
 
 /***/ },
-/* 936 */
+/* 932 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -99836,7 +99695,7 @@
 	exports.default = TableBody;
 
 /***/ },
-/* 937 */
+/* 933 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -99977,7 +99836,7 @@
 	exports.default = TableCell;
 
 /***/ },
-/* 938 */
+/* 934 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -99992,7 +99851,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _TableHeader = __webpack_require__(939);
+	var _TableHeader = __webpack_require__(935);
 
 	var _TableHeader2 = _interopRequireDefault(_TableHeader);
 
@@ -100015,7 +99874,7 @@
 	exports.default = TableFooter;
 
 /***/ },
-/* 939 */
+/* 935 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100081,7 +99940,7 @@
 	exports.default = TableHeader;
 
 /***/ },
-/* 940 */
+/* 936 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100096,7 +99955,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _TableCell = __webpack_require__(937);
+	var _TableCell = __webpack_require__(933);
 
 	var _TableCell2 = _interopRequireDefault(_TableCell);
 
@@ -100119,7 +99978,7 @@
 	exports.default = TableHeaderCell;
 
 /***/ },
-/* 941 */
+/* 937 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100144,7 +100003,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _TableCell = __webpack_require__(937);
+	var _TableCell = __webpack_require__(933);
 
 	var _TableCell2 = _interopRequireDefault(_TableCell);
 
@@ -100249,7 +100108,7 @@
 	exports.default = TableRow;
 
 /***/ },
-/* 942 */
+/* 938 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100259,7 +100118,7 @@
 	});
 	exports.default = undefined;
 
-	var _Container = __webpack_require__(943);
+	var _Container = __webpack_require__(939);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -100268,7 +100127,7 @@
 	exports.default = _Container2.default;
 
 /***/ },
-/* 943 */
+/* 939 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100343,7 +100202,7 @@
 	exports.default = Container;
 
 /***/ },
-/* 944 */
+/* 940 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100353,7 +100212,7 @@
 	});
 	exports.default = undefined;
 
-	var _Divider = __webpack_require__(945);
+	var _Divider = __webpack_require__(941);
 
 	var _Divider2 = _interopRequireDefault(_Divider);
 
@@ -100362,7 +100221,7 @@
 	exports.default = _Divider2.default;
 
 /***/ },
-/* 945 */
+/* 941 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100451,7 +100310,7 @@
 	exports.default = Divider;
 
 /***/ },
-/* 946 */
+/* 942 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100461,7 +100320,7 @@
 	});
 	exports.default = undefined;
 
-	var _Header = __webpack_require__(947);
+	var _Header = __webpack_require__(943);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
@@ -100470,7 +100329,7 @@
 	exports.default = _Header2.default;
 
 /***/ },
-/* 947 */
+/* 943 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100503,11 +100362,11 @@
 
 	var _Image2 = _interopRequireDefault(_Image);
 
-	var _HeaderSubheader = __webpack_require__(948);
+	var _HeaderSubheader = __webpack_require__(944);
 
 	var _HeaderSubheader2 = _interopRequireDefault(_HeaderSubheader);
 
-	var _HeaderContent = __webpack_require__(949);
+	var _HeaderContent = __webpack_require__(945);
 
 	var _HeaderContent2 = _interopRequireDefault(_HeaderContent);
 
@@ -100644,7 +100503,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 948 */
+/* 944 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100710,7 +100569,7 @@
 	exports.default = HeaderSubheader;
 
 /***/ },
-/* 949 */
+/* 945 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100771,7 +100630,7 @@
 	exports.default = HeaderContent;
 
 /***/ },
-/* 950 */
+/* 946 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100781,7 +100640,7 @@
 	});
 	exports.default = undefined;
 
-	var _List = __webpack_require__(951);
+	var _List = __webpack_require__(947);
 
 	var _List2 = _interopRequireDefault(_List);
 
@@ -100790,7 +100649,7 @@
 	exports.default = _List2.default;
 
 /***/ },
-/* 951 */
+/* 947 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100815,27 +100674,27 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _ListContent = __webpack_require__(952);
+	var _ListContent = __webpack_require__(948);
 
 	var _ListContent2 = _interopRequireDefault(_ListContent);
 
-	var _ListDescription = __webpack_require__(953);
+	var _ListDescription = __webpack_require__(949);
 
 	var _ListDescription2 = _interopRequireDefault(_ListDescription);
 
-	var _ListHeader = __webpack_require__(954);
+	var _ListHeader = __webpack_require__(950);
 
 	var _ListHeader2 = _interopRequireDefault(_ListHeader);
 
-	var _ListIcon = __webpack_require__(955);
+	var _ListIcon = __webpack_require__(951);
 
 	var _ListIcon2 = _interopRequireDefault(_ListIcon);
 
-	var _ListItem = __webpack_require__(956);
+	var _ListItem = __webpack_require__(952);
 
 	var _ListItem2 = _interopRequireDefault(_ListItem);
 
-	var _ListList = __webpack_require__(957);
+	var _ListList = __webpack_require__(953);
 
 	var _ListList2 = _interopRequireDefault(_ListList);
 
@@ -100870,14 +100729,14 @@
 	  if (children) {
 	    return _react2.default.createElement(
 	      ElementType,
-	      _extends({}, rest, { className: classes }),
+	      _extends({}, rest, { role: 'list', className: classes }),
 	      children
 	    );
 	  }
 
 	  return _react2.default.createElement(
 	    ElementType,
-	    _extends({}, rest, { className: classes }),
+	    _extends({}, rest, { role: 'list', className: classes }),
 	    (0, _map3.default)(items, function (item) {
 	      return _ListItem2.default.create(item);
 	    })
@@ -100958,7 +100817,7 @@
 	exports.default = List;
 
 /***/ },
-/* 952 */
+/* 948 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -100979,11 +100838,11 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _ListDescription = __webpack_require__(953);
+	var _ListDescription = __webpack_require__(949);
 
 	var _ListDescription2 = _interopRequireDefault(_ListDescription);
 
-	var _ListHeader = __webpack_require__(954);
+	var _ListHeader = __webpack_require__(950);
 
 	var _ListHeader2 = _interopRequireDefault(_ListHeader);
 
@@ -101063,7 +100922,7 @@
 	exports.default = ListContent;
 
 /***/ },
-/* 953 */
+/* 949 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101129,7 +100988,7 @@
 	exports.default = ListDescription;
 
 /***/ },
-/* 954 */
+/* 950 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101195,7 +101054,7 @@
 	exports.default = ListHeader;
 
 /***/ },
-/* 955 */
+/* 951 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101256,7 +101115,7 @@
 	exports.default = ListIcon;
 
 /***/ },
-/* 956 */
+/* 952 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101285,19 +101144,19 @@
 
 	var _Image2 = _interopRequireDefault(_Image);
 
-	var _ListContent = __webpack_require__(952);
+	var _ListContent = __webpack_require__(948);
 
 	var _ListContent2 = _interopRequireDefault(_ListContent);
 
-	var _ListDescription = __webpack_require__(953);
+	var _ListDescription = __webpack_require__(949);
 
 	var _ListDescription2 = _interopRequireDefault(_ListDescription);
 
-	var _ListHeader = __webpack_require__(954);
+	var _ListHeader = __webpack_require__(950);
 
 	var _ListHeader2 = _interopRequireDefault(_ListHeader);
 
-	var _ListIcon = __webpack_require__(955);
+	var _ListIcon = __webpack_require__(951);
 
 	var _ListIcon2 = _interopRequireDefault(_ListIcon);
 
@@ -101324,7 +101183,7 @@
 	  if (children) {
 	    return _react2.default.createElement(
 	      ElementType,
-	      _extends({}, rest, { className: classes }, valueProp),
+	      _extends({}, rest, { role: 'listitem', className: classes }, valueProp),
 	      children
 	    );
 	  }
@@ -101336,7 +101195,7 @@
 	  if (!(0, _react.isValidElement)(content) && (0, _isPlainObject3.default)(content)) {
 	    return _react2.default.createElement(
 	      ElementType,
-	      _extends({}, rest, { className: classes }, valueProp),
+	      _extends({}, rest, { role: 'listitem', className: classes }, valueProp),
 	      iconElement || imageElement,
 	      _ListContent2.default.create(content, { header: header, description: description })
 	    );
@@ -101348,7 +101207,7 @@
 	  if (iconElement || imageElement) {
 	    return _react2.default.createElement(
 	      ElementType,
-	      _extends({}, rest, { className: classes }, valueProp),
+	      _extends({}, rest, { role: 'listitem', className: classes }, valueProp),
 	      iconElement || imageElement,
 	      (content || headerElement || descriptionElement) && _react2.default.createElement(
 	        _ListContent2.default,
@@ -101362,7 +101221,7 @@
 
 	  return _react2.default.createElement(
 	    ElementType,
-	    _extends({}, rest, { className: classes }, valueProp),
+	    _extends({}, rest, { role: 'listitem', className: classes }, valueProp),
 	    headerElement,
 	    descriptionElement,
 	    content
@@ -101431,7 +101290,7 @@
 	exports.default = ListItem;
 
 /***/ },
-/* 957 */
+/* 953 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101490,7 +101349,7 @@
 	exports.default = ListList;
 
 /***/ },
-/* 958 */
+/* 954 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101500,7 +101359,7 @@
 	});
 	exports.default = undefined;
 
-	var _Loader = __webpack_require__(959);
+	var _Loader = __webpack_require__(955);
 
 	var _Loader2 = _interopRequireDefault(_Loader);
 
@@ -101509,7 +101368,7 @@
 	exports.default = _Loader2.default;
 
 /***/ },
-/* 959 */
+/* 955 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101603,7 +101462,7 @@
 	exports.default = Loader;
 
 /***/ },
-/* 960 */
+/* 956 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101613,7 +101472,7 @@
 	});
 	exports.default = undefined;
 
-	var _Rail = __webpack_require__(961);
+	var _Rail = __webpack_require__(957);
 
 	var _Rail2 = _interopRequireDefault(_Rail);
 
@@ -101622,7 +101481,7 @@
 	exports.default = _Rail2.default;
 
 /***/ },
-/* 961 */
+/* 957 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101716,7 +101575,7 @@
 	exports.default = Rail;
 
 /***/ },
-/* 962 */
+/* 958 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101726,7 +101585,7 @@
 	});
 	exports.default = undefined;
 
-	var _Reveal = __webpack_require__(963);
+	var _Reveal = __webpack_require__(959);
 
 	var _Reveal2 = _interopRequireDefault(_Reveal);
 
@@ -101735,7 +101594,7 @@
 	exports.default = _Reveal2.default;
 
 /***/ },
-/* 963 */
+/* 959 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101756,7 +101615,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _RevealContent = __webpack_require__(964);
+	var _RevealContent = __webpack_require__(960);
 
 	var _RevealContent2 = _interopRequireDefault(_RevealContent);
 
@@ -101821,7 +101680,7 @@
 	exports.default = Reveal;
 
 /***/ },
-/* 964 */
+/* 960 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101891,7 +101750,7 @@
 	exports.default = RevealContent;
 
 /***/ },
-/* 965 */
+/* 961 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101901,7 +101760,7 @@
 	});
 	exports.default = undefined;
 
-	var _Segment = __webpack_require__(966);
+	var _Segment = __webpack_require__(962);
 
 	var _Segment2 = _interopRequireDefault(_Segment);
 
@@ -101910,7 +101769,7 @@
 	exports.default = _Segment2.default;
 
 /***/ },
-/* 966 */
+/* 962 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -101935,7 +101794,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _SegmentGroup = __webpack_require__(967);
+	var _SegmentGroup = __webpack_require__(963);
 
 	var _SegmentGroup2 = _interopRequireDefault(_SegmentGroup);
 
@@ -102065,7 +101924,7 @@
 	exports.default = Segment;
 
 /***/ },
-/* 967 */
+/* 963 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102157,7 +102016,7 @@
 	exports.default = SegmentGroup;
 
 /***/ },
-/* 968 */
+/* 964 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102167,7 +102026,7 @@
 	});
 	exports.default = undefined;
 
-	var _Step = __webpack_require__(969);
+	var _Step = __webpack_require__(965);
 
 	var _Step2 = _interopRequireDefault(_Step);
 
@@ -102176,7 +102035,7 @@
 	exports.default = _Step2.default;
 
 /***/ },
-/* 969 */
+/* 965 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102203,19 +102062,19 @@
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-	var _StepContent = __webpack_require__(970);
+	var _StepContent = __webpack_require__(966);
 
 	var _StepContent2 = _interopRequireDefault(_StepContent);
 
-	var _StepDescription = __webpack_require__(971);
+	var _StepDescription = __webpack_require__(967);
 
 	var _StepDescription2 = _interopRequireDefault(_StepDescription);
 
-	var _StepGroup = __webpack_require__(973);
+	var _StepGroup = __webpack_require__(969);
 
 	var _StepGroup2 = _interopRequireDefault(_StepGroup);
 
-	var _StepTitle = __webpack_require__(972);
+	var _StepTitle = __webpack_require__(968);
 
 	var _StepTitle2 = _interopRequireDefault(_StepTitle);
 
@@ -102248,7 +102107,7 @@
 	      var onClick = _this.props.onClick;
 
 
-	      if (onClick) onClick(e);
+	      if (onClick) onClick(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -102326,7 +102185,13 @@
 	  /** Render as an `a` tag instead of a `div` and adds the href attribute. */
 	  href: _react.PropTypes.string,
 
-	  /** Render as an `a` tag instead of a `div` and called with event on Step click. */
+	  /**
+	   * Called on click. When passed, the component will render as an `a`
+	   * tag by default instead of a `div`.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
 	  /** A step can show a ordered sequence of steps. Passed from StepGroup. */
@@ -102346,7 +102211,7 @@
 	exports.default = Step;
 
 /***/ },
-/* 970 */
+/* 966 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102367,11 +102232,11 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _StepDescription = __webpack_require__(971);
+	var _StepDescription = __webpack_require__(967);
 
 	var _StepDescription2 = _interopRequireDefault(_StepDescription);
 
-	var _StepTitle = __webpack_require__(972);
+	var _StepTitle = __webpack_require__(968);
 
 	var _StepTitle2 = _interopRequireDefault(_StepTitle);
 
@@ -102433,7 +102298,7 @@
 	exports.default = StepContent;
 
 /***/ },
-/* 971 */
+/* 967 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102495,7 +102360,7 @@
 	exports.default = StepDescription;
 
 /***/ },
-/* 972 */
+/* 968 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102557,7 +102422,7 @@
 	exports.default = StepTitle;
 
 /***/ },
-/* 973 */
+/* 969 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102586,7 +102451,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _Step = __webpack_require__(969);
+	var _Step = __webpack_require__(965);
 
 	var _Step2 = _interopRequireDefault(_Step);
 
@@ -102668,7 +102533,7 @@
 	exports.default = StepGroup;
 
 /***/ },
-/* 974 */
+/* 970 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102715,11 +102580,11 @@
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-	var _AccordionContent = __webpack_require__(975);
+	var _AccordionContent = __webpack_require__(971);
 
 	var _AccordionContent2 = _interopRequireDefault(_AccordionContent);
 
-	var _AccordionTitle = __webpack_require__(976);
+	var _AccordionTitle = __webpack_require__(972);
 
 	var _AccordionTitle2 = _interopRequireDefault(_AccordionTitle);
 
@@ -102890,7 +102755,7 @@
 	  onTitleClick: _react.PropTypes.func,
 
 	  /**
-	   * Create simple accordion panels from an array of { text: <string>, content: <string> } objects.
+	   * Create simple accordion panels from an array of { text: <string>, content: <custom> } objects.
 	   * Object can optionally define an `active` key to open/close the panel.
 	   * Mutually exclusive with children.
 	   * TODO: AccordionPanel should be a sub-component
@@ -102898,7 +102763,7 @@
 	  panels: _lib.customPropTypes.every([_lib.customPropTypes.disallow(['children']), _react.PropTypes.arrayOf(_react.PropTypes.shape({
 	    active: _react.PropTypes.bool,
 	    title: _react.PropTypes.string,
-	    content: _react.PropTypes.string,
+	    content: _lib.customPropTypes.contentShorthand,
 	    onClick: _react.PropTypes.func
 	  }))]),
 
@@ -102914,7 +102779,7 @@
 	exports.default = Accordion;
 
 /***/ },
-/* 975 */
+/* 971 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102978,7 +102843,7 @@
 	exports.default = AccordionContent;
 
 /***/ },
-/* 976 */
+/* 972 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103030,7 +102895,7 @@
 	      var onClick = _this.props.onClick;
 
 
-	      if (onClick) onClick(e);
+	      if (onClick) onClick(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -103072,7 +102937,12 @@
 	  /** Additional classes. */
 	  className: _react.PropTypes.string,
 
-	  /** Called with (event, index) on title click. */
+	  /**
+	   * Called on blur.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func
 	};
 	AccordionTitle._meta = {
@@ -103083,7 +102953,7 @@
 	exports.default = AccordionTitle;
 
 /***/ },
-/* 977 */
+/* 973 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103093,7 +102963,7 @@
 	});
 	exports.default = undefined;
 
-	var _Embed = __webpack_require__(978);
+	var _Embed = __webpack_require__(974);
 
 	var _Embed2 = _interopRequireDefault(_Embed);
 
@@ -103102,7 +102972,7 @@
 	exports.default = _Embed2.default;
 
 /***/ },
-/* 978 */
+/* 974 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103169,7 +103039,7 @@
 	      var active = _this.state.active;
 
 
-	      if (onClick) onClick(e, _this.props);
+	      if (onClick) onClick(e, _extends({}, _this.props, { active: true }));
 	      if (!active) _this.trySetState({ active: true });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
@@ -103298,7 +103168,12 @@
 	  /** Specifies an icon to use with placeholder content. */
 	  icon: _lib.customPropTypes.itemShorthand,
 
-	  /** Сalled with event on Embed click with (event, props). */
+	  /**
+	   * Сalled on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and proposed value.
+	   */
 	  onClick: _react.PropTypes.func,
 
 	  /** A placeholder image for embed. */
@@ -103313,7 +103188,7 @@
 	exports.default = Embed;
 
 /***/ },
-/* 979 */
+/* 975 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103323,7 +103198,7 @@
 	});
 	exports.default = undefined;
 
-	var _Popup = __webpack_require__(980);
+	var _Popup = __webpack_require__(976);
 
 	var _Popup2 = _interopRequireDefault(_Popup);
 
@@ -103332,7 +103207,7 @@
 	exports.default = _Popup2.default;
 
 /***/ },
-/* 980 */
+/* 976 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103353,11 +103228,11 @@
 
 	var _keys3 = _interopRequireDefault(_keys2);
 
-	var _assign2 = __webpack_require__(981);
+	var _assign2 = __webpack_require__(977);
 
 	var _assign3 = _interopRequireDefault(_assign2);
 
-	var _mapValues2 = __webpack_require__(983);
+	var _mapValues2 = __webpack_require__(979);
 
 	var _mapValues3 = _interopRequireDefault(_mapValues2);
 
@@ -103391,11 +103266,11 @@
 
 	var _Portal2 = _interopRequireDefault(_Portal);
 
-	var _PopupContent = __webpack_require__(984);
+	var _PopupContent = __webpack_require__(980);
 
 	var _PopupContent2 = _interopRequireDefault(_PopupContent);
 
-	var _PopupHeader = __webpack_require__(985);
+	var _PopupHeader = __webpack_require__(981);
 
 	var _PopupHeader2 = _interopRequireDefault(_PopupHeader);
 
@@ -103413,7 +103288,6 @@
 	  name: 'Popup',
 	  type: _lib.META.TYPES.MODULE,
 	  props: {
-	    content: [_react.PropTypes.string, _react.PropTypes.node],
 	    on: ['hover', 'click', 'focus'],
 	    positioning: ['top left', 'top right', 'bottom right', 'bottom left', 'right center', 'left center', 'top center', 'bottom center'],
 	    size: (0, _without3.default)(_lib.SUI.SIZES, 'medium', 'big', 'massive'),
@@ -103699,7 +103573,7 @@
 	  className: _react.PropTypes.string,
 
 	  /** Simple text content for the popover */
-	  content: _react.PropTypes.oneOfType(_meta.props.content),
+	  content: _react.PropTypes.node,
 
 	  /** A Flowing popup have no maximum width and continue to flow to fit its content */
 	  flowing: _react.PropTypes.bool,
@@ -103726,16 +103600,36 @@
 	  /** Event triggering the popup */
 	  on: _react.PropTypes.oneOf(_meta.props.on),
 
-	  /** Called when a close event happens */
+	  /**
+	   * Called when a close event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClose: _react.PropTypes.func,
 
-	  /** Called when the portal is mounted on the DOM */
+	  /**
+	   * Called when the portal is mounted on the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onMount: _react.PropTypes.func,
 
-	  /** Called when an open event happens */
+	  /**
+	   * Called when an open event happens
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onOpen: _react.PropTypes.func,
 
-	  /** Called when the portal is unmounted from the DOM */
+	  /**
+	   * Called when the portal is unmounted from the DOM
+	   *
+	   * @param {null}
+	   * @param {object} data - All props.
+	   */
 	  onUnmount: _react.PropTypes.func,
 
 	  /** Positioning for the popover */
@@ -103763,12 +103657,12 @@
 	exports.default = Popup;
 
 /***/ },
-/* 981 */
+/* 977 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var assignValue = __webpack_require__(740),
 	    copyObject = __webpack_require__(739),
-	    createAssigner = __webpack_require__(982),
+	    createAssigner = __webpack_require__(978),
 	    isArrayLike = __webpack_require__(602),
 	    isPrototype = __webpack_require__(625),
 	    keys = __webpack_require__(616);
@@ -103827,7 +103721,7 @@
 
 
 /***/ },
-/* 982 */
+/* 978 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseRest = __webpack_require__(592),
@@ -103870,7 +103764,7 @@
 
 
 /***/ },
-/* 983 */
+/* 979 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseAssignValue = __webpack_require__(741),
@@ -103919,7 +103813,7 @@
 
 
 /***/ },
-/* 984 */
+/* 980 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -103981,7 +103875,7 @@
 	};
 
 /***/ },
-/* 985 */
+/* 981 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104043,7 +103937,7 @@
 	};
 
 /***/ },
-/* 986 */
+/* 982 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104053,7 +103947,7 @@
 	});
 	exports.default = undefined;
 
-	var _Progress = __webpack_require__(987);
+	var _Progress = __webpack_require__(983);
 
 	var _Progress2 = _interopRequireDefault(_Progress);
 
@@ -104062,7 +103956,7 @@
 	exports.default = _Progress2.default;
 
 /***/ },
-/* 987 */
+/* 983 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104075,11 +103969,11 @@
 
 	var _without3 = _interopRequireDefault(_without2);
 
-	var _round2 = __webpack_require__(988);
+	var _round2 = __webpack_require__(984);
 
 	var _round3 = _interopRequireDefault(_round2);
 
-	var _clamp2 = __webpack_require__(990);
+	var _clamp2 = __webpack_require__(986);
 
 	var _clamp3 = _interopRequireDefault(_clamp2);
 
@@ -104257,10 +104151,10 @@
 	exports.default = Progress;
 
 /***/ },
-/* 988 */
+/* 984 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createRound = __webpack_require__(989);
+	var createRound = __webpack_require__(985);
 
 	/**
 	 * Computes `number` rounded to `precision`.
@@ -104289,7 +104183,7 @@
 
 
 /***/ },
-/* 989 */
+/* 985 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var toInteger = __webpack_require__(606),
@@ -104328,7 +104222,7 @@
 
 
 /***/ },
-/* 990 */
+/* 986 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseClamp = __webpack_require__(605),
@@ -104373,7 +104267,7 @@
 
 
 /***/ },
-/* 991 */
+/* 987 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104383,7 +104277,7 @@
 	});
 	exports.default = undefined;
 
-	var _Rating = __webpack_require__(992);
+	var _Rating = __webpack_require__(988);
 
 	var _Rating2 = _interopRequireDefault(_Rating);
 
@@ -104392,7 +104286,7 @@
 	exports.default = _Rating2.default;
 
 /***/ },
-/* 992 */
+/* 988 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104427,7 +104321,7 @@
 
 	var _lib = __webpack_require__(574);
 
-	var _RatingIcon = __webpack_require__(993);
+	var _RatingIcon = __webpack_require__(989);
 
 	var _RatingIcon2 = _interopRequireDefault(_RatingIcon);
 
@@ -104545,7 +104439,12 @@
 	  /** The total number of icons. */
 	  maxRating: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
 
-	  /** Called with (event, { rating, maxRating }) after user selects a new rating. */
+	  /**
+	   * Called after user selects a new rating.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props and proposed rating.
+	   */
 	  onRate: _react.PropTypes.func,
 
 	  /** The current number of active icons. */
@@ -104555,11 +104454,13 @@
 	  size: _react.PropTypes.oneOf(_meta.props.size)
 	};
 	Rating._meta = _meta;
+	Rating.Icon = _RatingIcon2.default;
 
 	var _initialiseProps = function _initialiseProps() {
 	  var _this3 = this;
 
-	  this.handleIconClick = function (e, index) {
+	  this.handleIconClick = function (e, _ref2) {
+	    var index = _ref2.index;
 	    var _props2 = _this3.props,
 	        clearable = _props2.clearable,
 	        disabled = _props2.disabled,
@@ -104581,10 +104482,12 @@
 
 	    // set rating
 	    _this3.trySetState({ rating: newRating }, { isSelecting: false });
-	    if (onRate) onRate(e, { rating: newRating, maxRating: maxRating });
+	    if (onRate) onRate(e, _extends({}, _this3.props, { rating: newRating }));
 	  };
 
-	  this.handleIconMouseEnter = function (index) {
+	  this.handleIconMouseEnter = function (e, _ref3) {
+	    var index = _ref3.index;
+
 	    if (_this3.props.disabled) return;
 
 	    _this3.setState({ selectedIndex: index, isSelecting: true });
@@ -104606,7 +104509,7 @@
 	exports.default = Rating;
 
 /***/ },
-/* 993 */
+/* 989 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104614,14 +104517,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _keys2 = __webpack_require__(616);
-
-	var _keys3 = _interopRequireDefault(_keys2);
-
-	var _omit2 = __webpack_require__(847);
-
-	var _omit3 = _interopRequireDefault(_omit2);
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -104662,37 +104557,37 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = RatingIcon.__proto__ || Object.getPrototypeOf(RatingIcon)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (e) {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = RatingIcon.__proto__ || Object.getPrototypeOf(RatingIcon)).call.apply(_ref, [this].concat(args))), _this), _this.defaultProps = {
+	      as: 'i'
+	    }, _this.handleClick = function (e) {
+	      var onClick = _this.props.onClick;
+
+
+	      if (onClick) onClick(e, _this.props);
+	    }, _this.handleKeyUp = function (e) {
 	      var _this$props = _this.props,
 	          onClick = _this$props.onClick,
-	          index = _this$props.index;
+	          onKeyUp = _this$props.onKeyUp;
 
 
-	      if (onClick) onClick(e, index);
-	    }, _this.handleKeyUp = function (e) {
-	      var _this$props2 = _this.props,
-	          onClick = _this$props2.onClick,
-	          index = _this$props2.index;
-
+	      if (onKeyUp) onKeyUp(e, _this.props);
 
 	      if (onClick) {
 	        switch (_lib.keyboardKey.getCode(e)) {
 	          case _lib.keyboardKey.Enter:
 	          case _lib.keyboardKey.Spacebar:
 	            e.preventDefault();
-	            onClick(e, index);
+	            onClick(e, _this.props);
 	            break;
 	          default:
 	            return;
 	        }
 	      }
-	    }, _this.handleMouseEnter = function () {
-	      var _this$props3 = _this.props,
-	          onMouseEnter = _this$props3.onMouseEnter,
-	          index = _this$props3.index;
+	    }, _this.handleMouseEnter = function (e) {
+	      var onMouseEnter = _this.props.onMouseEnter;
 
 
-	      if (onMouseEnter) onMouseEnter(index);
+	      if (onMouseEnter) onMouseEnter(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -104701,12 +104596,16 @@
 	    value: function render() {
 	      var _props = this.props,
 	          active = _props.active,
+	          className = _props.className,
 	          selected = _props.selected;
 
-	      var classes = (0, _classnames2.default)((0, _lib.useKeyOnly)(active, 'active'), (0, _lib.useKeyOnly)(selected, 'selected'), 'icon');
-	      var rest = (0, _omit3.default)(this.props, (0, _keys3.default)(RatingIcon.propTypes));
+	      var classes = (0, _classnames2.default)((0, _lib.useKeyOnly)(active, 'active'), (0, _lib.useKeyOnly)(selected, 'selected'), 'icon', className);
+	      var rest = (0, _lib.getUnhandledProps)(RatingIcon, this.props);
+	      var ElementType = (0, _lib.getElementType)(RatingIcon, this.props);
 
-	      return _react2.default.createElement('i', _extends({ role: 'radio', tabIndex: 0
+	      return _react2.default.createElement(ElementType, _extends({
+	        role: 'radio',
+	        tabIndex: 0
 	      }, rest, {
 	        className: classes,
 	        onKeyUp: this.handleKeyUp,
@@ -104723,13 +104622,37 @@
 	  /** Indicates activity of an icon. */
 	  active: _react.PropTypes.bool,
 
+	  /** An element type to render as (string or function). */
+	  as: _lib.customPropTypes.as,
+
+	  /** Additional classes. */
+	  className: _react.PropTypes.string,
+
 	  /** An index of icon inside Rating. */
 	  index: _react.PropTypes.number,
 
-	  /** Called with (event, index) after user clicked on an icon. */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
-	  /** Called with (index) after user move cursor to an icon. */
+	  /**
+	   * Called on keyup.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
+	  onKeyUp: _react.PropTypes.func,
+
+	  /**
+	   * Called on mouseenter.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onMouseEnter: _react.PropTypes.func,
 
 	  /** Indicates selection of an icon. */
@@ -104743,7 +104666,7 @@
 	exports.default = RatingIcon;
 
 /***/ },
-/* 994 */
+/* 990 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104753,7 +104676,7 @@
 	});
 	exports.default = undefined;
 
-	var _Search = __webpack_require__(995);
+	var _Search = __webpack_require__(991);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
@@ -104762,7 +104685,7 @@
 	exports.default = _Search2.default;
 
 /***/ },
-/* 995 */
+/* 991 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -104775,11 +104698,11 @@
 
 	var _isEmpty3 = _interopRequireDefault(_isEmpty2);
 
-	var _partialRight2 = __webpack_require__(996);
+	var _partialRight2 = __webpack_require__(992);
 
 	var _partialRight3 = _interopRequireDefault(_partialRight2);
 
-	var _inRange2 = __webpack_require__(997);
+	var _inRange2 = __webpack_require__(993);
 
 	var _inRange3 = _interopRequireDefault(_inRange2);
 
@@ -104823,15 +104746,15 @@
 
 	var _Input2 = _interopRequireDefault(_Input);
 
-	var _SearchCategory = __webpack_require__(999);
+	var _SearchCategory = __webpack_require__(995);
 
 	var _SearchCategory2 = _interopRequireDefault(_SearchCategory);
 
-	var _SearchResult = __webpack_require__(1000);
+	var _SearchResult = __webpack_require__(996);
 
 	var _SearchResult2 = _interopRequireDefault(_SearchResult);
 
-	var _SearchResults = __webpack_require__(1001);
+	var _SearchResults = __webpack_require__(997);
 
 	var _SearchResults2 = _interopRequireDefault(_SearchResults);
 
@@ -104873,12 +104796,12 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Search.__proto__ || Object.getPrototypeOf(Search)).call.apply(_ref, [this].concat(args))), _this), _this.handleChange = function (e, result) {
-	      debug('handleChange()');
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Search.__proto__ || Object.getPrototypeOf(Search)).call.apply(_ref, [this].concat(args))), _this), _this.handleResultSelect = function (e, result) {
+	      debug('handleResultSelect()');
 	      debug(result);
-	      var onChange = _this.props.onChange;
+	      var onResultSelect = _this.props.onResultSelect;
 
-	      if (onChange) onChange(e, result);
+	      if (onResultSelect) onResultSelect(e, result);
 	    }, _this.closeOnEscape = function (e) {
 	      if (_lib.keyboardKey.getCode(e) !== _lib.keyboardKey.Escape) return;
 	      e.preventDefault();
@@ -104909,9 +104832,9 @@
 	      // prevent selecting null if there was no selected item value
 	      if (!result) return;
 
-	      // notify the onChange prop that the user is trying to change value
+	      // notify the onResultSelect prop that the user is trying to change value
 	      _this.setValue(result.title);
-	      _this.handleChange(e, result);
+	      _this.handleResultSelect(e, result);
 	      _this.close();
 	    }, _this.closeOnDocumentClick = function (e) {
 	      debug('closeOnDocumentClick()');
@@ -104921,7 +104844,7 @@
 	      debug('handleMouseDown()');
 	      var onMouseDown = _this.props.onMouseDown;
 
-	      if (onMouseDown) onMouseDown(e);
+	      if (onMouseDown) onMouseDown(e, _this.props);
 	      _this.isMouseDown = true;
 	      // Do not access document when server side rendering
 	      if (!_lib.isBrowser) return;
@@ -104939,7 +104862,9 @@
 	      e.nativeEvent.stopImmediatePropagation();
 
 	      _this.tryOpen();
-	    }, _this.handleItemClick = function (e, id) {
+	    }, _this.handleItemClick = function (e, _ref2) {
+	      var id = _ref2.id;
+
 	      debug('handleItemClick()');
 	      debug(id);
 	      var result = _this.getSelectedResult(id);
@@ -104947,21 +104872,21 @@
 	      // prevent closeOnDocumentClick()
 	      e.nativeEvent.stopImmediatePropagation();
 
-	      // notify the onChange prop that the user is trying to change value
+	      // notify the onResultSelect prop that the user is trying to change value
 	      _this.setValue(result.title);
-	      _this.handleChange(e, result);
+	      _this.handleResultSelect(e, result);
 	      _this.close();
 	    }, _this.handleFocus = function (e) {
 	      debug('handleFocus()');
 	      var onFocus = _this.props.onFocus;
 
-	      if (onFocus) onFocus(e);
+	      if (onFocus) onFocus(e, _this.props);
 	      _this.setState({ focus: true });
 	    }, _this.handleBlur = function (e) {
 	      debug('handleBlur()');
 	      var onBlur = _this.props.onBlur;
 
-	      if (onBlur) onBlur(e);
+	      if (onBlur) onBlur(e, _this.props);
 	      _this.setState({ focus: false });
 	    }, _this.handleSearchChange = function (e) {
 	      debug('handleSearchChange()');
@@ -105092,11 +105017,11 @@
 	          noResultsDescription
 	        )
 	      );
-	    }, _this.renderResult = function (_ref2, index, _array) {
+	    }, _this.renderResult = function (_ref3, index, _array) {
 	      var offset = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
-	      var childKey = _ref2.childKey,
-	          result = _objectWithoutProperties(_ref2, ['childKey']);
+	      var childKey = _ref3.childKey,
+	          result = _objectWithoutProperties(_ref3, ['childKey']);
 
 	      var resultRenderer = _this.props.resultRenderer;
 	      var selectedIndex = _this.state.selectedIndex;
@@ -105107,10 +105032,7 @@
 	        key: childKey || result.title,
 	        active: selectedIndex === offsetIndex,
 	        onClick: _this.handleItemClick,
-	        onMouseDown: function onMouseDown(e) {
-	          return e.preventDefault();
-	        } // prevent default to allow item select without closing on blur
-	        , renderer: resultRenderer
+	        renderer: resultRenderer
 	      }, result, {
 	        id: offsetIndex // Used to lookup the result on item click
 	      }));
@@ -105128,9 +105050,9 @@
 
 	      var count = 0;
 
-	      return (0, _map3.default)(categories, function (_ref3, name, index) {
-	        var childKey = _ref3.childKey,
-	            category = _objectWithoutProperties(_ref3, ['childKey']);
+	      return (0, _map3.default)(categories, function (_ref4, name, index) {
+	        var childKey = _ref4.childKey,
+	            category = _objectWithoutProperties(_ref4, ['childKey']);
 
 	        var categoryProps = _extends({
 	          key: childKey || category.name,
@@ -105273,10 +105195,6 @@
 	    // Document Event Handlers
 	    // ----------------------------------------
 
-	    // onChange needs to receive a value
-	    // can't rely on props.value if we are controlled
-
-
 	    // ----------------------------------------
 	    // Component Event Handlers
 	    // ----------------------------------------
@@ -105336,7 +105254,6 @@
 	          className: classes,
 	          onBlur: this.handleBlur,
 	          onFocus: this.handleFocus,
-	          onChange: this.handleChange,
 	          onMouseDown: this.handleMouseDown
 	        }),
 	        this.renderSearchInput(),
@@ -105416,19 +105333,44 @@
 	  // Callbacks
 	  // ------------------------------------
 
-	  /** Called with the React Synthetic Event on Search blur. */
+	  /**
+	   * Called on blur.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onBlur: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event, the selected result. */
-	  onChange: _react.PropTypes.func,
+	  /**
+	   * Called when a result is selected.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
+	  onResultSelect: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event and current value on search input change. */
+	  /**
+	   * Called on search input change.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {string} value - Current value of search input.
+	   */
 	  onSearchChange: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Search focus. */
+	  /**
+	   * Called on focus.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onFocus: _react.PropTypes.func,
 
-	  /** Called with the React Synthetic Event on Dropdown mouse down. */
+	  /**
+	   * Called on mousedown.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onMouseDown: _react.PropTypes.func,
 
 	  // ------------------------------------
@@ -105465,7 +105407,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 996 */
+/* 992 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseRest = __webpack_require__(592),
@@ -105520,10 +105462,10 @@
 
 
 /***/ },
-/* 997 */
+/* 993 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseInRange = __webpack_require__(998),
+	var baseInRange = __webpack_require__(994),
 	    toFinite = __webpack_require__(607),
 	    toNumber = __webpack_require__(608);
 
@@ -105581,7 +105523,7 @@
 
 
 /***/ },
-/* 998 */
+/* 994 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -105605,7 +105547,7 @@
 
 
 /***/ },
-/* 999 */
+/* 995 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -105690,7 +105632,7 @@
 	exports.default = SearchCategory;
 
 /***/ },
-/* 1000 */
+/* 996 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -105773,12 +105715,10 @@
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = SearchResult.__proto__ || Object.getPrototypeOf(SearchResult)).call.apply(_ref2, [this].concat(args))), _this), _this.handleClick = function (e) {
-	      var _this$props = _this.props,
-	          id = _this$props.id,
-	          onClick = _this$props.onClick;
+	      var onClick = _this.props.onClick;
 
 
-	      if (onClick) onClick(e, id);
+	      if (onClick) onClick(e, _this.props);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -105829,7 +105769,12 @@
 	  /** Add an image to the item. */
 	  image: _react.PropTypes.string,
 
-	  /** Called on click with (event, value, text). */
+	  /**
+	   * Called on click.
+	   *
+	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+	   * @param {object} data - All props.
+	   */
 	  onClick: _react.PropTypes.func,
 
 	  /** Customized text for price. */
@@ -105852,7 +105797,7 @@
 	exports.default = SearchResult;
 
 /***/ },
-/* 1001 */
+/* 997 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -105908,6 +105853,304 @@
 	};
 
 	exports.default = SearchResults;
+
+/***/ },
+/* 998 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _Sidebar = __webpack_require__(999);
+
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _Sidebar2.default;
+
+/***/ },
+/* 999 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _classnames = __webpack_require__(714);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lib = __webpack_require__(574);
+
+	var _SidebarPushable = __webpack_require__(1000);
+
+	var _SidebarPushable2 = _interopRequireDefault(_SidebarPushable);
+
+	var _SidebarPusher = __webpack_require__(1001);
+
+	var _SidebarPusher2 = _interopRequireDefault(_SidebarPusher);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _meta = {
+	  name: 'Sidebar',
+	  type: _lib.META.TYPES.MODULE,
+	  props: {
+	    animation: ['overlay', 'push', 'scale down', 'uncover', 'slide out', 'slide along'],
+	    direction: ['top', 'right', 'bottom', 'left'],
+	    width: ['very thin', 'thin', 'wide', 'very wide']
+	  }
+	};
+
+	/**
+	 * A sidebar hides additional content beside a page.
+	 */
+
+	var Sidebar = function (_Component) {
+	  _inherits(Sidebar, _Component);
+
+	  function Sidebar() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Sidebar);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.startAnimating = function () {
+	      var duration = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 500;
+
+	      clearTimeout(_this.stopAnimatingTimer);
+
+	      _this.setState({ animating: true });
+
+	      _this.stopAnimatingTimer = setTimeout(function () {
+	        return _this.setState({ animating: false });
+	      }, duration);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Sidebar, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.visible !== this.props.visible) {
+	        this.startAnimating();
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var animating = this.state.animating;
+	      var _props = this.props,
+	          animation = _props.animation,
+	          className = _props.className,
+	          children = _props.children,
+	          direction = _props.direction,
+	          visible = _props.visible,
+	          width = _props.width;
+
+
+	      var classes = (0, _classnames2.default)('ui', 'sidebar', (0, _lib.useKeyOnly)(animating, 'animating'), direction, width, animation, (0, _lib.useKeyOnly)(visible, 'visible'), className);
+
+	      var rest = (0, _lib.getUnhandledProps)(Sidebar, this.props);
+	      var ElementType = (0, _lib.getElementType)(Sidebar, this.props);
+
+	      return _react2.default.createElement(
+	        ElementType,
+	        _extends({}, rest, { className: classes }),
+	        children
+	      );
+	    }
+	  }]);
+
+	  return Sidebar;
+	}(_lib.AutoControlledComponent);
+
+	Sidebar._meta = _meta;
+	Sidebar.propTypes = {
+	  /** An element type to render as (string or function). */
+	  as: _lib.customPropTypes.as,
+
+	  /** Animation style. */
+	  animation: _react.PropTypes.oneOf(Sidebar._meta.props.animation),
+
+	  /** Primary content. */
+	  children: _react.PropTypes.node,
+
+	  /** Additional classes. */
+	  className: _react.PropTypes.string,
+
+	  /** Initial value of visible. */
+	  defaultVisible: _react.PropTypes.bool,
+
+	  /** Direction the sidebar should appear on */
+	  direction: _react.PropTypes.oneOf(Sidebar._meta.props.direction),
+
+	  /** Controls whether or not the sidebar is visible on the page. */
+	  visible: _react.PropTypes.bool,
+
+	  /** Sidebar width */
+	  width: _react.PropTypes.oneOf(Sidebar._meta.props.width)
+	};
+	Sidebar.Pushable = _SidebarPushable2.default;
+	Sidebar.Pusher = _SidebarPusher2.default;
+	Sidebar.defaultProps = {
+	  direction: 'left'
+	};
+	Sidebar.autoControlledProps = ['visible'];
+	exports.default = Sidebar;
+
+/***/ },
+/* 1000 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _classnames = __webpack_require__(714);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lib = __webpack_require__(574);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * A pushable sub-component for Sidebar.
+	 */
+	function SidebarPushable(props) {
+	  var className = props.className,
+	      children = props.children;
+
+
+	  var classes = (0, _classnames2.default)('pushable', className);
+	  var rest = (0, _lib.getUnhandledProps)(SidebarPushable, props);
+	  var ElementType = (0, _lib.getElementType)(SidebarPushable, props);
+
+	  return _react2.default.createElement(
+	    ElementType,
+	    _extends({}, rest, { className: classes }),
+	    children
+	  );
+	}
+
+	SidebarPushable._meta = {
+	  name: 'SidebarPushable',
+	  type: _lib.META.TYPES.MODULE,
+	  parent: 'Sidebar'
+	};
+
+	SidebarPushable.propTypes = {
+	  /** An element type to render as (string or function). */
+	  as: _lib.customPropTypes.as,
+
+	  /** Primary content. */
+	  children: _react.PropTypes.node,
+
+	  /** Additional classes. */
+	  className: _react.PropTypes.string
+	};
+
+	exports.default = SidebarPushable;
+
+/***/ },
+/* 1001 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _classnames = __webpack_require__(714);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lib = __webpack_require__(574);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * A pushable sub-component for Sidebar.
+	 */
+	function SidebarPusher(props) {
+	  var className = props.className,
+	      dimmed = props.dimmed,
+	      children = props.children;
+
+
+	  var classes = (0, _classnames2.default)('pusher', (0, _lib.useKeyOnly)(dimmed, 'dimmed'), className);
+	  var rest = (0, _lib.getUnhandledProps)(SidebarPusher, props);
+	  var ElementType = (0, _lib.getElementType)(SidebarPusher, props);
+
+	  return _react2.default.createElement(
+	    ElementType,
+	    _extends({}, rest, { className: classes }),
+	    children
+	  );
+	}
+
+	SidebarPusher._meta = {
+	  name: 'SidebarPusher',
+	  type: _lib.META.TYPES.MODULE,
+	  parent: 'Sidebar'
+	};
+
+	SidebarPusher.propTypes = {
+	  /** An element type to render as (string or function). */
+	  as: _lib.customPropTypes.as,
+
+	  /** Primary content. */
+	  children: _react.PropTypes.node,
+
+	  /** Additional classes. */
+	  className: _react.PropTypes.string,
+
+	  /** Controls whether or not the dim is displayed. */
+	  dimmed: _react.PropTypes.bool
+	};
+
+	exports.default = SidebarPusher;
 
 /***/ },
 /* 1002 */
@@ -106087,11 +106330,11 @@
 	  meta: _lib.customPropTypes.itemShorthand,
 
 	  /**
-	   * Called after user's click. When passed, the component render as an `a`
+	   * Called on click. When passed, the component renders as an `a`
 	   * tag by default instead of a `div`.
 	   *
 	   * @param {SyntheticEvent} event - React's original SyntheticEvent.
-	   * @param {object} data - Card props.
+	   * @param {object} data - All props.
 	   */
 	  onClick: _react.PropTypes.func,
 
@@ -109901,12 +110144,11 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    _react2.default.createElement(_semanticUiReact.Checkbox, { toggle: true,
-	      label: 'connected',
-	      checked: socketConnectionOn,
-	      readOnly: true
+	    _react2.default.createElement(_semanticUiReact.Label, {
+	      content: socketConnectionOn ? 'connected' : 'not connected',
+	      icon: socketConnectionOn ? 'checkmark' : null
 	    }),
-	    numUsersOnline ? _react2.default.createElement(_semanticUiReact.Label, {
+	    socketConnectionOn && numUsersOnline ? _react2.default.createElement(_semanticUiReact.Label, {
 	      content: 'users online',
 	      detail: numUsersOnline
 	    }) : undefined
@@ -109933,9 +110175,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var playerColors = ['red', 'green', 'blue'];
+
 	var UserStats = function UserStats(_ref) {
 	  var isMyTurn = _ref.isMyTurn,
 	      localPlayerWins = _ref.localPlayerWins,
+	      playerIndex = _ref.playerIndex,
 	      nickname = _ref.nickname,
 	      score = _ref.score,
 	      victories = _ref.victories;
@@ -109945,9 +110190,12 @@
 	    _react2.default.createElement(
 	      'div',
 	      null,
-	      'nick: ',
-	      nickname,
-	      ', score: ',
+	      _react2.default.createElement(_semanticUiReact.Label, {
+	        color: playerColors[playerIndex],
+	        content: nickname,
+	        icon: 'user'
+	      }),
+	      'score: ',
 	      score,
 	      ' victories: ',
 	      victories
