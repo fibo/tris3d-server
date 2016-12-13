@@ -75424,10 +75424,15 @@
 	        isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer();
 	      };
 
+	      // TODO fix this
 	      var playerIndex = 0; // isMultiPlayer ? multiPlayerIndex(nickname, remotePlayers) : localPlayerIndex(localPlayers)
+	      // TODO fix this
 	      if (isMultiPlayer) {
+	        // TODO fix this
 	        playerIndex = 1;
+	        // TODO fix this
 	      } else {
+	        // TODO fix this
 	        playerIndex = (0, _localPlayerIndex2.default)(localPlayers);
 	      }
 

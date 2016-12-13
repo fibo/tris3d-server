@@ -51,6 +51,7 @@ class Root extends Component {
 
     var playerIndex = 0 // isMultiPlayer ? multiPlayerIndex(nickname, remotePlayers) : localPlayerIndex(localPlayers)
     if (isMultiPlayer) {
+    // FIXME
       playerIndex = 1
     } else {
       playerIndex = localPlayerIndex(localPlayers)
