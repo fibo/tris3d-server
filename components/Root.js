@@ -8,6 +8,7 @@ import BeforeUnload from 'before-unload'
 import Canvas from './Canvas'
 import EnterPlayground from './EnterPlayground'
 import localPlayerIndex from '../store/utils/localPlayerIndex'
+import multiPlayerIndex from '../store/utils/multiPlayerIndex'
 import MultiPlayerToggle from './MultiPlayerToggle'
 import PlayersSelector from './PlayersSelector'
 import ServerStats from './ServerStats'
@@ -15,7 +16,7 @@ import UserStats from './UserStats'
 
 class Root extends Component {
   componentDidMount () {
-    // FIXME the default message is displyed, not this one
+    // FIXME the default message is displayed, not this one
     const doNotLeaveMessage = 'You are playing a match'
 
     this.beforeUnload = new BeforeUnload(doNotLeaveMessage, () => {
@@ -36,6 +37,7 @@ class Root extends Component {
       localPlayers,
       localPlayerWins,
       localMatchStarts,
+      remotePlayers,
       resetLocalMatch,
       score,
       setChoice,
@@ -49,10 +51,9 @@ class Root extends Component {
       isMultiPlayer ? disableMultiPlayer() : enableMultiPlayer()
     }
 
-    var playerIndex = 0 // isMultiPlayer ? multiPlayerIndex(nickname, remotePlayers) : localPlayerIndex(localPlayers)
+    var playerIndex = 0
     if (isMultiPlayer) {
-    // FIXME
-      playerIndex = 1
+      playerIndex = multiPlayerIndex(nickname, remotePlayers)
     } else {
       playerIndex = localPlayerIndex(localPlayers)
     }

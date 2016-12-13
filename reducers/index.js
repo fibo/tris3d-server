@@ -125,7 +125,7 @@ export default function (state, action) {
 
     case UPDATE_REMOTE_PLAYERS:
       return Object.assign({}, state, {
-        remotePlayers: action.players
+        remotePlayers: action.remotePlayers
       })
 
     default:
