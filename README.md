@@ -1,4 +1,4 @@
-# tris3d-server
+# ![logo](./public/tris3d.png) tris3d-server
 
 > Play tic tac toe in 3d.
 
