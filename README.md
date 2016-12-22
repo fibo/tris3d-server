@@ -63,7 +63,7 @@ cd /opt
 git clone https://github.com/fibo/tris3d-server.git
 cd tris3d-server
 npm install --production
-npm install forever -g
+sudo npm install forever -g
 ```
 
 Copy nginx conf and reload it
@@ -76,7 +76,12 @@ sudo service nginx reload
 Copy tris3d service and make it start at boot
 
 ```bash
-cat server-files/etc/init.d/tris3d | perl -ple 's/USER/$ENV{USER}/' > /etc/init.d/tris3d
+# Generate tris3d init script
+cat server-files/etc/init.d/tris3d | perl -ple 's/USER/$ENV{USER}/' > /tmp/tris3d
+chmod +x /tmp/tris3d
+sudo cp /tmp/tris3d /etc/init.d
+rm /tmp/tris3d
+# Create sym links
 sudo ln -s /etc/init.d/tris3d /etc/rc0.d/K99tris3d
 sudo ln -s /etc/init.d/tris3d /etc/rc1.d/K99tris3d
 sudo ln -s /etc/init.d/tris3d /etc/rc2.d/S99tris3d

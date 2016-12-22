@@ -11,11 +11,11 @@
 ### END INIT INFO
 
 start() {
-  su -c npm start /opt/tris3d-server -s /bin/bash USER 1> /dev/null
+  su -c 'cd /opt/tris3d-server; npm start' -s /bin/bash USER 1> /dev/null
 }
 
 stop() {
-  su -c npm stop /opt/tris3d-server -s /bin/bash USER 1> /dev/null
+  su -c 'cd /opt/tris3d-server; npm start' -s /bin/bash USER 1> /dev/null
 }
 
 case "$1" in
