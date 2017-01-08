@@ -46,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fibo/tris3d-canvas.git"
+    "url": "git://github.com/fibo/tris3d-server.git"
   },
   "keywords": [
     "tris3d",
@@ -68,7 +68,7 @@
     "should": "^11.1.2",
     "standard": "^8.6.0",
     "supertest": "^2.0.1",
-    "tris3d-canvas": "^0.8.0",
+    "tris3d-canvas": "^0.9.0",
     "zeroconf-redux": "^0.11.0"
   },
   "dependencies": {
