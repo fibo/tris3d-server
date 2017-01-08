@@ -108,10 +108,10 @@ node server
 
 Then point your browser to http://localhost:3000/
 
-You may also want to run webpack watching for file changes, then in another shell
+You may also want to watch for file changes, then in another shell
 
 ```bash
-npm run watch_webpack
+npm run watch
 ```
 
 Run tests as usual
