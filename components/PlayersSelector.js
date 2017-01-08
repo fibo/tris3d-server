@@ -1,10 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import {
-  Button,
-  Dropdown,
-  Grid,
-  Modal
-} from 'semantic-ui-react'
 
 import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
 import initialState from '../store/initialState'
@@ -20,7 +14,6 @@ class PlayersSelector extends Component {
     }
 
     this.state = {
-      open: false,
       players: localPlayers.split(',')
     }
   }
@@ -42,19 +35,15 @@ class PlayersSelector extends Component {
       isPlaying,
       localMatchStarts,
       nickname,
-      resetLocalMatch,
+//      resetLocalMatch,
       saveLocalPlayers
     } = this.props
 
     let {
-      open,
       players
     } = this.state
 
     const setState = this.setState.bind(this)
-
-    const openModal = () => setState({ open: true })
-    const closeModal = () => setState({ open: false })
 
     const humanPlayerIndex = players.indexOf('human')
 
@@ -66,8 +55,7 @@ class PlayersSelector extends Component {
     ]
 
     const SelectPlayer = ({ index }) => (
-      <Dropdown
-        disabled={isPlaying}
+      <select
         onChange={(e, { value }) => {
           // There can be only one human.
           if ((value === 'human') && (humanPlayerIndex !== index)) {
@@ -85,63 +73,19 @@ class PlayersSelector extends Component {
 
     return (
       <div>
-        <Modal
-          basic
-          open={open}
-          onClose={closeModal}
-          size='small'
-        >
-          <Modal.Content>
-            <p>Are you sure you want to <strong>reset</strong> game?</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button
-              basic
-              color='red'
-              content='No'
-              icon='remove'
-              inverted
-              onClick={() => closeModal()}
-            />
-            <Button
-              color='green'
-              content='Yes'
-              icon='checkmark'
-              inverted
-              labelPosition='right'
-              onClick={() => {
-                closeModal()
-                resetLocalMatch()
-              }}
-            />
-          </Modal.Actions>
-        </Modal>
-        <Grid>
-          <Grid.Row columns={4}>
-            <Grid.Column>
-              <SelectPlayer index={0} />
-            </Grid.Column>
-            <Grid.Column>
-              <SelectPlayer index={1} />
-            </Grid.Column>
-            <Grid.Column>
-              <SelectPlayer index={2} />
-            </Grid.Column>
-            <Grid.Column>
-              <Button fluid
-                content={isPlaying ? 'Reset' : 'Play'}
-                onClick={() => {
-                  if (isPlaying) {
-                    openModal()
-                  } else {
-                    saveLocalPlayers(players)
-                    localMatchStarts()
-                  }
-                }}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <SelectPlayer index={0} />
+        <SelectPlayer index={1} />
+        <SelectPlayer index={2} />
+        <button
+          onClick={() => {
+            if (isPlaying) {
+              // openModal()
+            } else {
+              saveLocalPlayers(players)
+              localMatchStarts()
+            }
+          }}
+        >{isPlaying ? 'Reset' : 'Play'}</button>
       </div>
     )
   }

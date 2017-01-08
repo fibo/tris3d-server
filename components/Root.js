@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Container
-} from 'semantic-ui-react'
 
 import BeforeUnload from 'before-unload'
 
@@ -59,7 +56,7 @@ class Root extends Component {
     }
 
     return (
-      <Container>
+      <div>
         {(typeof nickname === 'string') ? (
           <div>
             <MultiPlayerToggle
@@ -102,7 +99,7 @@ class Root extends Component {
             setNickname={setNickname}
           />
         )}
-      </Container>
+      </div>
     )
   }
 }

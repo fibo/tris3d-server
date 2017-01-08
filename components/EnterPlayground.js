@@ -1,13 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Container,
-  Grid,
-  Header,
-  Image,
-  Input,
-  Segment
-} from 'semantic-ui-react'
 
 import localStorageIsAvailable from '../store/utils/localStorageIsAvailable'
 import MultiPlayerToggle from './MultiPlayerToggle'
@@ -45,52 +36,30 @@ class EnterPlayground extends Component {
     const setState = this.setState.bind(this)
 
     return (
-      <Container>
-        <Grid divided stackable columns={2}>
-          <Grid.Row stretched>
-            <Grid.Column>
-              <Segment>
-                <Header
-                  as='h1'
-                  content='Tris 3d'
-                  image={<Image shape='circular' src='/tris3d.png' />}
-                  subheader='Play tic tac toe in 3d'
-                  textAlign='center'
-                />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment>
-                <MultiPlayerToggle
-                  isMultiPlayer={isMultiPlayer}
-                  toggleMultiPlayer={() => {
-                    setState({
-                      isMultiPlayer: !isMultiPlayer
-                    })
-                  }}
-                />
-                <Input fluid
-                  label='Your nick'
-                  onChange={(e, { value }) => {
-                    setState({ nickname: value.trim() })
-                  }}
-                  value={nickname}
-                />
-                <Button fluid primary
-                  content='Play'
-                  disabled={(nickname.length < 2)}
-                  onClick={() => {
-                    if (isMultiPlayer) enableMultiPlayer()
-                    else disableMultiPlayer()
+      <div>
+        <MultiPlayerToggle
+          isMultiPlayer={isMultiPlayer}
+          toggleMultiPlayer={() => {
+            setState({
+              isMultiPlayer: !isMultiPlayer
+            })
+          }}
+        />
+        <input
+          onChange={(e, { value }) => {
+            setState({ nickname: value.trim() })
+          }}
+          value={nickname}
+        />
+        <button
+          onClick={() => {
+            if (isMultiPlayer) enableMultiPlayer()
+            else disableMultiPlayer()
 
-                    setNickname(nickname)
-                  }}
-                />
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
+            setNickname(nickname)
+          }}
+        >Play</button>
+      </div>
     )
   }
 }

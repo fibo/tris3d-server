@@ -1,7 +1,4 @@
 import React from 'react'
-import {
-  Label
-} from 'semantic-ui-react'
 
 const playerColors = ['red', 'green', 'blue']
 
@@ -15,7 +12,7 @@ const UserStats = ({
 }) => (
   <div>
     <div>
-      <Label
+      <div
         color={playerColors[playerIndex]}
         content={nickname}
         icon='user'
@@ -24,12 +21,12 @@ const UserStats = ({
     </div>
     {
       isMyTurn ? (
-        <Label basic content='your turn' />
+        <div basic content='your turn' />
       ) : undefined
     }
     {
       localPlayerWins ? (
-        <Label basic icon='trophy' content='you win!' />
+        <div basic icon='trophy' content='you win!' />
       ) : undefined
     }
   </div>

@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "browserify": " browserify -t babelify client/index.js -o public/bundle.js",
+    "browserify": " browserify -t babelify client.js -o public/bundle.js",
     "build": "npm run lint && npm run test && npm run sass && npm run browserify",
     "postbuild": "npm run git_add-f; git commit -m 'build'; git push origin master",
     "check-deps": "npm outdated",
@@ -23,7 +23,8 @@
     "sass": "node-sass sass/style.scss --output public",
     "start": "DEBUG=${npm_package_name} forever start --uid ${npm_package_name} --append server.js",
     "stop": "forever stop --uid ${npm_package_name} server.js",
-    "test": "mocha"
+    "test": "mocha",
+    "watch": "npm-watch"
   },
   "pre-commit": [
     "check-deps",
@@ -31,7 +32,16 @@
     "test"
   ],
   "watch": {
-    "browserify": "client",
+    "browserify": {
+      "patterns": [
+        "actions",
+        "components",
+        "containers",
+        "middlewares",
+        "reducers",
+        "store"
+      ]
+    },
     "sass": "sass"
   },
   "repository": {
@@ -48,6 +58,7 @@
   },
   "devDependencies": {
     "before-unload": "^2.0.0",
+    "es6-object-assign": "^1.0.3",
     "mocha": "^3.2.0",
     "node-sass": "^4.1.1",
     "npm-watch": "^0.1.7",

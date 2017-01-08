@@ -1,4 +1,5 @@
-import 'babel-polyfill'
+import objectAssign from 'es6-object-assign'
+objectAssign.polyfill()
 
 import React from 'react'
 import { render } from 'react-dom'
