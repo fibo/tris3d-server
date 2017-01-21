@@ -1,20 +1,19 @@
+// TODO on GitHub go to now-cli repo, issue 233 and vote up
 'use strict'
 
-const express = require('express')
+const fs = require('fs')
+const http = require('http')
 const no = require('not-defined')
 const path = require('path')
+const zlib = require('zlib')
 
 const generateId = require('./store/utils/generateId')
 
 const pkg = require('./package.json')
 const debug = require('debug')(pkg.name)
 
-const app = express()
-const http = require('http').Server(app)
-const io = require('socket.io')(http)
-
-// Keep in sync with server-files/etc/nginx/conf.d/tris3d.conf
-const port = 3000
+const server = http.createServer(routes)
+const io = require('socket.io')(server)
 
 // Room of user.
 const roomOf = {}
@@ -48,23 +47,66 @@ var numUsersOnline = 0
 
 // Server routes.
 
-app.use(express.static('public'))
+function routes (req, res) {
+  const method = req.method
+  const url = req.url
 
-app.get('/info', (req, res) => {
-  res.json({
-    name: pkg.name,
-    version: pkg.version,
-    numUsersOnline
-  })
-})
+  debug(`${method} ${url}`)
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'))
-})
+  const send = (contentType, filename) => {
+    res.setHeader('Content-Encoding', 'gzip')
 
-app.all('/*', (req, res) => {
-  res.redirect('/')
-})
+    res.writeHead(200, {'Content-Type': contentType})
+
+    fs.createReadStream(path.join(__dirname, 'public', filename))
+      .pipe(zlib.createGzip())
+      .pipe(res)
+  }
+
+  switch (method) {
+    case 'GET':
+      switch (url) {
+        case '/':
+          send('text/html; charset=UTF-8', 'index.html')
+          break
+
+        case '/index.html':
+          send('text/html; charset=UTF-8', 'index.html')
+          break
+
+        case '/bundle.js':
+          send('application/javascript', 'bundle.js')
+          break
+
+        case '/info':
+          res.writeHead(200, {'Content-Type': 'application/json'})
+          res.end(JSON.stringify({
+            name: pkg.name,
+            version: pkg.version,
+            numUsersOnline
+          }))
+          break
+
+        case '/robots.txt':
+          send('text/plain; charset=UTF-8', 'robots.txt')
+          break
+
+        case '/sitemap.xml':
+          send('application/xml', 'sitemap.xml')
+          break
+
+        case '/style.css':
+          send('text/css; charset=UTF-8', 'style.css')
+          break
+
+        default: res.end()
+      } break
+
+    // More HTTP verbs here, if any.
+
+    default: res.end()
+  }
+}
 
 // Socket.io events.
 
@@ -151,10 +193,12 @@ io.on('connection', (socket) => {
 
 // Start server if it is the main script.
 if (module === require.main) {
-  http.listen(port, () => {
+  server.listen(() => {
+    const port = server.address().port
+
     debug('Listening on port %d', port)
   })
 }
 
-// Export app for testing purpouse.
-module.exports = app
+// Export server for testing purpouse.
+module.exports = server
