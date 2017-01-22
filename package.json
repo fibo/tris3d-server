@@ -11,23 +11,19 @@
   "license": "MIT",
   "scripts": {
     "browserify": " browserify -t babelify client.js -o public/bundle.js",
-    "build": "npm run lint && npm run test && npm run sass && npm run browserify",
-    "postbuild": "npm run git_add-f; git commit -m 'build'; git push origin master",
-    "check-deps": "npm outdated",
-    "git_add-f": "git add -f public/bundle.js public/style.css",
+    "s3": "",
+    "gh-pages:pull": "git subtree --prefix public pull origin gh-pages",
     "lint": "for x in css js; do npm run lint_$x; done",
     "lint_css": "sass-lint -v sass/*",
     "lint_js": "standard",
     "preversion": "npm run build",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "sass": "node-sass sass/style.scss --output public",
-    "start": "DEBUG=${npm_package_name} forever start --uid ${npm_package_name} --append server.js",
-    "stop": "forever stop --uid ${npm_package_name} server.js",
+    "start": "DEBUG=${npm_package_name} node server.js",
     "test": "mocha",
     "watch": "npm-watch"
   },
   "pre-commit": [
-    "check-deps",
     "lint",
     "test"
   ],

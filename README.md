@@ -3,12 +3,21 @@
 > Play tic tac toe in 3d.
 
 [Setup](#setup) |
+[Deploy](#deploy) |
 [Development](#development) |
 [License](#license)
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/fibo/tris3d)
 
 See [presentation slides on gdocs][tris3d-gdocs].
+
+## Setup
+
+Install awscli
+
+## Deploy
+
+aws s3 cp on tris3d bucket
 
 ## Development
 

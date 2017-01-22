@@ -2,8 +2,3 @@
 node_modules/
 npm-debug.log
 *.swp
-
-# Ignored but added with `npm run git_add-f`
-public/bundle.js
-public/style.css
-
