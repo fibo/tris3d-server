@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "browserify": " browserify -t babelify client.js -o public/bundle.js",
-    "s3": "",
+    "aws_s3_sync": "aws s3 sync public s3://play.tris3d.net",
     "gh-pages:pull": "git subtree --prefix public pull origin gh-pages",
     "lint": "for x in css js; do npm run lint_$x; done",
     "lint_css": "sass-lint -v sass/*",
@@ -57,6 +57,7 @@
     "es6-object-assign": "^1.0.3",
     "mocha": "^3.2.0",
     "node-sass": "^4.1.1",
+    "now": "^3.0.0",
     "npm-watch": "^0.1.7",
     "pre-commit": "^1.2.2",
     "read-file-utf8": "^1.1.1",

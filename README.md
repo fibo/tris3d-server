@@ -13,19 +13,24 @@ See [presentation slides on gdocs][tris3d-gdocs].
 
 ## Setup
 
-Install awscli
+Install AWS cli and get keys with permission to push on S3 bucket *s3://play.tris3d.net*.
 
 ## Deploy
 
-aws s3 cp on tris3d bucket
+**TODO** deploy server with *now*
+
+Update S3 bucket
+
+```bash
+npm run aws_s3_sync
+```
 
 ## Development
 
 Start the server in debug mode
 
 ```bash
-export DEBUG=tris3d-server
-node server
+npm start
 ```
 
 You may also want to watch for file changes, then in another shell
@@ -44,12 +49,6 @@ Lint both JavaScript and CSS sources by launching
 
 ```bash
 npm run lint
-```
-
-Publish a new version, it will build *bundle.js* and *style.css*
-
-```bash
-npm version minor
 ```
 
 ## License
