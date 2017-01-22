@@ -1,0 +1,16 @@
+{
+  "short_name": "tris3d",
+  "name": "tris3d! Play tic tac toe in 3d",
+  "start_url": "/?utm_source=homescreen",
+  "icons": [
+    {
+      "src": "tris3d.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "background_color": "#2196F3",
+  "theme_color": "#2196F3",
+  "display": "standalone",
+  "orientation": "portrait"
+}

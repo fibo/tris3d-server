@@ -30,6 +30,7 @@ npm run aws_s3_sync
 Start the server in debug mode
 
 ```bash
+export DEBUG=tris3d-server
 npm start
 ```
 

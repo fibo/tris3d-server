@@ -14,12 +14,11 @@
     "aws_s3_sync": "aws s3 sync public s3://play.tris3d.net",
     "gh-pages:pull": "git subtree --prefix public pull origin gh-pages",
     "lint": "for x in css js; do npm run lint_$x; done",
-    "lint_css": "sass-lint -v sass/*",
+    "lint_css": "echo TODO",
     "lint_js": "standard",
     "preversion": "npm run build",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
-    "sass": "node-sass sass/style.scss --output public",
-    "start": "DEBUG=${npm_package_name} node server.js",
+    "start": "node server.js",
     "test": "mocha",
     "watch": "npm-watch"
   },
@@ -37,8 +36,7 @@
         "reducers",
         "store"
       ]
-    },
-    "sass": "sass"
+    }
   },
   "repository": {
     "type": "git",
@@ -54,14 +52,13 @@
   },
   "devDependencies": {
     "before-unload": "^2.0.0",
+    "css-modulesify": "^0.27.1",
     "es6-object-assign": "^1.0.3",
     "mocha": "^3.2.0",
-    "node-sass": "^4.1.1",
     "now": "^3.0.0",
     "npm-watch": "^0.1.7",
     "pre-commit": "^1.2.2",
     "read-file-utf8": "^1.1.1",
-    "sass-lint": "^1.10.2",
     "should": "^11.1.2",
     "socket.io-client": "^1.7.2",
     "standard": "^8.6.0",
@@ -75,7 +72,6 @@
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.6.0"
   },
-  "sasslintConfig": "sass/.sass-lint.yml",
   "standard": {
     "globals": [
       "describe",
