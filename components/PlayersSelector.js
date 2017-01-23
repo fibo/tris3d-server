@@ -72,7 +72,7 @@ class PlayersSelector extends Component {
     )
 
     return (
-      <div>
+      <div className='players-selector' >
         <SelectPlayer index={0} />
         <SelectPlayer index={1} />
         <SelectPlayer index={2} />
