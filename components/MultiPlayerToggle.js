@@ -9,7 +9,7 @@ class MultiPlayerToggle extends Component {
     } = this.props
 
     return (
-      <div>
+      <div className='multi-player-toggle'>
         <input type='checkbox'
           checked={isMultiPlayer}
           label='Multiplayer'

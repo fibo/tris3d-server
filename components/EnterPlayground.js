@@ -36,7 +36,7 @@ class EnterPlayground extends Component {
     const setState = this.setState.bind(this)
 
     return (
-      <div>
+      <div className='enter-playground'>
         <MultiPlayerToggle
           isMultiPlayer={isMultiPlayer}
           toggleMultiPlayer={() => {

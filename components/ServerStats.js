@@ -4,7 +4,7 @@ const ServerStats = ({
   numUsersOnline,
   socketConnectionOn
 }) => (
-  <div>
+  <div className='server-stats'>
     {
       (socketConnectionOn && numUsersOnline) ? (
           {numUsersOnline}

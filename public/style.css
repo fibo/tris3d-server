@@ -1,2 +1,7 @@
+#root {
+  background-color: #fdfdfd; }
+
 .players-selector {
   background-color: #fdfdfd; }
+  .players-selector button {
+    background-color: #bbb; }

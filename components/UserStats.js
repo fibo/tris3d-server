@@ -10,7 +10,7 @@ const UserStats = ({
   score,
   victories
 }) => (
-  <div>
+  <div className='user-stats'>
     <div>
       <div
         color={playerColors[playerIndex]}
