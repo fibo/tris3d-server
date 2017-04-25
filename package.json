@@ -56,22 +56,21 @@
   "devDependencies": {
     "before-unload": "^2.0.0",
     "es6-object-assign": "^1.0.3",
-    "mocha": "^3.2.0",
-    "node-sass": "^4.3.0",
-    "now": "^3.0.0",
+    "mocha": "^3.3.0",
+    "node-sass": "^4.5.2",
+    "now": "^4.1.2",
     "npm-watch": "^0.1.7",
     "pre-commit": "^1.2.2",
     "read-file-utf8": "^1.1.1",
-    "should": "^11.1.2",
-    "socket.io-client": "^1.7.2",
-    "standard": "^8.6.0",
-    "supertest": "^2.0.1",
-    "tris3d-canvas": "^0.9.0",
-    "zeroconf-redux": "^0.12.2"
+    "should": "^11.2.1",
+    "socket.io-client": "^1.7.3",
+    "supertest": "^3.0.0",
+    "tris3d-canvas": "^0.9.1",
+    "zeroconf-redux": "^0.12.4"
   },
   "dependencies": {
     "not-defined": "^1.1.0",
-    "socket.io": "^1.7.2",
+    "socket.io": "^1.7.3",
     "tris3d": "^0.3.0",
     "tris3d-ai": "^0.6.0"
   },
