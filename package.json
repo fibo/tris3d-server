@@ -13,9 +13,7 @@
     "browserify": "browserify client.js -t babelify -o public/bundle.js",
     "aws_s3_sync": "aws s3 sync public s3://play.tris3d.net",
     "gh-pages:pull": "git subtree --prefix public pull origin gh-pages",
-    "lint": "for x in css js; do npm run lint_$x; done",
-    "lint_css": "sass-lint -v sass/*",
-    "lint_js": "standard",
+    "lint": "standard",
     "preversion": "npm run build",
     "postversion": "git push origin v${npm_package_version}; git push origin master",
     "sass": "node-sass sass/style.scss --output public",
@@ -64,6 +62,7 @@
     "read-file-utf8": "^1.1.1",
     "should": "^11.2.1",
     "socket.io-client": "^1.7.3",
+    "standard": "^10.0.2",
     "supertest": "^3.0.0",
     "tris3d-canvas": "^0.9.1",
     "zeroconf-redux": "^0.12.4"

@@ -142,7 +142,7 @@ io.on('connection', (socket) => {
       roomId = availableRoom.id
     } else {
       // otherwise, update user status: it is not disconnected anymore.
-      room[roomId].players
+      // TODO room[roomId].players
     }
 
     roomOf[userId] = roomId

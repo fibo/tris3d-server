@@ -1,12 +1,12 @@
-import objectAssign from 'es6-object-assign'
-objectAssign.polyfill()
-
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
+import objectAssign from 'es6-object-assign'
 
 import App from './containers/App'
+import configureStore from './store/configureStore'
+
+objectAssign.polyfill()
 
 const store = configureStore()
 
