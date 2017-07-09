@@ -1,3 +1,5 @@
+import io from 'socket.io-client'
+
 import {
   DISABLE_MULTI_PLAYER,
   ENABLE_MULTI_PLAYER,
